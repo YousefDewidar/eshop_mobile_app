@@ -3,7 +3,7 @@ name: Build Flutter APK and Send to Telegram
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   build:
@@ -21,15 +21,16 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build APK
-        run: flutter build apk --release
+      - name: Build APK (split per ABI)
+        run: flutter build apk --release --split-per-abi
 
       - name: Upload APK to Telegram
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          curl -F document=@build/app/outputs/flutter-apk/app-release.apk \
-               -F chat_id=$TELEGRAM_CHAT_ID \
-               -F caption="✅ تم بناء APK جديد من مشروع Flutter!" \
-               https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument
+          curl -F document=@build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk \
+              -F chat_id=$TELEGRAM_CHAT_ID \
+              -F caption="📦 APK جديد
+          🕒 التاريخ: $(date +'%Y-%m-%d %H:%M')" \
+             https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument
