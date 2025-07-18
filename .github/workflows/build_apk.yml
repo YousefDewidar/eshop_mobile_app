@@ -3,7 +3,7 @@ name: Build Flutter APK and Send to Telegram
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   build:
