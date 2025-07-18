@@ -14,7 +14,7 @@ void main() async {
   await Supabase.initialize(url: kSupabaseUrl, anonKey: kSupabaseAnonKey);
   Bloc.observer = SimpleBlocObserver();
   await setupLocator();
-  
+
   runApp(const Rfaye3App());
 }
 

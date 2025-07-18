@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/routes/routes.dart';
-import 'package:rfaye3/features/auth/ui/views/forget_pass_view.dart';
-import 'package:rfaye3/features/auth/ui/views/login_view.dart';
-import 'package:rfaye3/features/auth/ui/views/new_password_view.dart';
-import 'package:rfaye3/features/auth/ui/views/signup_view.dart';
-import 'package:rfaye3/features/auth/ui/views/verify_code_view.dart';
-import 'package:rfaye3/features/checkout/ui/views/checkout_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/forget_pass_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/login_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/new_password_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/signup_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/verify_code_view.dart';
+import 'package:rfaye3/features/checkout/presentation/views/checkout_view.dart';
 import 'package:rfaye3/features/main/domain/entities/cart_item_entity.dart';
-import 'package:rfaye3/features/main/ui/views/main_view.dart';
-import 'package:rfaye3/features/main/ui/views/notification_view.dart';
-import 'package:rfaye3/features/main/ui/views/search_view.dart';
-import 'package:rfaye3/features/splash/ui/views/landing_view.dart';
-import 'package:rfaye3/features/splash/ui/views/splash_view.dart';
+import 'package:rfaye3/features/main/presentation/views/main_view.dart';
+import 'package:rfaye3/features/main/presentation/views/notification_view.dart';
+import 'package:rfaye3/features/main/presentation/views/search_view.dart';
+import 'package:rfaye3/features/splash/presentation/views/landing_view.dart';
+import 'package:rfaye3/features/splash/presentation/views/splash_view.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings setting) {
   switch (setting.name) {
