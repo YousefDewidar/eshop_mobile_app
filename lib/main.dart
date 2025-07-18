@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:rfaye3/core/helper/di.dart';
+import 'package:rfaye3/core/helper/simple_bloc_observer.dart';
+import 'package:rfaye3/core/routes/generate_routes.dart';
+import 'package:rfaye3/core/routes/routes.dart';
+import 'package:rfaye3/core/supabase/ksupabase.dart';
+import 'package:rfaye3/generated/l10n.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(url: kSupabaseUrl, anonKey: kSupabaseAnonKey);
+  Bloc.observer = SimpleBlocObserver();
+  await setupLocator();
+  
   runApp(const Rfaye3App());
 }
 
@@ -9,9 +23,22 @@ class Rfaye3App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Scaffold());
+    return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'cairo',
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      locale: const Locale('ar'),
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: onGenerateRoute,
+      initialRoute: Routes.splash,
+    );
   }
-
-
-  // Test changes
 }

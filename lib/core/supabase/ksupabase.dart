@@ -1,0 +1,3 @@
+const kSupabaseUrl = 'https://bhezzfonivdhrhincuuy.supabase.co';
+const kSupabaseAnonKey =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoZXp6Zm9uaXZkaHJoaW5jdXV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAzMzEwNjYsImV4cCI6MjA1NTkwNzA2Nn0.Hw1IaQ3kMLYydS5gqm1pwGZAYPnEL4SmxeJeOOIOjBA';
