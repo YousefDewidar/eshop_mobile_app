@@ -18,7 +18,7 @@ class AppBarWithNotification extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       scrolledUnderElevation: 0,
       shadowColor: const Color.fromARGB(255, 26, 23, 23),
       elevation: 60,
@@ -42,7 +42,9 @@ class AppBarWithNotification extends StatelessWidget {
       leadingWidth: 70,
       title: Text(
         title,
-        style: TextStyles.bold19,
+        style: TextStyles.bold19.copyWith(
+          color: Theme.of(context).textTheme.bodyLarge!.color,
+        ),
       ),
       centerTitle: true,
     );

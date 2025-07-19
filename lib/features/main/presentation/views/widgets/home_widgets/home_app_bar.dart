@@ -6,9 +6,7 @@ import 'package:rfaye3/core/widgets/notification_icon.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({
-    super.key,
-  });
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,9 @@ class HomeAppBar extends StatelessWidget {
       ),
       subtitle: Text(
         UserLocaldata.getUserData()?.name ?? "",
-        style: TextStyles.bold16,
+        style: TextStyles.bold16.copyWith(
+          color: Theme.of(context).textTheme.bodyLarge!.color,
+        ),
       ),
       trailing: const NotificationIcon(),
       leading: Image.asset(Assets.imagesProfileImage, width: 44),

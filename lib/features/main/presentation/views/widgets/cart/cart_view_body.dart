@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/routes/routes.dart';
+import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/core/widgets/custom_button.dart';
@@ -24,14 +25,14 @@ class CartViewBody extends StatelessWidget {
         ),
         const SpaceV(26),
         Container(
-          color: const Color(0xFFEBF9F1),
+          color: Theme.of(context).colorScheme.surface,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 15),
             child: Text(
               "${S.current.haveProductsInCart1} ${context.watch<CartCubit>().totalCount} ${S.current.haveProductsInCart2}",
               textAlign: TextAlign.center,
               style: TextStyles.regular13.copyWith(
-                color: const Color(0xFF1B5E37),
+                color: AppColors.primaryColor,
               ),
             ),
           ),

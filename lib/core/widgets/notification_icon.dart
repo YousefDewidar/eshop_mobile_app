@@ -5,9 +5,7 @@ import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:svg_flutter/svg.dart';
 
 class NotificationIcon extends StatelessWidget {
-  const NotificationIcon({
-    super.key,
-  });
+  const NotificationIcon({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +16,9 @@ class NotificationIcon extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.all(10),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Color(0xffEEF8ED),
+          color: Theme.of(context).colorScheme.surface,
         ),
         child: SvgPicture.asset(
           Assets.imagesNotification,

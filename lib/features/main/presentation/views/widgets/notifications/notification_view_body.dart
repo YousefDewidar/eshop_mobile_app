@@ -13,9 +13,7 @@ class NotificationViewBody extends StatelessWidget {
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
-        AppBarWithNotification(
-          title: S.of(context).mostPop,
-        ),
+        AppBarWithNotification(title: S.of(context).notification),
         const SliverToBoxAdapter(child: SpaceV(16)),
         const NotificationCountRow(),
         const NotificationListView(),
@@ -23,4 +21,3 @@ class NotificationViewBody extends StatelessWidget {
     );
   }
 }
-

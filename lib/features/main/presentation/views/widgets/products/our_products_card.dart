@@ -4,10 +4,7 @@ import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/features/main/domain/entities/product_entity.dart';
 
 class OurProductCard extends StatelessWidget {
-  const OurProductCard({
-    super.key,
-    required this.product,
-  });
+  const OurProductCard({super.key, required this.product});
   final ProductEntity product;
 
   @override
@@ -18,27 +15,26 @@ class OurProductCard extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 32,
-            backgroundColor: const Color(0xffF3F5F7),
+            backgroundColor: Theme.of(context).colorScheme.surface,
             child: Padding(
               padding: const EdgeInsets.all(6),
               child: CachedNetworkImage(
                 imageUrl: product.img,
-                placeholder: (context, url) => const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.primaryColor,
-                  ),
-                ),
-                errorWidget: (context, url, error) => const Center(
-                  child: Icon(
-                    Icons.image_not_supported_outlined,
-                    size: 50,
-                  ),
-                ),
+                placeholder:
+                    (context, url) => const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.primaryColor,
+                      ),
+                    ),
+                errorWidget:
+                    (context, url, error) => const Center(
+                      child: Icon(Icons.image_not_supported_outlined, size: 50),
+                    ),
               ),
             ),
           ),
           const SizedBox(height: 8),
-          Text(product.title)
+          Text(product.title),
         ],
       ),
     );

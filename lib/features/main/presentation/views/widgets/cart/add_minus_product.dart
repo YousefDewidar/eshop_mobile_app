@@ -7,10 +7,7 @@ import 'package:rfaye3/features/main/domain/entities/cart_item_entity.dart';
 import 'package:rfaye3/features/main/presentation/manager/cart_cubit/cart_cubit.dart';
 
 class AddMinusProduct extends StatelessWidget {
-  const AddMinusProduct({
-    super.key,
-    required this.product,
-  });
+  const AddMinusProduct({super.key, required this.product});
   final CartItemEntity product;
   @override
   Widget build(BuildContext context) {
@@ -29,10 +26,7 @@ class AddMinusProduct extends StatelessWidget {
           ),
         ),
         const SpaceH(16),
-        Text(
-          product.count.toString(),
-          style: TextStyles.bold16,
-        ),
+        Text(product.count.toString(), style: TextStyles.bold16),
         const SpaceH(16),
         InkWell(
           onTap: () {
@@ -40,10 +34,10 @@ class AddMinusProduct extends StatelessWidget {
           },
           radius: 12,
           borderRadius: BorderRadius.circular(12),
-          child: const CircleAvatar(
+          child: CircleAvatar(
             radius: 12,
-            backgroundColor: AppColors.productColor,
-            child: Icon(Icons.remove, size: 18, color: Color(0xff979899)),
+            backgroundColor: Theme.of(context).colorScheme.surface,
+            child: const Icon(Icons.remove, size: 18, color: Color(0xff979899)),
           ),
         ),
       ],

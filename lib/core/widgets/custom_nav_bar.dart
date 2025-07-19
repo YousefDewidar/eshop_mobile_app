@@ -20,13 +20,13 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
-        color: Colors.white,
-        boxShadow: [
+        color: Theme.of(context).navigationBarTheme.backgroundColor,
+        boxShadow: const [
           BoxShadow(
             color: Color.fromARGB(29, 0, 0, 0),
             blurRadius: 7,
@@ -94,20 +94,20 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
                 top: 0,
                 child: CircleAvatar(
                   backgroundColor: AppColors.primaryColor,
-                  radius: 10,
+                  radius: 9,
                   child: Text(
                     context.watch<CartCubit>().totalCount.toString(),
                     style: const TextStyle(color: Colors.white, fontSize: 10),
                   ),
                 ),
               ),
-            Center(child: SvgPicture.asset(inActiveIcon, height: 25)),
+            Center(child: SvgPicture.asset(inActiveIcon, height: 20)),
           ],
         ),
       ),
       activeIcon: CircleAvatar(
         backgroundColor: AppColors.primaryColor,
-        child: SvgPicture.asset(activeIcon),
+        child: SvgPicture.asset(activeIcon, height: 20),
       ),
       title: Text("   $title"),
     );

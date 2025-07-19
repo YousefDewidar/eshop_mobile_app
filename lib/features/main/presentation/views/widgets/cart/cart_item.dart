@@ -13,10 +13,7 @@ import 'package:rfaye3/generated/l10n.dart';
 import 'package:svg_flutter/svg.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({
-    super.key,
-    required this.product,
-  });
+  const CartItem({super.key, required this.product});
   final CartItemEntity product;
 
   @override
@@ -30,35 +27,32 @@ class CartItem extends StatelessWidget {
             width: 73,
             height: 92,
             padding: const EdgeInsets.all(5),
-            color: AppColors.productColor,
+            color: Theme.of(context).colorScheme.surface,
             child: CachedNetworkImage(
               imageUrl: product.product.img,
-              placeholder: (context, url) => const Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.primaryColor,
-                ),
-              ),
-              errorWidget: (context, url, error) => const Center(
-                child: Icon(
-                  Icons.image_not_supported_outlined,
-                  size: 50,
-                ),
-              ),
+              placeholder:
+                  (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+              errorWidget:
+                  (context, url, error) => const Center(
+                    child: Icon(Icons.image_not_supported_outlined, size: 50),
+                  ),
             ),
           ),
           const SpaceH(17),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                product.product.title,
-                style: TextStyles.bold13,
-              ),
+              Text(product.product.title, style: TextStyles.bold13),
               const SpaceV(6),
               Text(
                 '${product.calcWeight()} ${S.of(context).kilogram}',
-                style: TextStyles.regular13
-                    .copyWith(color: AppColors.secondaryColor),
+                style: TextStyles.regular13.copyWith(
+                  color: AppColors.secondaryColor,
+                ),
               ),
               const SpaceV(16),
               AddMinusProduct(product: product),
@@ -82,8 +76,9 @@ class CartItem extends StatelessWidget {
               ),
               Text(
                 '${product.calcTotalPriceForItem()} ${S.of(context).egp}',
-                style:
-                    TextStyles.bold16.copyWith(color: AppColors.secondaryColor),
+                style: TextStyles.bold16.copyWith(
+                  color: AppColors.secondaryColor,
+                ),
               ),
             ],
           ),

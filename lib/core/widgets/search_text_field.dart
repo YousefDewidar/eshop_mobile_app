@@ -31,12 +31,13 @@ class SearchTextField extends StatelessWidget {
         ],
       ),
       child: TextField(
-          enabled: enabled,
-          cursorColor: AppColors.primaryColor,
-          decoration: customDecoration(context),
-          textInputAction: TextInputAction.search,
-          onSubmitted: onSubmitted,
-          onChanged: onChanged),
+        enabled: enabled,
+        cursorColor: AppColors.primaryColor,
+        decoration: customDecoration(context),
+        textInputAction: TextInputAction.search,
+        onSubmitted: onSubmitted,
+        onChanged: onChanged,
+      ),
     );
   }
 
@@ -45,7 +46,7 @@ class SearchTextField extends StatelessWidget {
       hintText: S.of(context).searchHint,
       hintStyle: TextStyles.regular13.copyWith(color: AppColors.greyColor),
       filled: true,
-      fillColor: Colors.white,
+      fillColor: Theme.of(context).colorScheme.surface,
       contentPadding: const EdgeInsets.all(0),
       border: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -57,10 +58,7 @@ class SearchTextField extends StatelessWidget {
         color: AppColors.primaryColor,
         fit: BoxFit.scaleDown,
       ),
-      suffixIcon: SvgPicture.asset(
-        Assets.imagesFilter,
-        fit: BoxFit.scaleDown,
-      ),
+      suffixIcon: SvgPicture.asset(Assets.imagesFilter, fit: BoxFit.scaleDown),
     );
   }
 }

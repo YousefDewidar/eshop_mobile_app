@@ -1,7 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/fav_icon.dart';
@@ -14,14 +14,17 @@ import 'package:rfaye3/generated/l10n.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductEntity product;
+
   const ProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
+    final isArabic = Localizations.localeOf(context).languageCode == 'ar';
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        color: const Color(0xffF3F5F7),
+        color: Theme.of(context).colorScheme.surface,
       ),
       child: Stack(
         children: [
@@ -30,23 +33,29 @@ class ProductCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SpaceV(6),
-                Center(
-                  child: CachedNetworkImage(
-                    imageUrl: product.img,
-                    placeholder:
-                        (context, url) => const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.primaryColor,
+                const Spacer(),
+                Expanded(
+                  flex: 2,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: CachedNetworkImage(
+                      imageUrl: product.img,
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      fit: BoxFit.contain,
+                      placeholder:
+                          (context, url) => const Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.primaryColor,
+                            ),
                           ),
-                        ),
-                    errorWidget:
-                        (context, url, error) => const Center(
-                          child: Icon(
-                            Icons.image_not_supported_outlined,
-                            size: 50,
+                      errorWidget:
+                          (context, url, error) => const Center(
+                            child: Icon(
+                              Icons.image_not_supported_outlined,
+                              size: 50,
+                            ),
                           ),
-                        ),
+                    ),
                   ),
                 ),
                 const Spacer(),
@@ -71,12 +80,11 @@ class ProductCard extends StatelessWidget {
               ],
             ),
           ),
+
           const FavIcon(),
+
           Positioned.directional(
-            textDirection:
-                Localizations.localeOf(context).languageCode == 'ar'
-                    ? TextDirection.ltr
-                    : TextDirection.rtl,
+            textDirection: isArabic ? TextDirection.ltr : TextDirection.rtl,
             bottom: 16,
             start: 10,
             child: InkWell(

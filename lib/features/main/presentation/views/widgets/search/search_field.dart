@@ -15,6 +15,7 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     final prefs = getIt.get<SharedPreferences>();
     return SliverToBoxAdapter(
+
       child: Padding(
         padding:
             const EdgeInsets.symmetric(horizontal: kHoripadding, vertical: 16),
