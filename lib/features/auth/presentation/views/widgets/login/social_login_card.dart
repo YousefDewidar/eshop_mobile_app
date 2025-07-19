@@ -22,8 +22,9 @@ class SocialLoginCard extends StatelessWidget {
       child: Container(
         height: 56,
         decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(16)),
-            border: Border.all(color: const Color(0xffDDDFDF))),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+          border: Border.all(color: const Color(0xffDDDFDF)),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -33,8 +34,9 @@ class SocialLoginCard extends StatelessWidget {
             Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyles.semiBold16
-                  .copyWith(color: const Color(0xff0C0D0D)),
+              style: TextStyles.semiBold16.copyWith(
+                color: Theme.of(context).textTheme.bodyLarge!.color,
+              ),
             ),
             const SpaceH(17.5),
             const Spacer(),

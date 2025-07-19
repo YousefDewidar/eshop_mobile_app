@@ -30,17 +30,20 @@ class LoginView extends StatelessWidget {
         builder: (context, state) {
           return ModalProgressHUD(
             progressIndicator: const CircularProgressIndicator(
-                color: AppColors.secondaryColor),
+              color: AppColors.secondaryColor,
+            ),
             inAsyncCall: state is LoginLoading,
             child: Scaffold(
               appBar: AppBar(
-                backgroundColor: Colors.white,
-                title: Text(S.of(context).login, style: TextStyles.bold19),
+                title: Text(
+                  S.of(context).login,
+                  style: TextStyles.bold19.copyWith(
+                    color: Theme.of(context).textTheme.bodyLarge!.color,
+                  ),
+                ),
                 centerTitle: true,
               ),
-              body: const SafeArea(
-                child: LoginViewBody(),
-              ),
+              body: const SafeArea(child: LoginViewBody()),
             ),
           );
         },

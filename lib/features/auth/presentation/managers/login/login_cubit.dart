@@ -15,40 +15,33 @@ class LoginCubit extends Cubit<LoginState> {
   }) async {
     emit(LoginLoading());
 
-    Either<Failuer, UserEntity> response =
-        await authRepo.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+    Either<Failuer, UserEntity> response = await authRepo
+        .signInWithEmailAndPassword(email: email, password: password);
 
-    response.fold((failuer) {
-      emit(LoginFailure(message: failuer.message));
-    }, (user) {
-      emit(LoginSuccess());
-    });
+    response.fold(
+      (failuer) {
+        emit(LoginFailure(message: failuer.message));
+      },
+      (user) {
+        emit(LoginSuccess());
+      },
+    );
   }
 
   Future<void> loginWithGoogle() async {
     emit(LoginLoading());
     final response = await authRepo.signInWithGoogle();
-    response.fold((failuer) {
-      emit(LoginFailure(message: failuer.message));
-    }, (user) {
-      emit(LoginSuccess());
-    });
+    response.fold(
+      (failuer) {
+        emit(LoginFailure(message: failuer.message));
+      },
+      (user) {
+        emit(LoginSuccess());
+      },
+    );
   }
 
-  Future<void> loginWithFacebook() async {
-    emit(LoginLoading());
-    final response = await authRepo.signInWithFacebook();
-    response.fold((failuer) {
-      emit(LoginFailure(message: failuer.message));
-    }, (user) {
-      emit(LoginSuccess());
-    });
-  }
-
-  sendCodeToEmail({required String email}) async {
+  Future<void> sendCodeToEmail({required String email}) async {
     await authRepo.resetPassword(email: email);
   }
 }

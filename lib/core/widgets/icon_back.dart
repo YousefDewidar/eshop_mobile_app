@@ -8,6 +8,7 @@ class IconsBack extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.pop(context),
       child: Container(
+        margin: const EdgeInsets.all(4),
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           shape: BoxShape.circle,

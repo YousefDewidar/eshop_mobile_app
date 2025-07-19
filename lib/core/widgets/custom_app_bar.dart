@@ -4,8 +4,12 @@ import 'package:rfaye3/core/widgets/icon_back.dart';
 
 AppBar customAppBar(BuildContext context, String title) {
   return AppBar(
-    backgroundColor: Colors.white,
-    title: Text(title, style: TextStyles.bold19),
+    title: Text(
+      title,
+      style: TextStyles.bold19.copyWith(
+        color: Theme.of(context).textTheme.bodyLarge!.color,
+      ),
+    ),
     centerTitle: true,
     leadingWidth: 80,
     leading: const IconsBack(),

@@ -4,9 +4,10 @@ import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
+import 'package:rfaye3/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:svg_flutter/svg.dart';
+
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -21,11 +22,9 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     bool seenLanding =
         getIt.get<SharedPreferences>().getBool("viewLanding") ?? false;
-    SupabaseClient supabase = Supabase.instance.client;
-    var user = supabase.auth.currentUser;
     Future.delayed(const Duration(seconds: 2), () {
       if (mounted) {
-        if (user != null) {
+        if (hasUser) {
           Navigator.pushReplacementNamed(context, Routes.home);
         } else {
           Navigator.pushReplacementNamed(

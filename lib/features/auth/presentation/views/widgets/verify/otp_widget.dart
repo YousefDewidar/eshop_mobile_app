@@ -26,10 +26,10 @@ class OtpWidget extends StatelessWidget {
               style: TextStyles.semiBold16.copyWith(fontSize: 23),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: const Color(0xffF9FAFA),
+                fillColor: Theme.of(context).colorScheme.surface,
                 errorStyle: const TextStyle(height: .05),
-                border: customBorder(),
-                enabledBorder: customBorder(),
+                border: customBorder(context),
+                enabledBorder: customBorder(context),
                 focusedBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                   borderSide: BorderSide(
@@ -58,12 +58,12 @@ class OtpWidget extends StatelessWidget {
     );
   }
 
-  OutlineInputBorder customBorder() {
-    return const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(5)),
+  OutlineInputBorder customBorder(context) {
+    return OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(5)),
       borderSide: BorderSide(
         width: 1.3,
-        color: Color(0xffE6E9EA),
+        color: Theme.of(context).colorScheme.surface,
       ),
     );
   }

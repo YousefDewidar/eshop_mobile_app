@@ -42,7 +42,7 @@ class _NewPasswordViewBodyState extends State<NewPasswordViewBody> {
             Text(
               S.of(context).newPassBody,
               style: TextStyles.semiBold16.copyWith(
-                color: const Color(0xff0C0D0D),
+                color: Theme.of(context).textTheme.bodyLarge!.color,
               ),
             ),
             const SpaceV(30),
@@ -82,10 +82,7 @@ class _NewPasswordViewBodyState extends State<NewPasswordViewBody> {
               children: [
                 SvgPicture.asset(Assets.imagesDone),
                 const SizedBox(height: 30),
-                Text(
-                  S.of(context).newPassDone,
-                  style: TextStyles.bold16,
-                ),
+                Text(S.of(context).newPassDone, style: TextStyles.bold16),
               ],
             ),
           ),
