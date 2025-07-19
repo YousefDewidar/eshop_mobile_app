@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,8 +15,11 @@ void main() async {
   await Supabase.initialize(url: kSupabaseUrl, anonKey: kSupabaseAnonKey);
   Bloc.observer = SimpleBlocObserver();
   await setupLocator();
-
-  runApp(const Rfaye3App());
+  runApp(
+    DevicePreview(
+      builder: (context) => const Rfaye3App(),
+    ),
+  );
 }
 
 class Rfaye3App extends StatelessWidget {
@@ -35,7 +39,7 @@ class Rfaye3App extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale('en'),
+      locale: const Locale('ar'),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoute,
       initialRoute: Routes.splash,

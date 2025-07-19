@@ -83,13 +83,14 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
     return SalomonBottomBarItem(
       icon: SizedBox(
         height: 40,
-        width: 60,
+        // width: 60,
         child: Stack(
+          clipBehavior: Clip.none,
           children: [
             if (context.watch<CartCubit>().cartList.isNotEmpty &&
                 title == S.of(context).cart)
               Positioned(
-                right: 0,
+                right: -10,
                 top: 0,
                 child: CircleAvatar(
                   backgroundColor: AppColors.primaryColor,

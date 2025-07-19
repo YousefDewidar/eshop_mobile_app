@@ -14,7 +14,7 @@ class OfferCard extends StatelessWidget {
       height: 158,
       margin: const EdgeInsets.only(left: 8),
       decoration: BoxDecoration(
-        color: Colors.white,
+          color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Stack(
@@ -56,7 +56,7 @@ class OfferCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       const Text(
-                        'خصم 25%',
+                        'خصم %25',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
