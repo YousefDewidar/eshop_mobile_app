@@ -22,6 +22,10 @@ class Assets {
   /// assets/images/edit.svg
   static const String imagesEdit = "assets/images/edit.svg";
 
+  /// Assets for imagesElieps
+  /// assets/images/elieps.png
+  static const String imagesElieps = "assets/images/elieps.png";
+
   /// Assets for imagesFacebookIcon
   /// assets/images/facebook_icon.svg
   static const String imagesFacebookIcon = "assets/images/facebook_icon.svg";

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rfaye3/core/routes/routes.dart';
 
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
@@ -21,90 +22,102 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isArabic = Localizations.localeOf(context).languageCode == 'ar';
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
-        color: Theme.of(context).colorScheme.surface,
-      ),
-      child: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Spacer(),
-                Expanded(
-                  flex: 2,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: CachedNetworkImage(
-                      imageUrl: product.img,
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      fit: BoxFit.contain,
-                      placeholder:
-                          (context, url) => const Center(
-                            child: CircularProgressIndicator(
-                              color: AppColors.primaryColor,
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          Routes.productDetailsView,
+          arguments: {
+            'product': product,
+            "cartCubit": context.read<CartCubit>(),
+          },
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4),
+          color: Theme.of(context).colorScheme.surface,
+        ),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Spacer(),
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: CachedNetworkImage(
+                        imageUrl: product.img,
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        fit: BoxFit.contain,
+                        placeholder:
+                            (context, url) => const Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.primaryColor,
+                              ),
                             ),
-                          ),
-                      errorWidget:
-                          (context, url, error) => const Center(
-                            child: Icon(
-                              Icons.image_not_supported_outlined,
-                              size: 50,
+                        errorWidget:
+                            (context, url, error) => const Center(
+                              child: Icon(
+                                Icons.image_not_supported_outlined,
+                                size: 50,
+                              ),
                             ),
-                          ),
+                      ),
                     ),
                   ),
-                ),
-                const Spacer(),
-                Text(product.title, style: TextStyles.semiBold13),
-                const SpaceV(4),
-                Row(
-                  children: [
-                    Text(
-                      "${product.price}${S.of(context).egp} / ",
-                      style: TextStyles.bold13.copyWith(
-                        color: AppColors.secondaryColor,
+                  const Spacer(),
+                  Text(product.title, style: TextStyles.semiBold13),
+                  const SpaceV(4),
+                  Row(
+                    children: [
+                      Text(
+                        "${product.price}${S.of(context).egp} / ",
+                        style: TextStyles.bold13.copyWith(
+                          color: AppColors.secondaryColor,
+                        ),
                       ),
-                    ),
-                    Text(
-                      S.of(context).kilo,
-                      style: TextStyles.semiBold13.copyWith(
-                        color: AppColors.lightSecondaryColor,
+                      Text(
+                        S.of(context).kilo,
+                        style: TextStyles.semiBold13.copyWith(
+                          color: AppColors.lightSecondaryColor,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-
-          const FavIcon(),
-
-          Positioned.directional(
-            textDirection: isArabic ? TextDirection.ltr : TextDirection.rtl,
-            bottom: 16,
-            start: 10,
-            child: InkWell(
-              onTap: () {
-                showNotification(
-                  context,
-                  'تم اضافة ${product.title} إلي السلة',
-                  NotiType.success,
-                );
-                context.read<CartCubit>().addToCart(
-                  CartItemEntity(product: product),
-                );
-              },
-              child: const CircleAvatar(
-                backgroundColor: AppColors.primaryColor,
-                child: Icon(Icons.add, color: Colors.white),
+                    ],
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
+
+            const FavIcon(),
+
+            Positioned.directional(
+              textDirection: isArabic ? TextDirection.ltr : TextDirection.rtl,
+              bottom: 16,
+              start: 10,
+              child: InkWell(
+                onTap: () {
+                  showNotification(
+                    context,
+                    'تم اضافة ${product.title} إلي السلة',
+                    NotiType.success,
+                  );
+                  context.read<CartCubit>().addToCart(
+                    CartItemEntity(product: product),
+                  );
+                },
+                child: const CircleAvatar(
+                  backgroundColor: AppColors.primaryColor,
+                  child: Icon(Icons.add, color: Colors.white),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/utils/constant.dart';
@@ -6,9 +7,7 @@ import 'package:rfaye3/features/main/presentation/manager/cart_cubit/cart_cubit.
 import 'package:rfaye3/features/main/presentation/views/widgets/cart/cart_item.dart';
 
 class CartListView extends StatelessWidget {
-  const CartListView({
-    super.key,
-  });
+  const CartListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +17,13 @@ class CartListView extends StatelessWidget {
         itemCount: cartList.length,
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          return  Padding(
+          return Padding(
             padding: const EdgeInsets.symmetric(horizontal: kHoripadding),
             child: CartItem(product: cartList[index]),
           );
         },
         separatorBuilder: (context, index) {
-          return const Divider(
-            color: Color(0xffF1F1F5),
-          );
+          return const Divider(color: Color(0xffF1F1F5));
         },
       ),
     );
