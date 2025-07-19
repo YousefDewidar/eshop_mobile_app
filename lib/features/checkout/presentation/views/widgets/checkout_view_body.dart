@@ -24,12 +24,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   void initState() {
     super.initState();
     pageController = PageController();
-    pageController.addListener(
-      () {
-        curPage = pageController.page!.toInt();
-        setState(() {});
-      },
-    );
+    pageController.addListener(() {
+      curPage = pageController.page!.toInt();
+      setState(() {});
+    });
   }
 
   @override

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FavIcon extends StatefulWidget {
-  const FavIcon({
-    super.key,
-  });
+  const FavIcon({super.key});
 
   @override
   State<FavIcon> createState() => _FavIconState();
@@ -23,9 +21,10 @@ class _FavIconState extends State<FavIcon> {
             isChanged = !isChanged;
           });
         },
-        icon: isChanged
-            ? const Icon(Icons.favorite_rounded)
-            : const Icon(Icons.favorite_border_rounded),
+        icon:
+            isChanged
+                ? const Icon(Icons.favorite_rounded, color: Colors.red)
+                : const Icon(Icons.favorite_border_rounded),
       ),
     );
   }

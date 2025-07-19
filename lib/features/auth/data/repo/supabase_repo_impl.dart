@@ -1,3 +1,4 @@
+
 import 'package:dartz/dartz.dart';
 import 'package:rfaye3/core/helper/user_data.dart';
 import 'package:rfaye3/core/supabase/database_services.dart';
@@ -13,10 +14,11 @@ class SupabaseRepoImpl implements AuthRepo {
   SupabaseRepoImpl(this.services, this.databaseServices);
 
   @override
-  Future<Either<Failuer, UserEntity>> signupWithEmailAndPassword(
-      {required String email,
-      required String password,
-      required String name}) async {
+  Future<Either<Failuer, UserEntity>> signupWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String name,
+  }) async {
     try {
       UserEntity user = await services.signUpWithEmailAndPassword(
         email: email,
@@ -34,8 +36,10 @@ class SupabaseRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failuer, UserEntity>> signInWithEmailAndPassword(
-      {required String email, required String password}) async {
+  Future<Either<Failuer, UserEntity>> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     try {
       UserEntity user = await services.signInWithEmailAndPassword(
         email: email,
@@ -78,8 +82,9 @@ class SupabaseRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failuer, void>> updatePassword(
-      {required String newPassword}) async {
+  Future<Either<Failuer, void>> updatePassword({
+    required String newPassword,
+  }) async {
     try {
       await services.updatePassword(newPassword: newPassword);
       return right(null);
@@ -92,13 +97,12 @@ class SupabaseRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failuer, void>> verifyEmail(
-      {required String code, required String email}) async {
+  Future<Either<Failuer, void>> verifyEmail({
+    required String code,
+    required String email,
+  }) async {
     try {
-      await services.verifyEmail(
-        code: code,
-        email: email,
-      );
+      await services.verifyEmail(code: code, email: email);
       return right(null);
     } catch (e) {
       if (e is AuthException) {
@@ -139,6 +143,7 @@ class SupabaseRepoImpl implements AuthRepo {
       await addUserToDatabase(UserEntity.fromSupabaseUser(user));
       return right(null);
     } catch (e) {
+
       return left(Failuer(message: 'حدث خطأ ما حاول مرة أخرى'));
     }
   }

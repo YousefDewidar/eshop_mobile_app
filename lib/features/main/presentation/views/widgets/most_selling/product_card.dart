@@ -14,17 +14,15 @@ import 'package:rfaye3/generated/l10n.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductEntity product;
-  const ProductCard({
-    super.key,
-    required this.product,
-  });
+  const ProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-          color: const Color(0xffF3F5F7)),
+        borderRadius: BorderRadius.circular(4),
+        color: const Color(0xffF3F5F7),
+      ),
       child: Stack(
         children: [
           Padding(
@@ -36,24 +34,23 @@ class ProductCard extends StatelessWidget {
                 Center(
                   child: CachedNetworkImage(
                     imageUrl: product.img,
-                    placeholder: (context, url) => const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                    errorWidget: (context, url, error) => const Center(
-                      child: Icon(
-                        Icons.image_not_supported_outlined,
-                        size: 50,
-                      ),
-                    ),
+                    placeholder:
+                        (context, url) => const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.primaryColor,
+                          ),
+                        ),
+                    errorWidget:
+                        (context, url, error) => const Center(
+                          child: Icon(
+                            Icons.image_not_supported_outlined,
+                            size: 50,
+                          ),
+                        ),
                   ),
                 ),
                 const Spacer(),
-                Text(
-                  product.title,
-                  style: TextStyles.semiBold13,
-                ),
+                Text(product.title, style: TextStyles.semiBold13),
                 const SpaceV(4),
                 Row(
                   children: [
@@ -75,9 +72,13 @@ class ProductCard extends StatelessWidget {
             ),
           ),
           const FavIcon(),
-          Positioned(
+          Positioned.directional(
+            textDirection:
+                Localizations.localeOf(context).languageCode == 'ar'
+                    ? TextDirection.ltr
+                    : TextDirection.rtl,
             bottom: 16,
-            left: 10,
+            start: 10,
             child: InkWell(
               onTap: () {
                 showNotification(
@@ -86,8 +87,8 @@ class ProductCard extends StatelessWidget {
                   NotiType.success,
                 );
                 context.read<CartCubit>().addToCart(
-                      CartItemEntity(product: product),
-                    );
+                  CartItemEntity(product: product),
+                );
               },
               child: const CircleAvatar(
                 backgroundColor: AppColors.primaryColor,

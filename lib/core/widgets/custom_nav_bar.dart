@@ -38,7 +38,11 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         unselectedItemColor: const Color(0xff4E5556),
         selectedItemColor: AppColors.primaryColor,
-        itemPadding: const EdgeInsets.only(top: 0, left: 15),
+        itemPadding:
+            Localizations.localeOf(context).languageCode == 'ar'
+                ? const EdgeInsets.only(top: 0, left: 15)
+                : const EdgeInsets.only(top: 0, right: 15),
+
         currentIndex: _currentIndex,
         onTap: (i) {
           _currentIndex = i;
@@ -92,19 +96,11 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
                   radius: 10,
                   child: Text(
                     context.watch<CartCubit>().totalCount.toString(),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                    ),
+                    style: const TextStyle(color: Colors.white, fontSize: 10),
                   ),
                 ),
               ),
-            Center(
-              child: SvgPicture.asset(
-                inActiveIcon,
-                height: 25,
-              ),
-            ),
+            Center(child: SvgPicture.asset(inActiveIcon, height: 25)),
           ],
         ),
       ),

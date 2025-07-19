@@ -41,33 +41,20 @@ class SupabaseAuthServices {
     );
   }
 
-  Future<void> resendOtp({
-    required String email,
-  }) async {
-    await supabase.auth.resend(
-      type: OtpType.signup,
-      email: email,
-    );
+  Future<void> resendOtp({required String email}) async {
+    await supabase.auth.resend(type: OtpType.signup, email: email);
   }
 
   Future<void> signOut() async {
     await supabase.auth.signOut();
   }
 
-  Future<void> resetPassword({
-    required String email,
-  }) async {
-    await supabase.auth.resetPasswordForEmail(
-      email,
-    );
+  Future<void> resetPassword({required String email}) async {
+    await supabase.auth.resetPasswordForEmail(email);
   }
 
-  Future<void> updatePassword({
-    required String newPassword,
-  }) async {
-    await supabase.auth.updateUser(
-      UserAttributes(password: newPassword),
-    );
+  Future<void> updatePassword({required String newPassword}) async {
+    await supabase.auth.updateUser(UserAttributes(password: newPassword));
   }
 
   Future<UserEntity> getUser() async {
@@ -79,9 +66,7 @@ class SupabaseAuthServices {
     const webClientId =
         '405060550320-ig4hdmp06eg2t9m7bjtj96r63fhjou36.apps.googleusercontent.com';
 
-    final GoogleSignIn googleSignIn = GoogleSignIn(
-      serverClientId: webClientId,
-    );
+    final GoogleSignIn googleSignIn = GoogleSignIn(serverClientId: webClientId);
     googleSignIn.signOut();
 
     final googleUser = await googleSignIn.signIn();
@@ -107,6 +92,4 @@ class SupabaseAuthServices {
 
     await getUser();
   }
-
-
 }
