@@ -19,22 +19,22 @@ class StepsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        4,
-        (index) {
-          return Expanded(
-            child: curPage >= index
-                ? InkWell(
-                    onTap: () => pageController.animateToPage(
+      children: List.generate(4, (index) {
+        return Expanded(
+          child:
+              curPage >= index
+                  ? InkWell(
+                    onTap:
+                        () => pageController.animateToPage(
                           index,
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.easeIn,
                         ),
-                    child: ActiveStep(title: getStepsTitle()[index]))
-                : InActiveStep(title: getStepsTitle()[index], index: index),
-          );
-        },
-      ),
+                    child: ActiveStep(title: getStepsTitle()[index]),
+                  )
+                  : InActiveStep(title: getStepsTitle()[index], index: index),
+        );
+      }),
     );
   }
 }
@@ -82,11 +82,8 @@ class InActiveStep extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 10,
-          backgroundColor: const Color(0xffF2F3F3),
-          child: Text(
-            (index + 1).toString(),
-            style: TextStyles.semiBold13,
-          ),
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          child: Text((index + 1).toString(), style: TextStyles.semiBold13),
         ),
         const SpaceH(4),
         Text(

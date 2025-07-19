@@ -35,20 +35,21 @@ class CustomTextField extends StatelessWidget {
         hintStyle: TextStyles.bold13.copyWith(color: AppColors.greyColor),
         suffixIcon: suffIcon,
         filled: true,
-        fillColor: const Color(0xffF9FAFA),
-        border: customBorder(),
-        enabledBorder: customBorder(),
-        focusedBorder: customBorder(),
+        fillColor: Theme.of(context).colorScheme.surface,
+        border: customBorder(context),
+        enabledBorder: customBorder(context),
+        focusedBorder: customBorder(context),
       ),
     );
   }
 
-  OutlineInputBorder customBorder() {
-    return const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-        borderSide: BorderSide(
-          width: 1.3,
-          color: Color(0xffE6E9EA),
-        ));
+  OutlineInputBorder customBorder(context) {
+    return OutlineInputBorder(
+      borderRadius: const BorderRadius.all(Radius.circular(5)),
+      borderSide: BorderSide(
+        width: 1.3,
+        color: Theme.of(context).colorScheme.surface,
+      ),
+    );
   }
 }

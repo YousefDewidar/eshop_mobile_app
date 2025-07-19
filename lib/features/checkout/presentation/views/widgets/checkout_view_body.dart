@@ -69,7 +69,9 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               // getCurPage();
             },
           ),
-          const SpaceV(50),
+          MediaQuery.of(context).padding.bottom > 0
+              ? const SpaceV(0)
+              : const SpaceV(16),
         ],
       ),
     );
