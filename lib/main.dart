@@ -8,7 +8,6 @@ import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_themes.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
-bool hasUser = true;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

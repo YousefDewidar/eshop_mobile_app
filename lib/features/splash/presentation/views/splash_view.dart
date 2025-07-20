@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rfaye3/core/helper/di.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
-import 'package:rfaye3/main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:svg_flutter/svg.dart';
-
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -20,18 +16,11 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    bool seenLanding =
-        getIt.get<SharedPreferences>().getBool("viewLanding") ?? false;
+    // bool seenLanding =
+    //     getIt.get<SharedPreferences>().getBool("viewLanding") ?? false;
     Future.delayed(const Duration(seconds: 2), () {
       if (mounted) {
-        if (hasUser) {
-          Navigator.pushReplacementNamed(context, Routes.home);
-        } else {
-          Navigator.pushReplacementNamed(
-            context,
-            seenLanding ? Routes.login : Routes.landing,
-          );
-        }
+        Navigator.pushReplacementNamed(context, Routes.home);
       }
     });
   }

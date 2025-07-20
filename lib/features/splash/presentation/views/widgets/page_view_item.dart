@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rfaye3/core/helper/di.dart';
-import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/generated/l10n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -52,7 +51,7 @@ class PageViewItem extends StatelessWidget {
                         "viewLanding",
                         true,
                       );
-                      Navigator.pushReplacementNamed(context, Routes.login);
+                      // Navigator.pushReplacementNamed(context, Routes.login);
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(16),
