@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "apple": MessageLookupByLibrary.simpleMessage("تسجيل بواسطة ابل"),
     "cart": MessageLookupByLibrary.simpleMessage("سلة التسوق"),
+    "categories": MessageLookupByLibrary.simpleMessage("الفئات"),
     "checkout": MessageLookupByLibrary.simpleMessage("الدفع"),
     "clearAll": MessageLookupByLibrary.simpleMessage("حذف الكل"),
     "confirmPass": MessageLookupByLibrary.simpleMessage("تاكيد "),
@@ -61,6 +62,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "homeHello": MessageLookupByLibrary.simpleMessage("صباح الخير !.."),
+    "homeSearchHint": MessageLookupByLibrary.simpleMessage(
+      "أنت بتدور علي ايه؟",
+    ),
     "kilo": MessageLookupByLibrary.simpleMessage("الكيلو"),
     "kilogram": MessageLookupByLibrary.simpleMessage("كجم"),
     "land1SubTitle": MessageLookupByLibrary.simpleMessage(

@@ -11,10 +11,12 @@ class SearchTextField extends StatelessWidget {
     this.enabled = true,
     this.onSubmitted,
     this.onChanged,
+    this.hint,
   });
   final bool enabled;
   final ValueChanged<String>? onSubmitted;
   final ValueChanged<String>? onChanged;
+  final String? hint;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class SearchTextField extends StatelessWidget {
 
   InputDecoration customDecoration(BuildContext context) {
     return InputDecoration(
-      hintText: S.of(context).searchHint,
+      hintText: hint ?? S.of(context).searchHint,
       hintStyle: TextStyles.regular13.copyWith(color: AppColors.greyColor),
       filled: true,
       fillColor: Theme.of(context).colorScheme.surface,

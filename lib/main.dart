@@ -8,7 +8,6 @@ import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_themes.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = SimpleBlocObserver();
@@ -23,7 +22,7 @@ class Rfaye3App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       theme: AppThemes.getLightData(),
       darkTheme: AppThemes.getDarkData(),
       localizationsDelegates: const [

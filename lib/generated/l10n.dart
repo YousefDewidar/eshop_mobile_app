@@ -598,6 +598,21 @@ class S {
   String get addToCart {
     return Intl.message('Add to Cart', name: 'addToCart', desc: '', args: []);
   }
+
+  /// `Categories`
+  String get categories {
+    return Intl.message('Categories', name: 'categories', desc: '', args: []);
+  }
+
+  /// `What are you looking for?`
+  String get homeSearchHint {
+    return Intl.message(
+      'What are you looking for?',
+      name: 'homeSearchHint',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

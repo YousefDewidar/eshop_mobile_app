@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "apple": MessageLookupByLibrary.simpleMessage("Sign in with Apple"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+    "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
     "clearAll": MessageLookupByLibrary.simpleMessage("Clear All"),
     "confirmPass": MessageLookupByLibrary.simpleMessage("Confirm "),
@@ -57,6 +58,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "homeHello": MessageLookupByLibrary.simpleMessage("Good Morning !.."),
+    "homeSearchHint": MessageLookupByLibrary.simpleMessage(
+      "What are you looking for?",
+    ),
     "kilo": MessageLookupByLibrary.simpleMessage("Kilo"),
     "kilogram": MessageLookupByLibrary.simpleMessage("Kg"),
     "land1SubTitle": MessageLookupByLibrary.simpleMessage(

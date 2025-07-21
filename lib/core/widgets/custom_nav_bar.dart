@@ -56,7 +56,7 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
             activeIcon: Assets.imagesVuesaxBoldHome,
           ),
           navBarItem(
-            title: S.of(context).products,
+            title: S.of(context).categories,
             inActiveIcon: Assets.imagesVuesaxOutlineProducts,
             activeIcon: Assets.imagesVuesaxBoldProducts,
           ),

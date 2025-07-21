@@ -5,7 +5,7 @@ import 'package:rfaye3/core/widgets/custom_nav_bar.dart';
 import 'package:rfaye3/features/main/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/main/presentation/views/home_view.dart';
 import 'package:rfaye3/features/main/presentation/views/cart_view.dart';
-import 'package:rfaye3/features/main/presentation/views/products_view.dart';
+import 'package:rfaye3/features/main/presentation/views/categories_view.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -33,7 +33,7 @@ class _MainViewState extends State<MainView> {
             index: curPage,
             children: const [
               HomeView(),
-              ProductsView(),
+              CategoriesView(),
               CartView(),
               // ProfileView()
               HomeView(),
