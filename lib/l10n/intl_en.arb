@@ -75,5 +75,14 @@
   "land2SubTitle": "We offer carefully selected accessories for every taste. Browse photos, read details and reviews, and find the perfect piece to match your style.",
   "addToCart": "Add to Cart",
   "categories": "Categories",
-  "homeSearchHint": "What are you looking for?"
+  "homeSearchHint": "What are you looking for?",
+  "set1": "My Account",
+  "set2": "My Orders",
+  "set3": "My Payments",
+  "set4": "My Favorites",
+  "set5": "My Notifications",
+  "set6": "Language",
+  "set7": "Theme",
+  "signOut":"Sign Out"
+
 }

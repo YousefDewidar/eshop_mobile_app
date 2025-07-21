@@ -98,6 +98,34 @@ class Assets {
   /// assets/images/search_not_found.svg
   static const String imagesSearchNotFound = "assets/images/search_not_found.svg";
 
+  /// Assets for imagesSet1
+  /// assets/images/set1.svg
+  static const String imagesSet1 = "assets/images/set1.svg";
+
+  /// Assets for imagesSet2
+  /// assets/images/set2.svg
+  static const String imagesSet2 = "assets/images/set2.svg";
+
+  /// Assets for imagesSet3
+  /// assets/images/set3.svg
+  static const String imagesSet3 = "assets/images/set3.svg";
+
+  /// Assets for imagesSet4
+  /// assets/images/set4.svg
+  static const String imagesSet4 = "assets/images/set4.svg";
+
+  /// Assets for imagesSet5
+  /// assets/images/set5.svg
+  static const String imagesSet5 = "assets/images/set5.svg";
+
+  /// Assets for imagesSet6
+  /// assets/images/set6.svg
+  static const String imagesSet6 = "assets/images/set6.svg";
+
+  /// Assets for imagesSet7
+  /// assets/images/set7.svg
+  static const String imagesSet7 = "assets/images/set7.svg";
+
   /// Assets for imagesSplashBottom
   /// assets/images/splash_bottom.svg
   static const String imagesSplashBottom = "assets/images/splash_bottom.svg";

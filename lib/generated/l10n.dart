@@ -613,6 +613,46 @@ class S {
       args: [],
     );
   }
+
+  /// `My Account`
+  String get set1 {
+    return Intl.message('My Account', name: 'set1', desc: '', args: []);
+  }
+
+  /// `My Orders`
+  String get set2 {
+    return Intl.message('My Orders', name: 'set2', desc: '', args: []);
+  }
+
+  /// `My Payments`
+  String get set3 {
+    return Intl.message('My Payments', name: 'set3', desc: '', args: []);
+  }
+
+  /// `My Favorites`
+  String get set4 {
+    return Intl.message('My Favorites', name: 'set4', desc: '', args: []);
+  }
+
+  /// `My Notifications`
+  String get set5 {
+    return Intl.message('My Notifications', name: 'set5', desc: '', args: []);
+  }
+
+  /// `Language`
+  String get set6 {
+    return Intl.message('Language', name: 'set6', desc: '', args: []);
+  }
+
+  /// `Theme`
+  String get set7 {
+    return Intl.message('Theme', name: 'set7', desc: '', args: []);
+  }
+
+  /// `Sign Out`
+  String get signOut {
+    return Intl.message('Sign Out', name: 'signOut', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

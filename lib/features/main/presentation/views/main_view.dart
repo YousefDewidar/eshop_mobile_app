@@ -6,6 +6,7 @@ import 'package:rfaye3/features/main/presentation/manager/cart_cubit/cart_cubit.
 import 'package:rfaye3/features/main/presentation/views/home_view.dart';
 import 'package:rfaye3/features/main/presentation/views/cart_view.dart';
 import 'package:rfaye3/features/main/presentation/views/categories_view.dart';
+import 'package:rfaye3/features/profile/presentation/views/profile_view.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -35,8 +36,7 @@ class _MainViewState extends State<MainView> {
               HomeView(),
               CategoriesView(),
               CartView(),
-              // ProfileView()
-              HomeView(),
+              ProfileView(),
             ],
           ),
         ),
