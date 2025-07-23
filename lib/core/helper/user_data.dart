@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:rfaye3/core/helper/di.dart';
-import 'package:rfaye3/features/auth/domain/entities/user_entity.dart';
+import 'package:rfaye3/features/authentication/domain/entities/user_entity.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 

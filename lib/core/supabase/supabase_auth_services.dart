@@ -1,5 +1,5 @@
-import 'package:rfaye3/features/auth/data/models/user_model.dart';
-import 'package:rfaye3/features/auth/domain/entities/user_entity.dart';
+import 'package:rfaye3/features/authentication/data/models/user_model.dart';
+import 'package:rfaye3/features/authentication/domain/entities/user_entity.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

@@ -8,37 +8,37 @@ environment:
   sdk: ^3.7.2
 
 dependencies:
+  cached_network_image: null
+  carousel_slider: ^5.0.0
+  cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
+  device_preview: null
+  dio: ^5.8.0+1
+  dots_indicator: ^4.0.1
+  equatable: ^2.0.7
   flutter:
     sdk: flutter
-
-  svg_flutter: ^0.0.1
-  cupertino_icons: ^1.0.8
+  flutter_bloc: ^8.0.1
+  flutter_facebook_auth: ^7.1.1
+  flutter_lazy_indexed_stack: ^0.0.6
   flutter_localizations:
     sdk: flutter
-  dartz: ^0.10.1
-  flutter_bloc: ^8.0.1
   get_it: ^8.0.3
-  modal_progress_hud_nsn: ^0.5.1
-  top_snackbar_flutter: ^3.2.0
-  shared_preferences: ^2.5.2
-  supabase_flutter:
-  dots_indicator: ^4.0.1
   google_sign_in: ^6.2.2
-  flutter_facebook_auth: ^7.1.1
-  carousel_slider: ^5.0.0
+  modal_progress_hud_nsn: ^0.5.1
   salomon_bottom_bar: ^3.3.2
+  shared_preferences: ^2.5.2
   skeletonizer: ^1.4.3
-  flutter_lazy_indexed_stack: ^0.0.6
-  equatable: ^2.0.7
-  cached_network_image:
-  device_preview:
+  supabase_flutter: null
+  svg_flutter: ^0.0.1
+  top_snackbar_flutter: ^3.2.0
 
 dev_dependencies:
-  intl_utils:
-  flutter_test:
-    sdk: flutter
 
   flutter_lints: ^4.0.0
+  flutter_test:
+    sdk: flutter
+  intl_utils: null
 
 flutter:
   uses-material-design: true

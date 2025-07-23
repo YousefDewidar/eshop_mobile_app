@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/space.dart';
-import 'package:rfaye3/features/auth/presentation/views/widgets/login/custom_text_field.dart';
+import 'package:rfaye3/features/authentication/presentation/views/widgets/login/custom_text_field.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class AddressSection extends StatefulWidget {

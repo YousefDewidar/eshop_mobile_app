@@ -47,3 +47,4 @@ app.*.map.json
 lib/core/supabase/keys.dart
 
 
+lib/core/constants/api_constants.dart

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/space.dart';
-import 'package:rfaye3/features/auth/presentation/managers/signup/signup_cubit.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class TermsAndCond extends StatefulWidget {
@@ -28,7 +27,7 @@ class _TermsAndCondState extends State<TermsAndCond> {
           onTap: () {
             isCkecked = !isCkecked;
             widget.onChange(isCkecked);
-            context.read<SignupCubit>().rebuidButton();
+            // context.read<SignUpCubit>().rebuidButton();
             setState(() {});
           },
           borderRadius: BorderRadius.circular(8),

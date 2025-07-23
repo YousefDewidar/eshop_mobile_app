@@ -1,14 +1,32 @@
 import 'package:rfaye3/features/auth/domain/entities/user_entity.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class UserModel extends UserEntity {
-  UserModel({required super.uId, required super.email, required super.name});
+  final String token;
 
-  factory UserModel.fromSupabaseUser(User user) {
+  UserModel({
+    required super.id,
+    required super.firstName,
+    required super.lastName,
+    required super.email,
+    required this.token,
+  });
+
+  factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      uId: user.id,
-      email: user.email ?? '',
-      name: user.userMetadata?['name'] ?? '',
+      id: json['id'].toString(),
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      email: json['email'],
+      token: json['token'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'token': token,
+    };
   }
 }
