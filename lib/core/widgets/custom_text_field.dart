@@ -6,6 +6,7 @@ import 'package:rfaye3/generated/l10n.dart';
 class CustomTextField extends StatelessWidget {
   final String hint;
   final Widget? suffIcon;
+  final bool required;
   final TextEditingController controller;
   final void Function(String?)? onSaved;
 
@@ -15,6 +16,7 @@ class CustomTextField extends StatelessWidget {
     this.suffIcon,
     required this.controller,
     this.onSaved,
+    this.required = true,
   });
 
   @override
@@ -23,7 +25,7 @@ class CustomTextField extends StatelessWidget {
       cursorColor: AppColors.primaryColor,
       controller: controller,
       validator: (value) {
-        if (value == null || value.isEmpty) {
+        if ((value == null || value.isEmpty) && required) {
           return S.of(context).required;
         }
         return null;

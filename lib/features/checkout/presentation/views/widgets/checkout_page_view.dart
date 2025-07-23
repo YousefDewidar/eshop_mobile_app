@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rfaye3/features/checkout/presentation/views/widgets/address_section.dart';
+import 'package:rfaye3/features/checkout/presentation/views/widgets/address_section_view.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/payment_section.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/review_section.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/shipping_section.dart';
@@ -15,7 +15,7 @@ class CheckoutPageView extends StatelessWidget {
 
   List<Widget> checkoutSections() => const [
         ShippingSection(),
-        AddressSection(),
+        AddressSectionView(),
         PaymentSection(),
         ReviewSection(),
       ];

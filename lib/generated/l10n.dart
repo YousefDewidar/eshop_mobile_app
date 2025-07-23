@@ -344,6 +344,31 @@ class S {
     return Intl.message('More', name: 'more', desc: '', args: []);
   }
 
+  /// `Add New Address`
+  String get addAddress {
+    return Intl.message(
+      'Add New Address',
+      name: 'addAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message('Edit', name: 'edit', desc: '', args: []);
+  }
+
+  /// `Save Address`
+  String get saveAddress {
+    return Intl.message(
+      'Save Address',
+      name: 'saveAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Weight`
   String get weight {
     return Intl.message('Weight', name: 'weight', desc: '', args: []);
@@ -652,6 +677,56 @@ class S {
   /// `Sign Out`
   String get signOut {
     return Intl.message('Sign Out', name: 'signOut', desc: '', args: []);
+  }
+
+  /// `Governorate`
+  String get state {
+    return Intl.message('Governorate', name: 'state', desc: '', args: []);
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message('City', name: 'city', desc: '', args: []);
+  }
+
+  /// `Street`
+  String get street {
+    return Intl.message('Street', name: 'street', desc: '', args: []);
+  }
+
+  /// `Apartment / Landmark`
+  String get apartment {
+    return Intl.message(
+      'Apartment / Landmark',
+      name: 'apartment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mobile Number`
+  String get phoneNumber {
+    return Intl.message(
+      'Mobile Number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notes`
+  String get notes {
+    return Intl.message('Notes', name: 'notes', desc: '', args: []);
+  }
+
+  /// `Add your first address`
+  String get addFirstAddress {
+    return Intl.message(
+      'Add your first address',
+      name: 'addFirstAddress',
+      desc: '',
+      args: [],
+    );
   }
 }
 

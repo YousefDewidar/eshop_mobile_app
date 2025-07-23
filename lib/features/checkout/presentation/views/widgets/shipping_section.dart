@@ -24,9 +24,9 @@ class _ShippingSectionState extends State<ShippingSection> {
             setState(() {});
           },
           child: ShipTypeCard(
-            price: "40 ${S.current.egp}",
-            title: S.current.payCash,
-            title2: S.current.payCash2,
+            price: S.current.free,
+            title: S.current.payOnline,
+            title2: S.current.payOnline2,
             sel: selected == 0,
           ),
         ),
@@ -38,9 +38,9 @@ class _ShippingSectionState extends State<ShippingSection> {
             setState(() {});
           },
           child: ShipTypeCard(
-            price: S.current.free,
-            title: S.current.payOnline,
-            title2: S.current.payOnline2,
+            price: "40 ${S.current.egp}",
+            title: S.current.payCash,
+            title2: S.current.payCash2,
             sel: selected == 1,
           ),
         ),

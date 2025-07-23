@@ -33,6 +33,9 @@
   "searchHint": "Search.......",
   "mostPop": "Best Seller",
   "more": "More",
+  "addAddress": "Add New Address",
+  "edit": "Edit",
+  "saveAddress": "Save Address",
   "weight": "Weight",
   "egp": "EGP",
   "shopNow": "Shop Now",
@@ -83,5 +86,12 @@
   "set5": "My Notifications",
   "set6": "Language",
   "set7": "Theme",
-  "signOut": "Sign Out"
+  "signOut": "Sign Out",
+  "state": "Governorate",
+  "city": "City",
+  "street": "Street",
+  "apartment": "Apartment / Landmark",
+  "phoneNumber": "Mobile Number",
+  "notes": "Notes",
+  "addFirstAddress": "Add your first address"
 }

@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addAddress": MessageLookupByLibrary.simpleMessage("اضافة عنوان جديد"),
+    "addFirstAddress": MessageLookupByLibrary.simpleMessage("ضيف عنوانك الأول"),
     "addToCart": MessageLookupByLibrary.simpleMessage("أضف الي السلة"),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "address2": MessageLookupByLibrary.simpleMessage("اسم الشارع"),
@@ -29,15 +31,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "allreadyhaveAccount": MessageLookupByLibrary.simpleMessage(
       "تمتلك حساب بالفعل؟",
     ),
+    "apartment": MessageLookupByLibrary.simpleMessage("تفاصيل إضافية"),
     "apple": MessageLookupByLibrary.simpleMessage("تسجيل بواسطة ابل"),
     "cart": MessageLookupByLibrary.simpleMessage("سلة التسوق"),
     "categories": MessageLookupByLibrary.simpleMessage("الفئات"),
     "checkout": MessageLookupByLibrary.simpleMessage("الدفع"),
+    "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "clearAll": MessageLookupByLibrary.simpleMessage("حذف الكل"),
     "confirmPass": MessageLookupByLibrary.simpleMessage("تاكيد "),
     "createAcc": MessageLookupByLibrary.simpleMessage("انشاء حساب جديد"),
     "dontHaveAccount1": MessageLookupByLibrary.simpleMessage("لا تملك حساب؟"),
     "dontHaveAccount2": MessageLookupByLibrary.simpleMessage("قم بإنشاء حساب"),
+    "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
     "egp": MessageLookupByLibrary.simpleMessage("جنيه"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "face": MessageLookupByLibrary.simpleMessage("تسجيل بواسطة فيسبوك"),
@@ -89,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "new_notification": MessageLookupByLibrary.simpleMessage("جديد"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
     "noSearch": MessageLookupByLibrary.simpleMessage("لا يوجد نتائج بحث"),
+    "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "notification": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
     "ourProduct": MessageLookupByLibrary.simpleMessage("منتجاتنا"),
@@ -103,10 +109,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "payment": MessageLookupByLibrary.simpleMessage("الدفع"),
     "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الموبايل"),
     "products": MessageLookupByLibrary.simpleMessage("المنتجات"),
     "profile": MessageLookupByLibrary.simpleMessage("حسابي"),
     "required": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
     "review": MessageLookupByLibrary.simpleMessage("المراجعة"),
+    "saveAddress": MessageLookupByLibrary.simpleMessage("حفظ العنوان"),
     "search": MessageLookupByLibrary.simpleMessage("البحث"),
     "searchHint": MessageLookupByLibrary.simpleMessage("ابحث عن......."),
     "searchNotFound": MessageLookupByLibrary.simpleMessage(
@@ -130,6 +138,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "skip": MessageLookupByLibrary.simpleMessage("تخط"),
     "startNow": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+    "state": MessageLookupByLibrary.simpleMessage("المحافظة"),
+    "street": MessageLookupByLibrary.simpleMessage("الشارع"),
     "termCon1": MessageLookupByLibrary.simpleMessage(
       "من خلال إنشاء حساب ، فإنك توافق على",
     ),

@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "addAddress": MessageLookupByLibrary.simpleMessage("Add New Address"),
+    "addFirstAddress": MessageLookupByLibrary.simpleMessage(
+      "Add your first address",
+    ),
     "addToCart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
     "address2": MessageLookupByLibrary.simpleMessage("Street Name"),
@@ -29,10 +33,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "allreadyhaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "apartment": MessageLookupByLibrary.simpleMessage("Apartment / Landmark"),
     "apple": MessageLookupByLibrary.simpleMessage("Sign in with Apple"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
+    "city": MessageLookupByLibrary.simpleMessage("City"),
     "clearAll": MessageLookupByLibrary.simpleMessage("Clear All"),
     "confirmPass": MessageLookupByLibrary.simpleMessage("Confirm "),
     "createAcc": MessageLookupByLibrary.simpleMessage("Create a new account"),
@@ -40,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Don\'t have an account?",
     ),
     "dontHaveAccount2": MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "edit": MessageLookupByLibrary.simpleMessage("Edit"),
     "egp": MessageLookupByLibrary.simpleMessage("EGP"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "face": MessageLookupByLibrary.simpleMessage("Sign in with Facebook"),
@@ -85,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "new_notification": MessageLookupByLibrary.simpleMessage("New"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
     "noSearch": MessageLookupByLibrary.simpleMessage("No Search Results"),
+    "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "notification": MessageLookupByLibrary.simpleMessage("Notifications"),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
     "ourProduct": MessageLookupByLibrary.simpleMessage("Our Products"),
@@ -95,10 +103,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "payOnline2": MessageLookupByLibrary.simpleMessage(""),
     "payment": MessageLookupByLibrary.simpleMessage("Payment"),
     "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Mobile Number"),
     "products": MessageLookupByLibrary.simpleMessage("Products"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "required": MessageLookupByLibrary.simpleMessage("This field is required"),
     "review": MessageLookupByLibrary.simpleMessage("Review"),
+    "saveAddress": MessageLookupByLibrary.simpleMessage("Save Address"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "searchHint": MessageLookupByLibrary.simpleMessage("Search......."),
     "searchNotFound": MessageLookupByLibrary.simpleMessage(
@@ -122,6 +132,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "skip": MessageLookupByLibrary.simpleMessage("skip"),
     "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
+    "state": MessageLookupByLibrary.simpleMessage("Governorate"),
+    "street": MessageLookupByLibrary.simpleMessage("Street"),
     "termCon1": MessageLookupByLibrary.simpleMessage(
       "By creating an account, you agree to",
     ),

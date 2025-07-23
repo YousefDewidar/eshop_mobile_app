@@ -7,7 +7,7 @@ abstract class Routes {
   static const notification = 'notification';
   static const checkout = 'checkout';
   static const profile = 'profile';
+  static const addAddress = 'addAddress';
 
   static const productDetailsView = 'productDetailsView';
-
 }

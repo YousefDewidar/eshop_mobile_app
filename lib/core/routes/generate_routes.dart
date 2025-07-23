@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/routes/routes.dart';
+import 'package:rfaye3/features/checkout/presentation/views/add_address_view.dart';
 
 import 'package:rfaye3/features/checkout/presentation/views/checkout_view.dart';
 import 'package:rfaye3/features/cart/data/models/cart_item_model.dart';
@@ -45,6 +46,8 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
           );
         },
       );
+    case Routes.addAddress:
+      return MaterialPageRoute(builder: (context) => const AddAddressView());
     default:
       return null;
   }

@@ -20,9 +20,10 @@ class ShipTypeCard extends StatelessWidget {
       duration: const Duration(milliseconds: 200),
       padding: const EdgeInsets.all(13),
       decoration: BoxDecoration(
-          border: sel ? Border.all(color: AppColors.primaryColor) : null,
-          borderRadius: BorderRadius.circular(4),
-          color: AppColors.greyColor.withValues(alpha: 0.1)),
+        border: sel ? Border.all(color: AppColors.lightPrimaryColor) : null,
+        borderRadius: BorderRadius.circular(4),
+        color: AppColors.greyColor.withValues(alpha: 0.1),
+      ),
       child: IntrinsicHeight(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,9 +46,12 @@ class ShipTypeCard extends StatelessWidget {
               children: [
                 Text(title, style: TextStyles.semiBold13),
                 const SpaceV(8),
-                Text(title2,
-                    style: TextStyles.regular13
-                        .copyWith(color: AppColors.greyColor)),
+                Text(
+                  title2,
+                  style: TextStyles.regular13.copyWith(
+                    color: AppColors.greyColor,
+                  ),
+                ),
               ],
             ),
             const Spacer(),
