@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/helper/di.dart';
-import 'package:rfaye3/features/main/domain/repo/home_repo.dart';
-import 'package:rfaye3/features/main/presentation/manager/search_cubit/search_state.dart';
+import 'package:rfaye3/features/main/data/repo/home_repo.dart';
+import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchCubit extends Cubit<SearchState> {

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:rfaye3/core/errors/custom_exception.dart';
-import 'package:rfaye3/features/main/domain/entities/category_entity.dart';
-import 'package:rfaye3/features/main/domain/entities/product_entity.dart';
-import 'package:rfaye3/features/main/domain/repo/home_repo.dart';
+import 'package:rfaye3/features/main/data/models/category_entity.dart';
+import 'package:rfaye3/features/main/data/models/product_entity.dart';
+import 'package:rfaye3/features/main/data/repo/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rfaye3/features/main/domain/repo/home_repo.dart';
-import 'package:rfaye3/features/main/presentation/manager/categories_cubit/categories_state.dart';
+import 'package:rfaye3/features/main/data/repo/home_repo.dart';
+import 'package:rfaye3/features/main/presentation/view_model/categories_cubit/categories_state.dart';
 
 class CategoriesCubit extends Cubit<CategoriesState> {
   CategoriesCubit(this.homeRepo) : super(CategoriesInitial());

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/helper/dummy_fruits.dart';
 import 'package:rfaye3/core/widgets/in_app_notification.dart';
-import 'package:rfaye3/features/main/presentation/manager/most_seilling_cubit/most_seilling_cubit.dart';
-import 'package:rfaye3/features/main/presentation/manager/most_seilling_cubit/most_seilling_state.dart';
+import 'package:rfaye3/features/main/presentation/view_model/most_seilling_cubit/most_seilling_cubit.dart';
+import 'package:rfaye3/features/main/presentation/view_model/most_seilling_cubit/most_seilling_state.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/most_selling/products_grid_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 

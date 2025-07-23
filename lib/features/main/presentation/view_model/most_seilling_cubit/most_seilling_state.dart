@@ -1,4 +1,4 @@
-import 'package:rfaye3/features/main/domain/entities/product_entity.dart';
+import 'package:rfaye3/features/main/data/models/product_entity.dart';
 
 abstract class MostSeillingState {}
 

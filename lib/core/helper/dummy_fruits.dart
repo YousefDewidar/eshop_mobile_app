@@ -1,5 +1,5 @@
 import 'package:rfaye3/core/utils/app_images.dart';
-import 'package:rfaye3/features/main/domain/entities/product_entity.dart';
+import 'package:rfaye3/features/main/data/models/product_entity.dart';
 
 class DummyFruits {
   static ProductEntity getDummyFruit() {

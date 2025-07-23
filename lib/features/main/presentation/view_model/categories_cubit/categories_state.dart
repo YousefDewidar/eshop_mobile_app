@@ -1,4 +1,4 @@
-import 'package:rfaye3/features/main/domain/entities/category_entity.dart';
+import 'package:rfaye3/features/main/data/models/category_entity.dart';
 
 sealed class CategoriesState {}
 

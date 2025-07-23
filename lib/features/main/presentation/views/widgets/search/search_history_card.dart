@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/utils/constant.dart';
-import 'package:rfaye3/features/main/presentation/manager/search_cubit/search_cubit.dart';
+import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search_cubit.dart';
 
 class SearchHistoryCard extends StatelessWidget {
   const SearchHistoryCard({

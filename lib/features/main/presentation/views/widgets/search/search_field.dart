@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/helper/di.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/core/widgets/search_text_field.dart';
-import 'package:rfaye3/features/main/presentation/manager/search_cubit/search_cubit.dart';
+import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchField extends StatelessWidget {

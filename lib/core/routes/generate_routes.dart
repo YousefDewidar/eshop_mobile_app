@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 
 import 'package:rfaye3/features/checkout/presentation/views/checkout_view.dart';
-import 'package:rfaye3/features/main/domain/entities/cart_item_entity.dart';
-import 'package:rfaye3/features/main/domain/entities/product_entity.dart';
-import 'package:rfaye3/features/main/presentation/manager/cart_cubit/cart_cubit.dart';
+import 'package:rfaye3/features/main/data/models/cart_item_entity.dart';
+import 'package:rfaye3/features/main/data/models/product_entity.dart';
+import 'package:rfaye3/features/main/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/main/presentation/views/main_view.dart';
 import 'package:rfaye3/features/main/presentation/views/notification_view.dart';
 import 'package:rfaye3/features/main/presentation/views/product_details_view.dart';
