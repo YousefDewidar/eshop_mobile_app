@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rfaye3/core/helper/dummy_fruits.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
+import 'package:rfaye3/features/main/data/models/product_entity.dart';
 import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search_state.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/search/products_result_grid_view.dart';
@@ -28,20 +28,33 @@ class ProductsResultGridViewBlocConsumer extends StatelessWidget {
         if (state is SearchLoading) {
           return Skeletonizer.sliver(
             child: ProductsResultGridView(
-              products: DummyFruits.getDummyFruitsList(),
+              products: [
+                ...List.generate(
+                  6,
+                  (index) => const ProductEntity(
+                    id: "0",
+                    productCode: "",
+                    name: "",
+                    description: "",
+                    coverPictureUrl: "",
+                    price: 1,
+                    stock: 1,
+                    weight: 1,
+                    color: "",
+                    discountPercentage: 1,
+                    sellerId: "",
+                  ),
+                ),
+              ],
             ),
           );
         } else if (state is SearchSuccess) {
           if (state.products.isEmpty) {
             return const SearchNotFound();
           }
-          return ProductsResultGridView(
-            products: state.products,
-          );
+          return ProductsResultGridView(products: state.products);
         } else {
-          return const SliverToBoxAdapter(
-            child: SizedBox(),
-          );
+          return const SliverToBoxAdapter(child: SizedBox());
         }
       },
     );
@@ -49,9 +62,7 @@ class ProductsResultGridViewBlocConsumer extends StatelessWidget {
 }
 
 class SearchNotFound extends StatelessWidget {
-  const SearchNotFound({
-    super.key,
-  });
+  const SearchNotFound({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +71,7 @@ class SearchNotFound extends StatelessWidget {
         children: [
           const SpaceV(110),
           Center(
-            child: SvgPicture.asset(
-              Assets.imagesSearchNotFound,
-              height: 200,
-            ),
+            child: SvgPicture.asset(Assets.imagesSearchNotFound, height: 200),
           ),
           const SpaceV(20),
           Text(

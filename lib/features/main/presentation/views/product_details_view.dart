@@ -40,7 +40,7 @@ class ProductDetailsView extends StatelessWidget {
                 ),
 
                 CachedNetworkImage(
-                  imageUrl: product.img,
+                  imageUrl: product.coverPictureUrl,
                   width: MediaQuery.of(context).size.width * 0.5,
                   fit: BoxFit.contain,
                   placeholder:
@@ -78,23 +78,19 @@ class ProductDetailsView extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(product.title, style: TextStyles.semiBold13),
+                          Text(product.name, style: TextStyles.semiBold13),
                           const SpaceV(4),
-                          Row(
-                            children: [
-                              Text(
-                                "${product.price}${S.of(context).egp} / ",
-                                style: TextStyles.bold13.copyWith(
-                                  color: AppColors.secondaryColor,
-                                ),
-                              ),
-                              Text(
-                                S.of(context).kilo,
-                                style: TextStyles.semiBold13.copyWith(
-                                  color: AppColors.lightSecondaryColor,
-                                ),
-                              ),
-                            ],
+                          Text(
+                            "${product.price}${S.of(context).egp}",
+                            style: TextStyles.bold13.copyWith(
+                              color: AppColors.secondaryColor,
+                            ),
+                          ),
+                          Text(
+                            "${S.of(context).weight}: ${product.weight}",
+                            style: TextStyles.bold13.copyWith(
+                              color: AppColors.secondaryColor,
+                            ),
                           ),
                         ],
                       ),
@@ -105,15 +101,15 @@ class ProductDetailsView extends StatelessWidget {
                     spacing: 8,
                     children: [
                       const Icon(Icons.star, color: AppColors.secondaryColor),
-                      Text(
-                        product.avaRate.toString(),
-                        style: TextStyles.semiBold13,
-                      ),
-                      Text(
-                        "(${product.rateCount}+)",
-                        style: TextStyles.semiBold13,
-                      ),
 
+                      // Text(
+                      //   product.r.toString(),
+                      //   style: TextStyles.semiBold13,
+                      // ),
+                      // Text(
+                      //   "(${product.rateCount}+)",
+                      //   style: TextStyles.semiBold13,
+                      // ),
                       Text(
                         S.of(context).review,
                         style: TextStyles.semiBold13.copyWith(
@@ -126,7 +122,7 @@ class ProductDetailsView extends StatelessWidget {
                   ),
                   const SpaceV(10),
                   Text(
-                    product.desc,
+                    product.description,
                     style: TextStyles.regular13.copyWith(
                       color: AppColors.greyColor,
                     ),
@@ -145,7 +141,7 @@ class ProductDetailsView extends StatelessWidget {
                     cartCubit.addToCart(CartItemEntity(product: product));
                     showNotification(
                       context,
-                      'تم اضافة ${product.title} إلي السلة',
+                      'تم اضافة ${product.name} إلي السلة',
                       NotiType.success,
                     );
                   },

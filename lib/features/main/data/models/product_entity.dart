@@ -1,38 +1,62 @@
 import 'package:equatable/equatable.dart';
 
 class ProductEntity extends Equatable {
-  final String title;
-  final String desc;
+  final String id;
+  final String productCode;
+  final String name;
+  final String description;
+  final String coverPictureUrl;
   final num price;
-  final num? discount;
-  final num rateCount;
-  final num avaRate;
-  final String img;
-  final AdditionInfoEntity additionInfo;
+  final num stock;
+  final num weight;
+  final String color;
+  final num discountPercentage;
+  final String sellerId;
 
   const ProductEntity({
-    required this.title,
-    required this.desc,
+    required this.id,
+    required this.productCode,
+    required this.name,
+    required this.description,
+    required this.coverPictureUrl,
     required this.price,
-    this.discount,
-    this.rateCount = 0,
-    this.avaRate = 0.0,
-    required this.img,
-    required this.additionInfo,
+    required this.stock,
+    required this.weight,
+    required this.color,
+    required this.discountPercentage,
+    required this.sellerId,
   });
 
   @override
-  List<Object?> get props => [title, desc, price];
-}
+  List<Object?> get props => [
+    id,
+    productCode,
+    name,
+    description,
+    coverPictureUrl,
+    price,
+    stock,
+    weight,
+    color,
+    discountPercentage,
+    sellerId,
+  ];
 
-class AdditionInfoEntity extends Equatable {
-  final String? dateExpired;
-  final String? calary;
-  const AdditionInfoEntity({
-    this.dateExpired,
-    this.calary,
-  });
+  factory ProductEntity.fromJson(Map<String, dynamic> map) {
+    return ProductEntity(
+      id: map['id'] as String,
+      productCode: map['productCode'] as String,
+      name: map['name'] as String,
+      description: map['description'] as String,
+      coverPictureUrl: map['coverPictureUrl'] as String,
+      price: map['price'] as num,
+      stock: map['stock'] as num,
+      weight: map['weight'] as num,
+      color: map['color'] as String,
+      discountPercentage: map['discountPercentage'] as num,
+      sellerId: map['sellerId'] as String,
+    );
+  }
 
-  @override
-  List<Object?> get props => [dateExpired, calary];
+
 }

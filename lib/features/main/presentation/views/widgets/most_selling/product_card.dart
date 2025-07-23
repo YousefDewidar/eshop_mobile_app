@@ -51,7 +51,7 @@ class ProductCard extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.center,
                       child: CachedNetworkImage(
-                        imageUrl: product.img,
+                        imageUrl: product.coverPictureUrl,
                         width: MediaQuery.of(context).size.width * 0.5,
                         fit: BoxFit.contain,
                         placeholder:
@@ -71,23 +71,13 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  Text(product.title, style: TextStyles.semiBold13),
+                  Text(product.name, style: TextStyles.semiBold13),
                   const SpaceV(4),
-                  Row(
-                    children: [
-                      Text(
-                        "${product.price}${S.of(context).egp} / ",
-                        style: TextStyles.bold13.copyWith(
-                          color: AppColors.secondaryColor,
-                        ),
-                      ),
-                      Text(
-                        S.of(context).kilo,
-                        style: TextStyles.semiBold13.copyWith(
-                          color: AppColors.lightSecondaryColor,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    "${product.price} ${S.of(context).egp}",
+                    style: TextStyles.bold13.copyWith(
+                      color: AppColors.secondaryColor,
+                    ),
                   ),
                 ],
               ),
@@ -103,7 +93,7 @@ class ProductCard extends StatelessWidget {
                 onTap: () {
                   showNotification(
                     context,
-                    'تم اضافة ${product.title} إلي السلة',
+                    'تم اضافة ${product.name} إلي السلة',
                     NotiType.success,
                   );
                   context.read<CartCubit>().addToCart(

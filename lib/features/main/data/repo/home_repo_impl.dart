@@ -1,52 +1,52 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
-import 'package:rfaye3/core/errors/custom_exception.dart';
+import 'package:dio/dio.dart';
+import 'package:rfaye3/core/network/api_service.dart';
+import 'package:rfaye3/core/network/failuer.dart';
 import 'package:rfaye3/features/main/data/models/category_entity.dart';
 import 'package:rfaye3/features/main/data/models/product_entity.dart';
 import 'package:rfaye3/features/main/data/repo/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
+  ApiService apiService;
+  HomeRepoImpl(this.apiService);
+
   @override
   Future<Either<Failuer, List<ProductEntity>>> getMostSellingProducts() async {
     try {
-      final products = [
-        const ProductEntity(
-          title: "title",
-          desc: "desc",
-          price: 40,
-          img:
-              "https://www.iomm.org.my/wp-content/uploads/2019/11/imm_logo-removebg-preview.png",
-          additionInfo: AdditionInfoEntity(),
-        ),
-        const ProductEntity(
-          title: "asc",
-          desc: "deascassc",
-          price: 20,
-          img:
-              "https://www.iomm.org.my/wp-content/uploads/2019/11/imm_logo-removebg-preview.png",
-          additionInfo: AdditionInfoEntity(),
-        ),
-        const ProductEntity(
-          title: "tiatle",
-          desc: "desac",
-          price: 30,
-          img:
-              "https://www.iomm.org.my/wp-content/uploads/2019/11/imm_logo-removebg-preview.png",
-          additionInfo: AdditionInfoEntity(),
-        ),
-      ];
+      Response data = await apiService.get("/api/products");
+
+      final products =
+          (data.data as List).map((e) {
+            return ProductEntity.fromJson(e);
+          }).toList();
 
       return right(products);
     } catch (e) {
-      return left(Failuer(message: 'حدث خطأ ما حاول مرة أخرى'));
+      return left(ServerFailure.fromError(e));
     }
   }
 
   @override
   Future<Either<Failuer, List<CategoryEntity>>> getAllCategories() async {
     try {
-      return right(dummyCategories);
+      try {
+        Response data = await apiService.get("/api/categories");
+        log(data.data.toString());
+
+        List<CategoryEntity> products =
+            (data.data as List).map((e) {
+              return CategoryEntity.fromJson(e);
+            }).toList();
+
+        return right(products);
+      } catch (e) {
+        log(e.toString());
+        return left(ServerFailure.fromError(e));
+      }
     } catch (e) {
-      return left(Failuer(message: 'حدث خطأ ما حاول مرة أخرى'));
+      return left(ServerFailure.fromError(e));
     }
   }
 
@@ -55,36 +55,10 @@ class HomeRepoImpl implements HomeRepo {
     required String query,
   }) async {
     try {
-      final products = [
-        const ProductEntity(
-          title: "title",
-          desc: "desc",
-          price: 40,
-          img:
-              "https://www.iomm.org.my/wp-content/uploads/2019/11/imm_logo-removebg-preview.png",
-          additionInfo: AdditionInfoEntity(),
-        ),
-        const ProductEntity(
-          title: "asc",
-          desc: "deascassc",
-          price: 20,
-          img:
-              "https://www.iomm.org.my/wp-content/uploads/2019/11/imm_logo-removebg-preview.png",
-          additionInfo: AdditionInfoEntity(),
-        ),
-        const ProductEntity(
-          title: "tiatle",
-          desc: "desac",
-          price: 30,
-          img:
-              "https://www.iomm.org.my/wp-content/uploads/2019/11/imm_logo-removebg-preview.png",
-          additionInfo: AdditionInfoEntity(),
-        ),
-      ];
-
+      List<ProductEntity> products = [];
       return right(products);
     } catch (e) {
-      return left(Failuer(message: 'حدث خطأ ما حاول مرة أخرى'));
+      return left(ServerFailure.fromError(e));
     }
   }
 }

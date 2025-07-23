@@ -1,0 +1,67 @@
+import 'package:dio/dio.dart';
+
+abstract class Failuer {
+  final String message;
+  Failuer({required this.message});
+}
+
+class ServerFailure extends Failuer {
+  ServerFailure({required super.message});
+
+  factory ServerFailure.fromError(Object e) {
+    if (e is DioException) {
+      switch (e.type) {
+        case DioExceptionType.connectionTimeout:
+          return ServerFailure(
+            message: 'The connection to server time out, please try later',
+          );
+        case DioExceptionType.sendTimeout:
+          return ServerFailure(
+            message: 'The connection to server time out, please try later',
+          );
+
+        case DioExceptionType.receiveTimeout:
+          return ServerFailure(
+            message:
+                'The receive method from server time out, please try later',
+          );
+
+        case DioExceptionType.badCertificate:
+          return ServerFailure(message: 'Bad Certificate');
+
+        case DioExceptionType.badResponse:
+          return ServerFailure._fromBadResponse(e.response!);
+
+        case DioExceptionType.cancel:
+          return ServerFailure(
+            message: 'The request canceld, please try another',
+          );
+
+        case DioExceptionType.connectionError:
+          return ServerFailure(message: 'No internet connection');
+
+        case DioExceptionType.unknown:
+          return ServerFailure(
+            message: 'Opps, There is a error please try again',
+          );
+      }
+    } else {
+      return ServerFailure(message: 'Opps, There is a error please try again');
+    }
+  }
+
+  factory ServerFailure._fromBadResponse(Response response) {
+    if ([400, 401, 403].contains(response.statusCode)) {
+      //! ['message'] will change for api
+      return ServerFailure(message: response.data['message']);
+    } else if (response.statusCode == 500) {
+      return ServerFailure(
+        message: 'The problem in a server, please try later',
+      );
+    } else if (response.statusCode == 404) {
+      return ServerFailure(message: 'The request not found');
+    } else {
+      return ServerFailure(message: 'There is an error please try again');
+    }
+  }
+}

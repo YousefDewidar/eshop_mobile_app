@@ -22,7 +22,7 @@ class Rfaye3App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       theme: AppThemes.getLightData(),
       darkTheme: AppThemes.getDarkData(),
       localizationsDelegates: const [

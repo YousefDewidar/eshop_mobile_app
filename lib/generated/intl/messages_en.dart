@@ -61,7 +61,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "homeSearchHint": MessageLookupByLibrary.simpleMessage(
       "What are you looking for?",
     ),
-    "kilo": MessageLookupByLibrary.simpleMessage("Kilo"),
     "kilogram": MessageLookupByLibrary.simpleMessage("Kg"),
     "land1SubTitle": MessageLookupByLibrary.simpleMessage(
       "Discover a world of elegance with AccessoryHUB. Explore our wide collection of trendy, high-quality accessories and enjoy the best deals.",
@@ -133,5 +132,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Enter the code we sent to your email address",
     ),
     "verifyButton": MessageLookupByLibrary.simpleMessage("Verify Code"),
+    "weight": MessageLookupByLibrary.simpleMessage("Weight"),
   };
 }

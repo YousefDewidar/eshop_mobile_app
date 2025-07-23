@@ -8,9 +8,7 @@ import 'package:rfaye3/features/main/presentation/views/widgets/categories/categ
 import 'package:skeletonizer/skeletonizer.dart';
 
 class CategoriesListViewBlocConsumer extends StatelessWidget {
-  const CategoriesListViewBlocConsumer({
-    super.key,
-  });
+  const CategoriesListViewBlocConsumer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +22,18 @@ class CategoriesListViewBlocConsumer extends StatelessWidget {
         if (state is CategoriesLoading) {
           return Skeletonizer.sliver(
             child: CategoriesListView(
-              categories: dummyCategories,
+              categories: [
+                ...List.generate(
+                  6,
+                  (index) => CategoryEntity(id: "", name: "avadscvadvasd"),
+                ),
+              ],
             ),
           );
         } else if (state is CategoriesSuccess) {
-          return CategoriesListView(
-            categories: state.categories,
-          );
+          return CategoriesListView(categories: state.categories);
         } else {
-          return const SliverToBoxAdapter(
-            child: SizedBox(),
-          );
+          return const SliverToBoxAdapter(child: SizedBox());
         }
       },
     );

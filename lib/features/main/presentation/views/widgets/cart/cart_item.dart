@@ -18,69 +18,81 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 92,
+    return Expanded(
       child: Row(
         children: [
           // product Image
-          Container(
-            width: 73,
-            height: 92,
-            padding: const EdgeInsets.all(5),
-            color: Theme.of(context).colorScheme.surface,
-            child: CachedNetworkImage(
-              imageUrl: product.product.img,
-              placeholder:
-                  (context, url) => const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.primaryColor,
+          Expanded(
+            flex: 1,
+            child: Container(
+              width: 73,
+              height: 100,
+              padding: const EdgeInsets.all(5),
+              color: Theme.of(context).colorScheme.surface,
+              child: CachedNetworkImage(
+                fit: BoxFit.cover,
+                imageUrl: product.product.coverPictureUrl,
+                placeholder:
+                    (context, url) => const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.primaryColor,
+                      ),
                     ),
-                  ),
-              errorWidget:
-                  (context, url, error) => const Center(
-                    child: Icon(Icons.image_not_supported_outlined, size: 50),
-                  ),
+                errorWidget:
+                    (context, url, error) => const Center(
+                      child: Icon(Icons.image_not_supported_outlined, size: 50),
+                    ),
+              ),
             ),
           ),
+
           const SpaceH(17),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(product.product.title, style: TextStyles.bold13),
-              const SpaceV(6),
-              Text(
-                '${product.calcWeight()} ${S.of(context).kilogram}',
-                style: TextStyles.regular13.copyWith(
-                  color: AppColors.secondaryColor,
+          Expanded(
+            flex: 2,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(product.product.name, style: TextStyles.bold13),
+                const SpaceV(6),
+                Text(
+                  '${product.calcWeight()} ${S.of(context).kilogram}',
+                  style: TextStyles.regular13.copyWith(
+                    color: AppColors.secondaryColor,
+                  ),
                 ),
-              ),
-              const SpaceV(16),
-              AddMinusProduct(product: product),
-            ],
+                const SpaceV(16),
+                AddMinusProduct(product: product),
+              ],
+            ),
           ),
-          const Spacer(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                onTap: () {
-                  showNotification(
-                    context,
-                    'تم إزالة المنتج من السلة',
-                    NotiType.warning,
-                  );
-                  context.read<CartCubit>().removeItem(product);
-                },
-                child: SvgPicture.asset(Assets.imagesTrash),
+
+          IntrinsicHeight(
+            child: SizedBox(
+              height: 100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      showNotification(
+                        context,
+                        'تم إزالة المنتج من السلة',
+                        NotiType.warning,
+                      );
+                      context.read<CartCubit>().removeItem(product);
+                    },
+                    child: SvgPicture.asset(Assets.imagesTrash),
+                  ),
+                  Text(
+                    '${product.calcTotalPriceForItem()} ${S.of(context).egp}',
+                    style: TextStyles.bold16.copyWith(
+                      color: AppColors.secondaryColor,
+                    ),
+                  ),
+                ],
               ),
-              Text(
-                '${product.calcTotalPriceForItem()} ${S.of(context).egp}',
-                style: TextStyles.bold16.copyWith(
-                  color: AppColors.secondaryColor,
-                ),
-              ),
-            ],
+            ),
           ),
         ],
       ),

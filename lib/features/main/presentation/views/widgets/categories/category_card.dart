@@ -22,7 +22,8 @@ class CategoriesCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(15),
             child: CachedNetworkImage(
-              imageUrl: category.img,
+              imageUrl:
+                  "https://www.iomm.org.my/wp-content/uploads/2019/11/imm_logo-removebg-preview.png",
               placeholder:
                   (context, url) => const Center(
                     child: CircularProgressIndicator(

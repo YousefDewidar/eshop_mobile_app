@@ -18,12 +18,12 @@ dependencies:
   dartz: ^0.10.1
   flutter_bloc: ^8.0.1
   get_it: ^8.0.3
+  dio:
   modal_progress_hud_nsn: ^0.5.1
   top_snackbar_flutter: ^3.2.0
   shared_preferences: ^2.5.2
   dots_indicator: ^4.0.1
   google_sign_in: ^6.2.2
-  flutter_facebook_auth: ^7.1.1
   carousel_slider: ^5.0.0
   salomon_bottom_bar: ^3.3.2
   skeletonizer: ^1.4.3

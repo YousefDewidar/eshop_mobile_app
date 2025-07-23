@@ -65,7 +65,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "homeSearchHint": MessageLookupByLibrary.simpleMessage(
       "أنت بتدور علي ايه؟",
     ),
-    "kilo": MessageLookupByLibrary.simpleMessage("الكيلو"),
     "kilogram": MessageLookupByLibrary.simpleMessage("كجم"),
     "land1SubTitle": MessageLookupByLibrary.simpleMessage(
       "اكتشف عالم الأناقة مع AccessoryHUB. تصفح تشكيلتنا الواسعة من الإكسسوارات العصرية المختارة بعناية، واستمتع بأفضل الأسعار والجودة العالية.",
@@ -145,5 +144,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "أدخل الرمز الذي أرسلناه إلى عنوان البريد التالي",
     ),
     "verifyButton": MessageLookupByLibrary.simpleMessage("تحقق من الرمز"),
+    "weight": MessageLookupByLibrary.simpleMessage("الوزن"),
   };
 }

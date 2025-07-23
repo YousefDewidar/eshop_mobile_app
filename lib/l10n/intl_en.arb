@@ -33,7 +33,7 @@
   "searchHint": "Search.......",
   "mostPop": "Best Seller",
   "more": "More",
-  "kilo": "Kilo",
+  "weight": "Weight",
   "egp": "EGP",
   "shopNow": "Shop Now",
   "home": "Home",
@@ -83,6 +83,5 @@
   "set5": "My Notifications",
   "set6": "Language",
   "set7": "Theme",
-  "signOut":"Sign Out"
-
+  "signOut": "Sign Out"
 }

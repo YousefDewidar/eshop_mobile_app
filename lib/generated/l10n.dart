@@ -344,9 +344,9 @@ class S {
     return Intl.message('More', name: 'more', desc: '', args: []);
   }
 
-  /// `Kilo`
-  String get kilo {
-    return Intl.message('Kilo', name: 'kilo', desc: '', args: []);
+  /// `Weight`
+  String get weight {
+    return Intl.message('Weight', name: 'weight', desc: '', args: []);
   }
 
   /// `EGP`
