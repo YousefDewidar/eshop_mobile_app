@@ -5,7 +5,7 @@ import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/checkout_appbar.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/checkout_page_view.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/steps_row.dart';
-import 'package:rfaye3/features/main/data/models/cart_item_entity.dart';
+import 'package:rfaye3/features/cart/data/models/cart_item_entity.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class CheckoutViewBody extends StatefulWidget {

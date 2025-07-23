@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/space.dart';
-import 'package:rfaye3/features/main/data/models/cart_item_entity.dart';
-import 'package:rfaye3/features/main/presentation/view_model/cart_cubit/cart_cubit.dart';
+import 'package:rfaye3/features/cart/data/models/cart_item_entity.dart';
+import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 
 class AddMinusProduct extends StatelessWidget {
   const AddMinusProduct({super.key, required this.product});

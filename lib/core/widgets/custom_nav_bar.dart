@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
-import 'package:rfaye3/features/main/presentation/view_model/cart_cubit/cart_cubit.dart';
+import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/generated/l10n.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:svg_flutter/svg.dart';

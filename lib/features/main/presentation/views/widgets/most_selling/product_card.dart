@@ -8,9 +8,9 @@ import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/fav_icon.dart';
 import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
-import 'package:rfaye3/features/main/data/models/cart_item_entity.dart';
+import 'package:rfaye3/features/cart/data/models/cart_item_entity.dart';
 import 'package:rfaye3/features/main/data/models/product_entity.dart';
-import 'package:rfaye3/features/main/presentation/view_model/cart_cubit/cart_cubit.dart';
+import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class ProductCard extends StatelessWidget {

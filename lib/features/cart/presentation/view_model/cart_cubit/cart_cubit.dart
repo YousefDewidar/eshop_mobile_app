@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rfaye3/features/main/data/models/cart_item_entity.dart';
-import 'package:rfaye3/features/main/presentation/view_model/cart_cubit/cart_state.dart';
+import 'package:rfaye3/features/cart/data/models/cart_item_entity.dart';
+import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());

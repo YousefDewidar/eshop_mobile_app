@@ -14,7 +14,7 @@ class CartItemEntity extends Equatable {
   }
 
   num calcTotalPriceForItem() {
-    return count * product.price;
+    return (count * product.price);
   }
 
   @override
