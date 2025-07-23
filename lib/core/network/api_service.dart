@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:rfaye3/token_test.dart';
 
@@ -41,6 +43,7 @@ class ApiService {
   }
 
   Future<Response> delete(String endPoint) async {
+    log("$_baseUrl$endPoint");
     final response = await _dio.delete(
       "$_baseUrl$endPoint",
       options: Options(headers: {"Authorization": "Bearer $token"}),

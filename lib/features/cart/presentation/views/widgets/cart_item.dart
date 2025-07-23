@@ -8,6 +8,7 @@ import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/cart/data/models/cart_item_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
+import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_state.dart';
 import 'package:rfaye3/features/cart/presentation/views/widgets/add_minus_product.dart';
 import 'package:rfaye3/generated/l10n.dart';
 import 'package:svg_flutter/svg.dart';
@@ -71,16 +72,24 @@ class CartItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              InkWell(
-                onTap: () {
-                  showNotification(
-                    context,
-                    'تم إزالة المنتج من السلة',
-                    NotiType.warning,
-                  );
-                  context.read<CartCubit>().removeItem(product);
+              BlocListener<CartCubit, CartState>(
+                listener: (context, state) {
+                  if (state is CartFail) {
+                    showNotification(context, state.error, NotiType.error);
+                  } else if (state is RemovedFromCart) {
+                    showNotification(
+                      context,
+                      'تم إزالة المنتج من السلة',
+                      NotiType.warning,
+                    );
+                  }
                 },
-                child: SvgPicture.asset(Assets.imagesTrash),
+                child: InkWell(
+                  onTap: () {
+                    context.read<CartCubit>().removeItem(product);
+                  },
+                  child: SvgPicture.asset(Assets.imagesTrash),
+                ),
               ),
               Text(
                 '${product.calcTotalPriceForItem().toStringAsFixed(2)} ${S.of(context).egp}',

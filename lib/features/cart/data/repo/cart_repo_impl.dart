@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:rfaye3/core/network/api_service.dart';
 import 'package:rfaye3/core/network/failuer.dart';
@@ -34,9 +33,10 @@ class CartRepoImpl implements CartRepo {
   }
 
   @override
-  Future<Either<Failuer, void>> removeItem(String productId) async {
+  Future<Either<Failuer, void>> removeItem(String itemIdInCart) async {
     try {
-      await apiService.delete("/api/products/$productId");
+      // 
+      await apiService.delete("/api/cart/items/$itemIdInCart");
       return const Right(null);
     } catch (e) {
       return Left(ServerFailure.fromError(e));
