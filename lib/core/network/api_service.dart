@@ -6,7 +6,7 @@ class ApiService {
 
   ApiService(this._dio);
 
-  static const _baseUrl = 'http://accessories-eshop.runasp.net';
+  static const _baseUrl = 'https://accessories-eshop.runasp.net';
 
   Future<Response> get(String endPoint) async {
     final response = await _dio.get(

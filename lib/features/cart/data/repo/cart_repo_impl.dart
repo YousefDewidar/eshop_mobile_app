@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:rfaye3/core/network/api_service.dart';
@@ -19,12 +18,11 @@ class CartRepoImpl implements CartRepo {
   Future<Either<Failuer, void>> addToCart(CartItemModel product) async {
     try {
       await apiService.post(
-        "/api/cart/items",
+        "/api/cart/items/",
         data: {"productId": product.product.id, "quantity": 1},
       );
       return const Right(null);
     } catch (e) {
-      log(e.toString());
       return Left(ServerFailure.fromError(e));
     }
   }

@@ -25,7 +25,6 @@ class CartCubit extends Cubit<CartState> {
         } else {
           cartList.add(product);
         }
-
         calcTotalPrice();
         emit(AddedToCart());
       },
@@ -42,9 +41,18 @@ class CartCubit extends Cubit<CartState> {
   }
 
   void removeItem(CartItemModel product) async {
-    cartList.remove(product);
-    calcTotalPrice();
-    emit(RemovedFromCart());
+    emit(CartLoading());
+    final result = await cartRepo.removeItem(product.product.id);
+    result.fold(
+      (fail) {
+        emit(CartFail(fail.message));
+      },
+      (success) {
+        cartList.remove(product);
+        calcTotalPrice();
+        emit(RemovedFromCart());
+      },
+    );
   }
 
   void calcTotalPrice() {

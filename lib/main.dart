@@ -13,6 +13,7 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
   await setupLocator();
   // runApp(DevicePreview(builder: (context) => const Rfaye3App()));
+
   runApp(const Rfaye3App());
 }
 
