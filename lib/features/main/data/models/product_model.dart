@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class ProductEntity extends Equatable {
+class ProductModel extends Equatable {
   final String id;
   final String productCode;
   final String name;
@@ -13,7 +13,7 @@ class ProductEntity extends Equatable {
   final num discountPercentage;
   final String sellerId;
 
-  const ProductEntity({
+  const ProductModel({
     required this.id,
     required this.productCode,
     required this.name,
@@ -42,8 +42,8 @@ class ProductEntity extends Equatable {
     sellerId,
   ];
 
-  factory ProductEntity.fromJson(Map<String, dynamic> map) {
-    return ProductEntity(
+  factory ProductModel.fromJson(Map<String, dynamic> map) {
+    return ProductModel(
       id: map['id'] as String,
       productCode: map['productCode'] as String,
       name: map['name'] as String,

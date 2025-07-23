@@ -1,4 +1,4 @@
-import 'package:rfaye3/features/main/data/models/product_entity.dart';
+import 'package:rfaye3/features/main/data/models/product_model.dart';
 
 sealed class SearchState {}
 
@@ -13,7 +13,7 @@ final class SearchFailure extends SearchState {
 }
 
 final class SearchSuccess extends SearchState {
-  final List<ProductEntity> products;
+  final List<ProductModel> products;
 
   SearchSuccess({required this.products});
 }

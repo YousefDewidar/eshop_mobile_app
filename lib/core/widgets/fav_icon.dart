@@ -24,7 +24,7 @@ class _FavIconState extends State<FavIcon> {
         icon:
             isChanged
                 ? const Icon(Icons.favorite_rounded, color: Colors.red)
-                : const Icon(Icons.favorite_border_rounded),
+                : const Icon(Icons.favorite_border_rounded, color: Colors.grey),
       ),
     );
   }

@@ -4,8 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:rfaye3/core/network/api_service.dart';
 import 'package:rfaye3/core/network/failuer.dart';
-import 'package:rfaye3/features/main/data/models/category_entity.dart';
-import 'package:rfaye3/features/main/data/models/product_entity.dart';
+import 'package:rfaye3/features/main/data/models/category_model.dart';
+import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/main/data/repo/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
@@ -13,13 +13,13 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failuer, List<ProductEntity>>> getMostSellingProducts() async {
+  Future<Either<Failuer, List<ProductModel>>> getMostSellingProducts() async {
     try {
       Response data = await apiService.get("/api/products");
 
       final products =
           (data.data as List).map((e) {
-            return ProductEntity.fromJson(e);
+            return ProductModel.fromJson(e);
           }).toList();
 
       return right(products);
@@ -29,15 +29,15 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failuer, List<CategoryEntity>>> getAllCategories() async {
+  Future<Either<Failuer, List<CategoryModel>>> getAllCategories() async {
     try {
       try {
         Response data = await apiService.get("/api/categories");
         log(data.data.toString());
 
-        List<CategoryEntity> products =
+        List<CategoryModel> products =
             (data.data as List).map((e) {
-              return CategoryEntity.fromJson(e);
+              return CategoryModel.fromJson(e);
             }).toList();
 
         return right(products);
@@ -51,11 +51,11 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failuer, List<ProductEntity>>> searchProducts({
+  Future<Either<Failuer, List<ProductModel>>> searchProducts({
     required String query,
   }) async {
     try {
-      List<ProductEntity> products = [];
+      List<ProductModel> products = [];
       return right(products);
     } catch (e) {
       return left(ServerFailure.fromError(e));

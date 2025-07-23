@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/most_selling/product_card.dart';
-import 'package:rfaye3/features/main/data/models/product_entity.dart';
+import 'package:rfaye3/features/main/data/models/product_model.dart';
 
 class ProductsResultGridView extends StatelessWidget {
-  final List<ProductEntity> products;
+  final List<ProductModel> products;
   const ProductsResultGridView({
     super.key,
     required this.products,

@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
-import 'package:rfaye3/features/main/data/models/category_entity.dart';
+import 'package:rfaye3/features/main/data/models/category_model.dart';
 
 class CategoriesCard extends StatelessWidget {
   const CategoriesCard({super.key, required this.category});
-  final CategoryEntity category;
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {

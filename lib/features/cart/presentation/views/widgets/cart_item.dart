@@ -6,7 +6,7 @@ import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
-import 'package:rfaye3/features/cart/data/models/cart_item_entity.dart';
+import 'package:rfaye3/features/cart/data/models/cart_item_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/cart/presentation/views/widgets/add_minus_product.dart';
 import 'package:rfaye3/generated/l10n.dart';
@@ -14,7 +14,7 @@ import 'package:svg_flutter/svg.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.product});
-  final CartItemEntity product;
+  final CartItemModel product;
 
   @override
   Widget build(BuildContext context) {

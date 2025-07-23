@@ -1,4 +1,4 @@
-import 'package:rfaye3/features/main/data/models/product_entity.dart';
+import 'package:rfaye3/features/main/data/models/product_model.dart';
 
 abstract class MostSeillingState {}
 
@@ -7,7 +7,7 @@ class MostSeillingInitial extends MostSeillingState {}
 class MostSeillingLoading extends MostSeillingState {}
 
 class MostSeillingSuccess extends MostSeillingState {
-  final List<ProductEntity> products;
+  final List<ProductModel> products;
 
   MostSeillingSuccess({required this.products});
 }

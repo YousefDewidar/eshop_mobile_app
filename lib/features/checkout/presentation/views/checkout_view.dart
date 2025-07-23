@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/checkout_view_body.dart';
-import 'package:rfaye3/features/cart/data/models/cart_item_entity.dart';
+import 'package:rfaye3/features/cart/data/models/cart_item_model.dart';
 
 class CheckoutView extends StatelessWidget {
-  final List<CartItemEntity> cartList;
+  final List<CartItemModel> cartList;
 
   const CheckoutView({super.key, required this.cartList});
 

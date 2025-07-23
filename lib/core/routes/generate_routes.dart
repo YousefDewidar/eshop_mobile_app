@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 
 import 'package:rfaye3/features/checkout/presentation/views/checkout_view.dart';
-import 'package:rfaye3/features/cart/data/models/cart_item_entity.dart';
-import 'package:rfaye3/features/main/data/models/product_entity.dart';
+import 'package:rfaye3/features/cart/data/models/cart_item_model.dart';
+import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/main/presentation/views/main_view.dart';
 import 'package:rfaye3/features/main/presentation/views/notification_view.dart';
@@ -30,7 +30,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
       return MaterialPageRoute(
         builder:
             (context) => CheckoutView(
-              cartList: setting.arguments as List<CartItemEntity>,
+              cartList: setting.arguments as List<CartItemModel>,
             ),
       );
     case Routes.profile:
@@ -41,7 +41,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
           final args = setting.arguments as Map<String, dynamic>?;
           return ProductDetailsView(
             cartCubit: args?['cartCubit'] as CartCubit,
-            product: args?['product'] as ProductEntity,
+            product: args?['product'] as ProductModel,
           );
         },
       );

@@ -3,6 +3,8 @@ import 'package:dio/dio.dart';
 abstract class Failuer {
   final String message;
   Failuer({required this.message});
+
+  get error => null;
 }
 
 class ServerFailure extends Failuer {
@@ -49,11 +51,17 @@ class ServerFailure extends Failuer {
       return ServerFailure(message: 'Opps, There is a error please try again');
     }
   }
-
   factory ServerFailure._fromBadResponse(Response response) {
     if ([400, 401, 403].contains(response.statusCode)) {
-      //! ['message'] will change for api
-      return ServerFailure(message: response.data['message']);
+      final errors = response.data['errors'];
+      if (errors is Map && errors.isNotEmpty) {
+        final firstErrorList = errors[errors.keys.first];
+        if (firstErrorList is List && firstErrorList.isNotEmpty) {
+          return ServerFailure(message: firstErrorList.first.toString());
+        }
+      }
+
+      return ServerFailure(message: 'Unknown error occurred');
     } else if (response.statusCode == 500) {
       return ServerFailure(
         message: 'The problem in a server, please try later',

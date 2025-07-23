@@ -5,7 +5,7 @@ import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
-import 'package:rfaye3/features/main/data/models/product_entity.dart';
+import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search_state.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/search/products_result_grid_view.dart';
@@ -31,7 +31,7 @@ class ProductsResultGridViewBlocConsumer extends StatelessWidget {
               products: [
                 ...List.generate(
                   6,
-                  (index) => const ProductEntity(
+                  (index) => const ProductModel(
                     id: "0",
                     productCode: "",
                     name: "",

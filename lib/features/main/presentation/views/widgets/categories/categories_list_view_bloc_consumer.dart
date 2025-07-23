@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/widgets/in_app_notification.dart';
-import 'package:rfaye3/features/main/data/models/category_entity.dart';
+import 'package:rfaye3/features/main/data/models/category_model.dart';
 import 'package:rfaye3/features/main/presentation/view_model/categories_cubit/categories_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/categories_cubit/categories_state.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/categories/categories_list_view.dart';
@@ -25,7 +25,7 @@ class CategoriesListViewBlocConsumer extends StatelessWidget {
               categories: [
                 ...List.generate(
                   6,
-                  (index) => CategoryEntity(id: "", name: "avadscvadvasd"),
+                  (index) => CategoryModel(id: "", name: "avadscvadvasd"),
                 ),
               ],
             ),
