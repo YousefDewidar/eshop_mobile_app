@@ -10,7 +10,6 @@ import 'package:rfaye3/core/widgets/custom_button.dart';
 import 'package:rfaye3/core/widgets/icon_back.dart';
 import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
-import 'package:rfaye3/features/cart/data/models/cart_item_model.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/generated/l10n.dart';
@@ -138,7 +137,7 @@ class ProductDetailsView extends StatelessWidget {
                 child: CustomButton(
                   title: S.of(context).addToCart,
                   onPressed: () {
-                    cartCubit.addToCart(CartItemModel(product: product));
+                    cartCubit.addToCart(product.id);
                     showNotification(
                       context,
                       'تم اضافة ${product.name} إلي السلة',

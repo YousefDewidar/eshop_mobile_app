@@ -93,5 +93,6 @@
   "apartment": "تفاصيل إضافية",
   "phoneNumber": "رقم الموبايل",
   "notes": "ملاحظات",
-  "addFirstAddress":"ضيف عنوانك الأول"
+  "addFirstAddress":"ضيف عنوانك الأول",
+  "gram":"جرام"
 }

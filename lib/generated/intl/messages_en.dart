@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "free": MessageLookupByLibrary.simpleMessage("Free"),
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "google": MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+    "gram": MessageLookupByLibrary.simpleMessage("gm"),
     "haveProductsInCart1": MessageLookupByLibrary.simpleMessage("You have"),
     "haveProductsInCart2": MessageLookupByLibrary.simpleMessage(
       "products in your cart",

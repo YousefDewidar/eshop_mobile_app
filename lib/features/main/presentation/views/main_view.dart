@@ -23,7 +23,7 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CartCubit(getIt.get<CartRepo>()),
+      create: (context) => CartCubit(getIt.get<CartRepo>())..getAllCartList(),
       child: Scaffold(
         bottomNavigationBar: CustomButtomNavBar(
           onTap: (value) {

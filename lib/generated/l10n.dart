@@ -728,6 +728,11 @@ class S {
       args: [],
     );
   }
+
+  /// `gm`
+  String get gram {
+    return Intl.message('gm', name: 'gram', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

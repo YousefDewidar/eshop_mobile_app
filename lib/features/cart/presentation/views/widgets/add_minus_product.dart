@@ -3,19 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/space.dart';
-import 'package:rfaye3/features/cart/data/models/cart_item_model.dart';
+import 'package:rfaye3/features/cart/data/models/cart_product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 
 class AddMinusProduct extends StatelessWidget {
   const AddMinusProduct({super.key, required this.product});
-  final CartItemModel product;
+  final CartProductModel product;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         InkWell(
           onTap: () {
-            context.read<CartCubit>().addToCart(product);
+            context.read<CartCubit>().addToCart(product.productId);
           },
           radius: 12,
           borderRadius: BorderRadius.circular(12),
@@ -26,11 +26,11 @@ class AddMinusProduct extends StatelessWidget {
           ),
         ),
         const SpaceH(16),
-        Text(product.count.toString(), style: TextStyles.bold16),
+        Text(product.quantity.toString(), style: TextStyles.bold16),
         const SpaceH(16),
         InkWell(
           onTap: () {
-            context.read<CartCubit>().removeOneFromCart(product);
+            context.read<CartCubit>().removeOneFromCart(product.itemId);
           },
           radius: 12,
           borderRadius: BorderRadius.circular(12),

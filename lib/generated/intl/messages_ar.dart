@@ -61,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "free": MessageLookupByLibrary.simpleMessage("مجاني"),
     "fullName": MessageLookupByLibrary.simpleMessage("الاسم كامل"),
     "google": MessageLookupByLibrary.simpleMessage("تسجيل بواسطة جوجل"),
+    "gram": MessageLookupByLibrary.simpleMessage("جرام"),
     "haveProductsInCart1": MessageLookupByLibrary.simpleMessage("لديك"),
     "haveProductsInCart2": MessageLookupByLibrary.simpleMessage(
       "منتجات في سله التسوق",

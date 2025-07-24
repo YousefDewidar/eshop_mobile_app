@@ -3,7 +3,6 @@ import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/features/checkout/presentation/views/add_address_view.dart';
 
 import 'package:rfaye3/features/checkout/presentation/views/checkout_view.dart';
-import 'package:rfaye3/features/cart/data/models/cart_item_model.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/main/presentation/views/main_view.dart';
@@ -28,12 +27,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
     case Routes.notification:
       return MaterialPageRoute(builder: (context) => const NotificationView());
     case Routes.checkout:
-      return MaterialPageRoute(
-        builder:
-            (context) => CheckoutView(
-              cartList: setting.arguments as List<CartItemModel>,
-            ),
-      );
+      return MaterialPageRoute(builder: (context) => const CheckoutView());
     case Routes.profile:
       return MaterialPageRoute(builder: (context) => const ProfileView());
     case Routes.productDetailsView:

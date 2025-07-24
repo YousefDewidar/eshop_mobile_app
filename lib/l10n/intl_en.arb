@@ -93,5 +93,6 @@
   "apartment": "Apartment / Landmark",
   "phoneNumber": "Mobile Number",
   "notes": "Notes",
-  "addFirstAddress": "Add your first address"
+  "addFirstAddress": "Add your first address",
+  "gram": "gm"
 }

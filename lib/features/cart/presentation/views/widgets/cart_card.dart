@@ -6,16 +6,16 @@ import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
-import 'package:rfaye3/features/cart/data/models/cart_item_model.dart';
+import 'package:rfaye3/features/cart/data/models/cart_product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_state.dart';
 import 'package:rfaye3/features/cart/presentation/views/widgets/add_minus_product.dart';
 import 'package:rfaye3/generated/l10n.dart';
 import 'package:svg_flutter/svg.dart';
 
-class CartItem extends StatelessWidget {
-  const CartItem({super.key, required this.product});
-  final CartItemModel product;
+class CartCard extends StatelessWidget {
+  const CartCard({super.key, required this.product});
+  final CartProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class CartItem extends StatelessWidget {
             color: Theme.of(context).colorScheme.surface,
             child: CachedNetworkImage(
               fit: BoxFit.cover,
-              imageUrl: product.product.coverPictureUrl,
+              imageUrl: product.productCoverUrl,
               placeholder:
                   (context, url) => const Center(
                     child: CircularProgressIndicator(
@@ -52,10 +52,10 @@ class CartItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(product.product.name, style: TextStyles.bold13),
+              Text(product.productName, style: TextStyles.bold13),
               const SpaceV(6),
               Text(
-                '${product.calcWeight()} ${S.of(context).kilogram}',
+                '${product.weightInGrams} ${S.of(context).gram}',
                 style: TextStyles.regular13.copyWith(
                   color: AppColors.secondaryColor,
                 ),
@@ -86,13 +86,13 @@ class CartItem extends StatelessWidget {
                 },
                 child: InkWell(
                   onTap: () {
-                    context.read<CartCubit>().removeItem(product);
+                    context.read<CartCubit>().removeItem(product.itemId);
                   },
                   child: SvgPicture.asset(Assets.imagesTrash),
                 ),
               ),
               Text(
-                '${product.calcTotalPriceForItem().toStringAsFixed(2)} ${S.of(context).egp}',
+                '${product.totalPriceForItem.toStringAsFixed(2)} ${S.of(context).egp}',
                 style: TextStyles.bold16.copyWith(
                   color: AppColors.secondaryColor,
                 ),
