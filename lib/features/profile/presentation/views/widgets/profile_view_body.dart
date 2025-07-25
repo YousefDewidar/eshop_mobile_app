@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
@@ -44,8 +45,16 @@ class ProfileViewBody extends StatelessWidget {
         const SliverToBoxAdapter(child: SizedBox(height: 10)),
         SliverList(
           delegate: SliverChildListDelegate.fixed([
-            SettingItem(title: S.of(context).set1, icon: Assets.imagesSet1),
-            SettingItem(title: S.of(context).set2, icon: Assets.imagesSet2),
+            SettingItem(
+              title: S.of(context).set1,
+              icon: Assets.imagesSet1,
+              secPageName: Routes.personal,
+            ),
+            SettingItem(
+              title: S.of(context).set2,
+              icon: Assets.imagesSet2,
+              secPageName: Routes.orders,
+            ),
             SettingItem(title: S.of(context).set3, icon: Assets.imagesSet3),
             SettingItem(title: S.of(context).set4, icon: Assets.imagesSet4),
             SettingItem(

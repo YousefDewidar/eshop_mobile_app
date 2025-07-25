@@ -95,6 +95,14 @@
   "notes": "Notes",
   "addFirstAddress": "Add your first address",
   "gram": "gm",
-  "outOfStock":"Out of stock"
-  
+  "outOfStock": "Out of stock",
+  "myOrders": "My Orders",
+  "orderNumber": "Order Number",
+  "orderDate": "Order Date",
+  "ordersCount": "Orders Count",
+  "personal": "Profile",
+  "personalInfo": "Personal Info",
+  "noInternet": "No Internet Connection",
+  "noInternet2": "The connection to the server has been lost. Please check your internet connection and try again",
+  "tryAgain": "Try Again"
 }

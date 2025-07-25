@@ -738,6 +738,76 @@ class S {
   String get outOfStock {
     return Intl.message('Out of stock', name: 'outOfStock', desc: '', args: []);
   }
+
+  /// `My Orders`
+  String get myOrders {
+    return Intl.message('My Orders', name: 'myOrders', desc: '', args: []);
+  }
+
+  /// `Order Number`
+  String get orderNumber {
+    return Intl.message(
+      'Order Number',
+      name: 'orderNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Date`
+  String get orderDate {
+    return Intl.message('Order Date', name: 'orderDate', desc: '', args: []);
+  }
+
+  /// `Orders Count`
+  String get ordersCount {
+    return Intl.message(
+      'Orders Count',
+      name: 'ordersCount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get personal {
+    return Intl.message('Profile', name: 'personal', desc: '', args: []);
+  }
+
+  /// `Personal Info`
+  String get personalInfo {
+    return Intl.message(
+      'Personal Info',
+      name: 'personalInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Internet Connection`
+  String get noInternet {
+    return Intl.message(
+      'No Internet Connection',
+      name: 'noInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The connection to the server has been lost. Please check your internet connection and try again`
+  String get noInternet2 {
+    return Intl.message(
+      'The connection to the server has been lost. Please check your internet connection and try again',
+      name: 'noInternet2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try Again`
+  String get tryAgain {
+    return Intl.message('Try Again', name: 'tryAgain', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

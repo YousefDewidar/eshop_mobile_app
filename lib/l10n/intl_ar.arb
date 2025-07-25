@@ -93,7 +93,16 @@
   "apartment": "تفاصيل إضافية",
   "phoneNumber": "رقم الموبايل",
   "notes": "ملاحظات",
-  "addFirstAddress":"ضيف عنوانك الأول",
-  "gram":"جرام",
-  "outOfStock":"المنتج غير متاح"
+  "addFirstAddress": "ضيف عنوانك الأول",
+  "gram": "جرام",
+  "outOfStock": "المنتج غير متاح",
+  "myOrders": "طلباتي",
+  "orderNumber": "طلب رقم",
+  "orderDate": "تاريخ الطلب",
+  "ordersCount": "عدد الطلبات",
+  "personal": "الملف الشخصي",
+  "personalInfo": "المعلومات الشخصية",
+  "noInternet": "فقدت اتصالك بالانترنت",
+  "noInternet2": "انتهت مهلة اتصالك بالخادم يرجي التحقق من اتصال الشبكة وإعادة المحاولة",
+  "tryAgain": "حاول مرة تانية"
 }

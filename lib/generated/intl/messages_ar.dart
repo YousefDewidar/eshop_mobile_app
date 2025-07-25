@@ -84,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "login": MessageLookupByLibrary.simpleMessage("تسجيل دخول"),
     "more": MessageLookupByLibrary.simpleMessage("المزيد"),
     "mostPop": MessageLookupByLibrary.simpleMessage("الأكثر مبيعًا"),
+    "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
     "newPassAppbar": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
     "newPassBody": MessageLookupByLibrary.simpleMessage(
       "قم بإنشاء كلمة مرور جديدة لتسجيل الدخول",
@@ -94,10 +95,17 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "new_notification": MessageLookupByLibrary.simpleMessage("جديد"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "noInternet": MessageLookupByLibrary.simpleMessage("فقدت اتصالك بالانترنت"),
+    "noInternet2": MessageLookupByLibrary.simpleMessage(
+      "انتهت مهلة اتصالك بالخادم يرجي التحقق من اتصال الشبكة وإعادة المحاولة",
+    ),
     "noSearch": MessageLookupByLibrary.simpleMessage("لا يوجد نتائج بحث"),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "notification": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
+    "orderDate": MessageLookupByLibrary.simpleMessage("تاريخ الطلب"),
+    "orderNumber": MessageLookupByLibrary.simpleMessage("طلب رقم"),
+    "ordersCount": MessageLookupByLibrary.simpleMessage("عدد الطلبات"),
     "ourProduct": MessageLookupByLibrary.simpleMessage("منتجاتنا"),
     "outOfStock": MessageLookupByLibrary.simpleMessage("المنتج غير متاح"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -110,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "يرجي تحديد طريقة الدفع",
     ),
     "payment": MessageLookupByLibrary.simpleMessage("الدفع"),
+    "personal": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "personalInfo": MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
     "phone": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الموبايل"),
     "products": MessageLookupByLibrary.simpleMessage("المنتجات"),
@@ -148,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "termCon2": MessageLookupByLibrary.simpleMessage(
       "الشروط والأحكام الخاصة بنا",
     ),
+    "tryAgain": MessageLookupByLibrary.simpleMessage("حاول مرة تانية"),
     "verifyAgain": MessageLookupByLibrary.simpleMessage("إعادة إرسال الرمز"),
     "verifyAppbar": MessageLookupByLibrary.simpleMessage(
       "التحقق من البريد الإلكتروني",

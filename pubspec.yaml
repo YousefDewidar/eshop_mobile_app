@@ -32,6 +32,8 @@ dependencies:
   cached_network_image:
   device_preview:
   flutter_swipe_button: ^2.1.3
+  lottie:
+  connectivity_plus: ^6.1.4
 
 dev_dependencies:
   intl_utils:
@@ -47,6 +49,7 @@ flutter:
     - assets/images/
     - assets/images/vuesax/bold/
     - assets/images/vuesax/outline/
+    - assets/animations/
 
   fonts:
     - family: cairo

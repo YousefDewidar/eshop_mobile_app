@@ -10,6 +10,7 @@ import 'package:rfaye3/features/main/presentation/views/notification_view.dart';
 import 'package:rfaye3/features/main/presentation/views/product_details_view.dart';
 import 'package:rfaye3/features/main/presentation/views/search_view.dart';
 import 'package:rfaye3/features/profile/presentation/views/orders_veiw.dart';
+import 'package:rfaye3/features/profile/presentation/views/personal_view.dart';
 import 'package:rfaye3/features/profile/presentation/views/profile_view.dart';
 import 'package:rfaye3/features/splash/presentation/views/landing_view.dart';
 import 'package:rfaye3/features/splash/presentation/views/splash_view.dart';
@@ -48,6 +49,8 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
       return MaterialPageRoute(builder: (context) => const AddAddressView());
     case Routes.orders:
       return MaterialPageRoute(builder: (context) => const OrdersView());
+    case Routes.personal:
+      return MaterialPageRoute(builder: (context) => const PersonalView());
     default:
       return null;
   }

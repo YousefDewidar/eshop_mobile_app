@@ -10,5 +10,6 @@ abstract class Routes {
   static const productDetailsView = 'productDetailsView';
 
   static const profile = 'profile';
-  static const orders = 'orders';  
+  static const orders = 'orders';
+  static const personal = 'personal';
 }
