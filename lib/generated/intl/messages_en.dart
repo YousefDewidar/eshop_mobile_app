@@ -136,7 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "set4": MessageLookupByLibrary.simpleMessage("My Favorites"),
     "set5": MessageLookupByLibrary.simpleMessage("My Notifications"),
     "set6": MessageLookupByLibrary.simpleMessage("Language"),
-    "set7": MessageLookupByLibrary.simpleMessage("Theme"),
+    "set7": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "shipping": MessageLookupByLibrary.simpleMessage("Shipping"),
     "shopNow": MessageLookupByLibrary.simpleMessage("Shop Now"),
     "signOut": MessageLookupByLibrary.simpleMessage("Sign Out"),

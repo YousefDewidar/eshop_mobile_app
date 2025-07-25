@@ -24,7 +24,7 @@ class PriceReview extends StatelessWidget {
               ),
             ),
             Text(
-              "${orderPayload.orderPrice} ${S.current.egp}",
+              "${orderPayload.orderPrice!.toStringAsFixed(2)} ${S.current.egp}",
               style: TextStyles.semiBold16,
             ),
           ],
@@ -56,7 +56,7 @@ class PriceReview extends StatelessWidget {
           children: [
             const Text("الكلي", style: TextStyles.bold16),
             Text(
-              "${orderPayload.shipPrice! + orderPayload.orderPrice!} ${S.current.egp}",
+              "${(orderPayload.shipPrice! + orderPayload.orderPrice!).toStringAsFixed(2)} ${S.current.egp}",
               style: TextStyles.bold16,
             ),
           ],

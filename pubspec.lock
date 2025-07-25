@@ -262,6 +262,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_add_to_cart_button:
+    dependency: "direct main"
+    description:
+      name: flutter_add_to_cart_button
+      sha256: "6fb18ad47c6affc430639bbe44221e393b108c5800e78bb83a90d0c6e7042376"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   flutter_bloc:
     dependency: "direct main"
     description:

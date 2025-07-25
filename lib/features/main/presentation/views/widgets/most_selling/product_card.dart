@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/routes/routes.dart';
-
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
-import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
-import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_state.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
+import 'package:rfaye3/features/main/presentation/views/widgets/most_selling/add_to_cart_floating_button.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class ProductCard extends StatelessWidget {
@@ -95,37 +93,11 @@ class ProductCard extends StatelessWidget {
             // const FavIcon(),
             product.stock == 0
                 ? const SizedBox()
-                : Positioned.directional(
-                  textDirection:
-                      isArabic ? TextDirection.ltr : TextDirection.rtl,
-                  bottom: 16,
-                  start: 10,
-                  child: BlocListener<CartCubit, CartState>(
-                    listener: (context, state) {
-                      if (state is CartFail) {
-                        showNotification(context, state.error, NotiType.error);
-                      } else if (state is AddedToCart) {
-                        showNotification(
-                          context,
-                          'تم اضافة ${product.name} إلي السلة',
-                          NotiType.success,
-                        );
-                      }
-                    },
-                    child: InkWell(
-                      onTap: () {
-                        context.read<CartCubit>().addToCart(product.id);
-                      },
-                      child: const CircleAvatar(
-                        backgroundColor: AppColors.primaryColor,
-                        child: Icon(Icons.add, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
+                : AddToCartFloatingButton(isArabic: isArabic, product: product),
           ],
         ),
       ),
     );
   }
 }
+

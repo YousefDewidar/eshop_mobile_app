@@ -140,7 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "set4": MessageLookupByLibrary.simpleMessage("المفضلة"),
     "set5": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "set6": MessageLookupByLibrary.simpleMessage("اللغة"),
-    "set7": MessageLookupByLibrary.simpleMessage("الوضع"),
+    "set7": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
     "shipping": MessageLookupByLibrary.simpleMessage("الشحن"),
     "shopNow": MessageLookupByLibrary.simpleMessage("تسوق الآن"),
     "signOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),

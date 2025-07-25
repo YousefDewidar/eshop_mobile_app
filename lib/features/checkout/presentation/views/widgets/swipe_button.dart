@@ -4,8 +4,15 @@ import 'package:flutter_swipe_button/flutter_swipe_button.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/features/checkout/presentation/view_model/checkout_cubit/checkout_cubit.dart';
 
-class SwipleButton extends StatelessWidget {
+class SwipleButton extends StatefulWidget {
   const SwipleButton({super.key});
+
+  @override
+  State<SwipleButton> createState() => _SwipleButtonState();
+}
+
+class _SwipleButtonState extends State<SwipleButton> {
+  bool enabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +24,9 @@ class SwipleButton extends StatelessWidget {
       activeThumbColor: Colors.white,
       activeTrackColor: AppColors.primaryColor,
       height: 60,
+
+      enabled: enabled,
+
       child: const Text(
         'تأكيد الطلب',
         style: TextStyle(
@@ -25,8 +35,12 @@ class SwipleButton extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onSwipe: () {
-        context.read<CheckoutCubit>().createOrder();
+      onSwipe: () async {
+        enabled = false;
+        setState(() {});
+        await context.read<CheckoutCubit>().createOrder();
+        enabled = true;
+        setState(() {});
       },
     );
   }

@@ -37,29 +37,32 @@ class _SplashViewState extends State<SplashView> {
             height: 180,
             alignment: Alignment.topLeft,
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Column(
-              children: [
-                Image.asset(Assets.imagesLand1, height: 200),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'HUB ',
-                      style: TextStyles.bold28.copyWith(
-                        color: AppColors.secondaryColor,
+          Directionality(
+            textDirection: TextDirection.ltr,
+            child: Align(
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Image.asset(Assets.imagesLand1, height: 200),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Accessory ',
+                        style: TextStyles.bold28.copyWith(
+                          color: AppColors.primaryColor,
+                        ),
                       ),
-                    ),
-                    Text(
-                      'Accessory',
-                      style: TextStyles.bold28.copyWith(
-                        color: AppColors.primaryColor,
+                      Text(
+                        'HUB',
+                        style: TextStyles.bold28.copyWith(
+                          color: AppColors.secondaryColor,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           SvgPicture.asset(Assets.imagesSplashBottom, height: 180),

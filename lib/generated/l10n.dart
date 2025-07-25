@@ -669,9 +669,9 @@ class S {
     return Intl.message('Language', name: 'set6', desc: '', args: []);
   }
 
-  /// `Theme`
+  /// `Dark Mode`
   String get set7 {
-    return Intl.message('Theme', name: 'set7', desc: '', args: []);
+    return Intl.message('Dark Mode', name: 'set7', desc: '', args: []);
   }
 
   /// `Sign Out`

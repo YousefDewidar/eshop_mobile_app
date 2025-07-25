@@ -27,7 +27,8 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-  void addToCart(String productId) async {
+  Future<void> addToCart(String productId) async {
+    emit(AddToCartLoading(productId));
     final result = await cartRepo.addToCart(productId);
     result.fold(
       (fail) {
@@ -51,8 +52,6 @@ class CartCubit extends Cubit<CartState> {
         calcTotalPrice();
       },
     );
-
-
   }
 
   void removeItem(String itemIdInCart) async {

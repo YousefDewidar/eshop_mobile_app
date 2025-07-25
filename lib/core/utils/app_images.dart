@@ -46,6 +46,10 @@ class Assets {
   /// assets/images/google_icon.svg
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
 
+  /// Assets for imagesIcCart
+  /// assets/images/ic_cart.png
+  static const String imagesIcCart = "assets/images/ic_cart.png";
+
   /// Assets for imagesLand1
   /// assets/images/land1.png
   static const String imagesLand1 = "assets/images/land1.png";

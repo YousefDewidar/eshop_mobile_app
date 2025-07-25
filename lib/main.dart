@@ -10,6 +10,7 @@ import 'package:rfaye3/core/routes/generate_routes.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_themes.dart';
 import 'package:rfaye3/core/widgets/no_internet_view.dart';
+import 'package:rfaye3/features/profile/presentation/view_model/settings_cubit/settings_cubit.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 void main() async {
@@ -79,22 +80,32 @@ class _Rfaye3AppState extends State<Rfaye3App> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: navigatorKey,
-      themeMode: ThemeMode.light,
-      theme: AppThemes.getLightData(),
-      darkTheme: AppThemes.getDarkData(),
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale('ar'),
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: onGenerateRoute,
-      initialRoute: Routes.splash,
+    return BlocProvider(
+      create: (context) => SettingsCubit()..init(),
+      child: Builder(
+        builder: (context) {
+          return MaterialApp(
+            navigatorKey: navigatorKey,
+            themeMode:
+                context.watch<SettingsCubit>().isDark
+                    ? ThemeMode.dark
+                    : ThemeMode.light,
+            theme: AppThemes.getLightData(),
+            darkTheme: AppThemes.getDarkData(),
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
+            locale: Locale(context.watch<SettingsCubit>().langCode),
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: onGenerateRoute,
+            initialRoute: Routes.splash,
+          );
+        }
+      ),
     );
   }
 }

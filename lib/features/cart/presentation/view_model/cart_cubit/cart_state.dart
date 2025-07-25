@@ -10,6 +10,12 @@ final class RemovedFromCart extends CartState {}
 
 final class CartLoading extends CartState {}
 
+final class AddToCartLoading extends CartState {
+  final String productId;
+
+  AddToCartLoading(this.productId);
+}
+
 final class CartFail extends CartState {
   final String error;
   CartFail(this.error);
