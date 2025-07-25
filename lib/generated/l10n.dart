@@ -733,6 +733,11 @@ class S {
   String get gram {
     return Intl.message('gm', name: 'gram', desc: '', args: []);
   }
+
+  /// `Out of stock`
+  String get outOfStock {
+    return Intl.message('Out of stock', name: 'outOfStock', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

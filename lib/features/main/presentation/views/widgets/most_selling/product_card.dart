@@ -38,6 +38,17 @@ class ProductCard extends StatelessWidget {
         ),
         child: Stack(
           children: [
+            if (product.stock == 0)
+              Container(
+                width: double.infinity,
+                color: Colors.red,
+                padding: const EdgeInsets.only(top: 5, bottom: 5),
+                child: Text(
+                  S.of(context).outOfStock,
+                  textAlign: TextAlign.center,
+                  style: TextStyles.medium15.copyWith(color: Colors.white),
+                ),
+              ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
               child: Column(
@@ -82,34 +93,36 @@ class ProductCard extends StatelessWidget {
             ),
 
             // const FavIcon(),
-
-            Positioned.directional(
-              textDirection: isArabic ? TextDirection.ltr : TextDirection.rtl,
-              bottom: 16,
-              start: 10,
-              child: BlocListener<CartCubit, CartState>(
-                listener: (context, state) {
-                  if (state is CartFail) {
-                    showNotification(context, state.error, NotiType.error);
-                  } else if (state is AddedToCart) {
-                    showNotification(
-                      context,
-                      'تم اضافة ${product.name} إلي السلة',
-                      NotiType.success,
-                    );
-                  }
-                },
-                child: InkWell(
-                  onTap: () {
-                    context.read<CartCubit>().addToCart(product.id);
-                  },
-                  child: const CircleAvatar(
-                    backgroundColor: AppColors.primaryColor,
-                    child: Icon(Icons.add, color: Colors.white),
+            product.stock == 0
+                ? const SizedBox()
+                : Positioned.directional(
+                  textDirection:
+                      isArabic ? TextDirection.ltr : TextDirection.rtl,
+                  bottom: 16,
+                  start: 10,
+                  child: BlocListener<CartCubit, CartState>(
+                    listener: (context, state) {
+                      if (state is CartFail) {
+                        showNotification(context, state.error, NotiType.error);
+                      } else if (state is AddedToCart) {
+                        showNotification(
+                          context,
+                          'تم اضافة ${product.name} إلي السلة',
+                          NotiType.success,
+                        );
+                      }
+                    },
+                    child: InkWell(
+                      onTap: () {
+                        context.read<CartCubit>().addToCart(product.id);
+                      },
+                      child: const CircleAvatar(
+                        backgroundColor: AppColors.primaryColor,
+                        child: Icon(Icons.add, color: Colors.white),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
           ],
         ),
       ),

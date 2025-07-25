@@ -9,7 +9,8 @@ enum NotiType { error, success, warning }
 void showNotification(BuildContext context, String message, NotiType notiType) {
   return showTopSnackBar(
     Overlay.of(context),
-    animationDuration: const Duration(milliseconds: 500),
+    // animationDuration: const Duration(milliseconds: 500),
+    displayDuration: const Duration(milliseconds: 500),
     CustomSnackBar.success(
       backgroundColor:
           notiType == NotiType.error

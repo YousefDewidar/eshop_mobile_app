@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
@@ -7,6 +8,7 @@ import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/checkout/data/models/address.dart';
 import 'package:rfaye3/features/checkout/presentation/view_model/address_cubit/address_cubit.dart';
 import 'package:rfaye3/features/checkout/presentation/view_model/address_cubit/address_state.dart';
+import 'package:rfaye3/features/checkout/presentation/view_model/checkout_cubit/checkout_cubit.dart';
 import 'package:rfaye3/features/checkout/presentation/views/add_address_view.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/address_card.dart';
 import 'package:rfaye3/generated/l10n.dart';
@@ -44,6 +46,10 @@ class _AddressSectionViewState extends State<AddressSectionView> {
 
             if (newAddress != null && context.mounted) {
               context.read<AddressCubit>().getAllAddress();
+              context.read<CheckoutCubit>().order = context
+                  .read<CheckoutCubit>()
+                  .order
+                  .copyWith(address: newAddress);
             }
           },
           child: Container(
@@ -80,7 +86,7 @@ class _AddressSectionViewState extends State<AddressSectionView> {
                       return AddressCard(
                         index: index,
                         isSelected: false,
-                        address: addresses[0],
+                        address: dummmyAddresses[0],
                       );
                     },
                   ),
@@ -92,12 +98,18 @@ class _AddressSectionViewState extends State<AddressSectionView> {
                   itemBuilder: (context, index) {
                     final isSelected =
                         ((index == selectedIndex) ||
-                            newAddress?.id == state.addresses[index].id);
+                            (newAddress?.id == state.addresses[index].id) ||
+                            (context.read<CheckoutCubit>().order.address?.id ==
+                                state.addresses[index].id));
 
                     return GestureDetector(
                       onTap: () {
                         setState(() {
                           selectedIndex = index;
+                          context.read<CheckoutCubit>().order = context
+                              .read<CheckoutCubit>()
+                              .order
+                              .copyWith(address: state.addresses[index]);
                         });
                       },
                       child: AddressCard(

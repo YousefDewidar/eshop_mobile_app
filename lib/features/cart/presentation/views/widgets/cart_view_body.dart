@@ -5,6 +5,7 @@ import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/core/widgets/custom_button.dart';
+import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/cart/presentation/views/widgets/cart_list_view.dart';
@@ -45,13 +46,28 @@ class CartViewBody extends StatelessWidget {
             isEnabled: context.read<CartCubit>().cartList.isNotEmpty,
             title:
                 "${S.of(context).checkout} ${context.watch<CartCubit>().totalPrice.toStringAsFixed(2)} ${S.of(context).egp}",
-            onPressed: () {
+            onPressed: () async {
               if (context.read<CartCubit>().cartList.isEmpty) return;
-              Navigator.pushNamed(
-                context,
-                Routes.checkout,
-                arguments: context.read<CartCubit>().cartList,
-              );
+              final orderDone =
+                  await Navigator.pushNamed(
+                        context,
+                        Routes.checkout,
+                        arguments: context.read<CartCubit>().totalPrice,
+                      )
+                      as bool?;
+              if (orderDone == true && context.mounted) {
+                await context.read<CartCubit>().getAllCartList();
+                if (!context.mounted) return;
+                if (context.read<CartCubit>().cartList.isEmpty) {
+                  showNotification(
+                    context,
+                    "تم طلب الاوردر بنجاح",
+                    NotiType.success,
+                  );
+                } else {
+                  showNotification(context, "تم إلغاء الطلب", NotiType.error);
+                }
+              }
             },
           ),
         ),

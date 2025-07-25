@@ -35,9 +35,9 @@ class AddressCard extends StatelessWidget {
         }
       },
       child: Dismissible(
-        key: Key(address.id), // استخدم ID فريد
-        background: slideRightBackground(context), // للتعديل
-        secondaryBackground: slideLeftBackground(context), // للحذف
+        key: Key(address.id),
+        background: slideRightBackground(context),
+        secondaryBackground: slideLeftBackground(context),
         confirmDismiss: (direction) async {
           if (direction == DismissDirection.startToEnd) {
             onEdit?.call();

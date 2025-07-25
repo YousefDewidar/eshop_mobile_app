@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,6 @@ class ProductDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(cartCubit.cartList.toString());
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -130,12 +128,17 @@ class ProductDetailsView extends StatelessWidget {
               ),
             ),
             const Spacer(),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: kHoripadding),
               child: SizedBox(
                 width: double.infinity,
                 child: CustomButton(
-                  title: S.of(context).addToCart,
+                  isEnabled: product.stock == 0 ? false : true,
+                  title:
+                      product.stock == 0
+                          ? S.of(context).outOfStock
+                          : S.of(context).addToCart,
                   onPressed: () {
                     cartCubit.addToCart(product.id);
                     showNotification(

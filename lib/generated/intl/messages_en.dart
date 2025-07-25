@@ -97,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notification": MessageLookupByLibrary.simpleMessage("Notifications"),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
     "ourProduct": MessageLookupByLibrary.simpleMessage("Our Products"),
+    "outOfStock": MessageLookupByLibrary.simpleMessage("Out of stock"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "payCash": MessageLookupByLibrary.simpleMessage("Pay Cash"),
     "payCash2": MessageLookupByLibrary.simpleMessage(""),

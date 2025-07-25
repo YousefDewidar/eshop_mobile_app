@@ -12,7 +12,7 @@ class CartCubit extends Cubit<CartState> {
   num totalPrice = 0;
   int totalCount = 0;
 
-  void getAllCartList() async {
+  Future<void> getAllCartList() async {
     emit(CartLoading());
     final result = await cartRepo.getCartList();
     result.fold(

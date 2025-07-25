@@ -44,9 +44,10 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-lib/core/supabase/keys.dart
 
 
 
 
-token_test.dart
+keys.dart
+
+core/utils/constant.dart

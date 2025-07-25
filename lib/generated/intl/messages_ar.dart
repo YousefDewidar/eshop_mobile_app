@@ -99,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notification": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
     "ourProduct": MessageLookupByLibrary.simpleMessage("منتجاتنا"),
+    "outOfStock": MessageLookupByLibrary.simpleMessage("المنتج غير متاح"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "payCash": MessageLookupByLibrary.simpleMessage("الدفع عند الاستلام"),
     "payCash2": MessageLookupByLibrary.simpleMessage(

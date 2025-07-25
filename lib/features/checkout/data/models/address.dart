@@ -43,7 +43,7 @@ class Address {
   String get fullAddress => '$street, $apartment - $city, $state';
 }
 
-final List<Address> addresses = [
+final List<Address> dummmyAddresses = [
   Address(
     id: "",
     state: 'gharbia',

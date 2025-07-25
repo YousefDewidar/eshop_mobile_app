@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/constant.dart';
+import 'package:rfaye3/features/main/presentation/view_model/most_seilling_cubit/most_seilling_cubit.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/most_selling/most_selling_grid_view_bloc_consumer.dart';
 import 'package:rfaye3/core/widgets/search_text_field.dart';
 import 'package:rfaye3/core/widgets/space.dart';
@@ -14,42 +16,47 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kHoripadding),
-            child: Column(
-              children: [
-                const HomeAppBar(),
-                const SpaceV(16),
-                GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, Routes.search),
-                  child: SearchTextField(
-                    enabled: false,
-                    hint: S.of(context).homeSearchHint,
+    return RefreshIndicator(
+      onRefresh: () async {
+        await context.read<MostSeillingCubit>().getMostSeillingProducts();
+      },
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: kHoripadding),
+              child: Column(
+                children: [
+                  const HomeAppBar(),
+                  const SpaceV(16),
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, Routes.search),
+                    child: SearchTextField(
+                      enabled: false,
+                      hint: S.of(context).homeSearchHint,
+                    ),
                   ),
-                ),
-                const SpaceV(12),
-              ],
+                  const SpaceV(12),
+                ],
+              ),
             ),
           ),
-        ),
-        const SliverToBoxAdapter(child: OfferListView()),
-        const SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.only(
-              left: kHoripadding,
-              right: kHoripadding,
-              top: 12,
-              bottom: 8,
+          const SliverToBoxAdapter(child: OfferListView()),
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: kHoripadding,
+                right: kHoripadding,
+                top: 12,
+                bottom: 8,
+              ),
+              child: MostSellingTextRow(),
             ),
-            child: MostSellingTextRow(),
           ),
-        ),
-        const MostSellingGridViewBlocConsumer(),
-        const SliverToBoxAdapter(child: SpaceV(16)),
-      ],
+          const MostSellingGridViewBlocConsumer(),
+          const SliverToBoxAdapter(child: SpaceV(16)),
+        ],
+      ),
     );
   }
 }

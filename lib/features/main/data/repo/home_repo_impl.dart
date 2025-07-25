@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:rfaye3/core/network/api_service.dart';
@@ -33,8 +31,6 @@ class HomeRepoImpl implements HomeRepo {
     try {
       try {
         Response data = await apiService.get("/api/categories");
-        log(data.data.toString());
-
         List<CategoryModel> products =
             (data.data as List).map((e) {
               return CategoryModel.fromJson(e);
@@ -42,7 +38,6 @@ class HomeRepoImpl implements HomeRepo {
 
         return right(products);
       } catch (e) {
-        log(e.toString());
         return left(ServerFailure.fromError(e));
       }
     } catch (e) {

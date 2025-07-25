@@ -94,5 +94,7 @@
   "phoneNumber": "Mobile Number",
   "notes": "Notes",
   "addFirstAddress": "Add your first address",
-  "gram": "gm"
+  "gram": "gm",
+  "outOfStock":"Out of stock"
+  
 }

@@ -18,22 +18,20 @@ class StepsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(4, (index) {
-        return Expanded(
-          child:
-              curPage >= index
-                  ? InkWell(
-                    onTap:
-                        () => pageController.animateToPage(
-                          index,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeIn,
-                        ),
-                    child: ActiveStep(title: getStepsTitle()[index]),
-                  )
-                  : InActiveStep(title: getStepsTitle()[index], index: index),
-        );
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+      children: List.generate(3, (index) {
+        return curPage >= index
+            ? InkWell(
+              onTap:
+                  () => pageController.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  ),
+              child: ActiveStep(title: getStepsTitle()[index]),
+            )
+            : InActiveStep(title: getStepsTitle()[index], index: index);
       }),
     );
   }
@@ -43,7 +41,6 @@ List<String> getStepsTitle() {
   return [
     S.current.shipping,
     S.current.address,
-    S.current.payment,
     S.current.review,
   ];
 }

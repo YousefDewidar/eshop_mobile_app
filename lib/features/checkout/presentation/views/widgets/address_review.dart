@@ -1,9 +1,11 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/space.dart';
+import 'package:rfaye3/features/checkout/data/models/order_payload_model.dart';
+import 'package:rfaye3/features/checkout/presentation/view_model/checkout_cubit/checkout_cubit.dart';
 import 'package:svg_flutter/svg.dart';
 
 class AddressReview extends StatelessWidget {
@@ -11,41 +13,22 @@ class AddressReview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OrderPayload order = context.read<CheckoutCubit>().order;
+
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text("عنوان التوصيل", style: TextStyles.bold13),
-            Row(
-              children: [
-                const Icon(
-                  Icons.edit,
-                  size: 20,
-                  color: AppColors.greyColor,
-                ),
-                const SpaceH(3),
-                Text(
-                  "تعديل",
-                  style: TextStyles.semiBold13.copyWith(
-                    color: AppColors.greyColor,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+        const Text("عنوان التوصيل", style: TextStyles.bold13),
+
         const SpaceV(15),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-          SvgPicture.asset(Assets.imagesLocation),
+            SvgPicture.asset(Assets.imagesLocation),
             const SpaceH(8),
             Text(
-              "شارع النيل، مبنى رقم ١٢٣",
-              style: TextStyles.regular16.copyWith(
-                color: AppColors.greyColor,
-              ),
+              order.address!.fullAddress,
+              style: TextStyles.regular16.copyWith(color: AppColors.greyColor),
             ),
           ],
         ),

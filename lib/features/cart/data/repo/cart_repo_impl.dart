@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:rfaye3/core/network/api_service.dart';
@@ -48,7 +47,6 @@ class CartRepoImpl implements CartRepo {
       );
       return const Right(null);
     } catch (e) {
-      log(e.toString());
       return Left(ServerFailure.fromError(e));
     }
   }

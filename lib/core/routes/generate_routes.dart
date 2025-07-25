@@ -27,7 +27,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
     case Routes.notification:
       return MaterialPageRoute(builder: (context) => const NotificationView());
     case Routes.checkout:
-      return MaterialPageRoute(builder: (context) => const CheckoutView());
+      return MaterialPageRoute(
+        builder:
+            (context) => CheckoutView(orderPrice: setting.arguments as num),
+      );
     case Routes.profile:
       return MaterialPageRoute(builder: (context) => const ProfileView());
     case Routes.productDetailsView:

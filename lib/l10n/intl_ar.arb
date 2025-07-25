@@ -94,5 +94,6 @@
   "phoneNumber": "رقم الموبايل",
   "notes": "ملاحظات",
   "addFirstAddress":"ضيف عنوانك الأول",
-  "gram":"جرام"
+  "gram":"جرام",
+  "outOfStock":"المنتج غير متاح"
 }

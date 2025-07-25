@@ -2,6 +2,12 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = rootProject.projectDir.toURI().resolve("libs")
+        }
+        maven {
+            url = uri("https://jitpack.io")
+        }
     }
 }
 
@@ -12,6 +18,7 @@ subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
+
 subprojects {
     project.evaluationDependsOn(":app")
 }
