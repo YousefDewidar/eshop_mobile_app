@@ -13,6 +13,8 @@
   "createAcc": "Create a new account",
   "signUp": "Sign Up",
   "fullName": "Full Name",
+  "firstName": "First Name",
+  "lastName": "Last Name",
   "termCon1": "By creating an account, you agree to",
   "termCon2": "Terms & Conditions",
   "allreadyhaveAccount": "Already have an account?",

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
-import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/checkout/data/models/address.dart';
 import 'package:rfaye3/features/checkout/presentation/view_model/address_cubit/address_cubit.dart';
@@ -74,10 +73,7 @@ class _AddressSectionViewState extends State<AddressSectionView> {
         Expanded(
           child: BlocBuilder<AddressCubit, AddressState>(
             builder: (context, state) {
-              if (state is AddressFailuer) {
-                showNotification(context, "حدث خطا ما", NotiType.error);
-                return const SizedBox();
-              } else if (state is AddressLoading) {
+              if (state is AddressLoading) {
                 return Skeletonizer(
                   enabled: true,
                   child: ListView.builder(

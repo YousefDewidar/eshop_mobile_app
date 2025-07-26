@@ -14,6 +14,7 @@ class ServerFailure extends Failuer {
 
   factory ServerFailure.fromError(Object e) {
     if (e is DioException) {
+      log(e.response.toString());
       switch (e.type) {
         case DioExceptionType.connectionTimeout:
           return ServerFailure(
@@ -54,7 +55,6 @@ class ServerFailure extends Failuer {
     }
   }
   factory ServerFailure._fromBadResponse(Response response) {
-    log(response.toString());
     if (response.statusCode == 401) {
       return ServerFailure(message: 'Unauthorized');
     }
@@ -68,6 +68,11 @@ class ServerFailure extends Failuer {
       }
 
       return ServerFailure(message: 'Unknown error occurred');
+    } else if (response.statusCode == 429) {
+
+      return ServerFailure(
+        message: 'Too many requests, please try again after some time',
+      );
     } else if (response.statusCode == 500) {
       return ServerFailure(
         message: 'The problem in a server, please try later',

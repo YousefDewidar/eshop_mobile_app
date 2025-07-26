@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:rfaye3/features/auth/ui/views/forget_pass_view.dart';
+import 'package:rfaye3/features/auth/ui/views/login_view.dart';
+import 'package:rfaye3/features/auth/ui/views/signup_view.dart';
+import 'package:rfaye3/features/auth/ui/views/verify_code_view.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/features/checkout/presentation/views/add_address_view.dart';
-
 import 'package:rfaye3/features/checkout/presentation/views/checkout_view.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
@@ -51,6 +54,17 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
       return MaterialPageRoute(builder: (context) => const OrdersView());
     case Routes.personal:
       return MaterialPageRoute(builder: (context) => const PersonalView());
+    case Routes.login:
+      return MaterialPageRoute(builder: (context) => const LoginView());
+    case Routes.signUp:
+      return MaterialPageRoute(builder: (context) => const SignupView());
+    case Routes.forgetPass:
+      return MaterialPageRoute(builder: (context) => const ForgetPassView());
+    case Routes.verify:
+      return MaterialPageRoute(
+        builder:
+            (context) => VerifyCodeView(email: setting.arguments as String),
+      );
     default:
       return null;
   }

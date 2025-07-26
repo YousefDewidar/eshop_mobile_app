@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "egp": MessageLookupByLibrary.simpleMessage("جنيه"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "face": MessageLookupByLibrary.simpleMessage("تسجيل بواسطة فيسبوك"),
+    "firstName": MessageLookupByLibrary.simpleMessage("الاسم الاول"),
     "forgetPass3": MessageLookupByLibrary.simpleMessage(
       "لا تقلق ، ما عليك سوى كتابة بريدك الإلكتروني وسنرسل رمز التحقق.",
     ),
@@ -80,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "نقدم لك إكسسوارات أنيقة تناسب كل الأذواق. تصفح الصور، واقرأ التفاصيل والتقييمات لتختار القطعة المثالية التي تُكمل أناقتك.",
     ),
     "land2Title": MessageLookupByLibrary.simpleMessage("تسوق بذوقك"),
+    "lastName": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
     "lastSearch": MessageLookupByLibrary.simpleMessage("عمليات البحث الأخيرة"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل دخول"),
     "more": MessageLookupByLibrary.simpleMessage("المزيد"),

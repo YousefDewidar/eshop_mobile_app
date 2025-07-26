@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/helper/di.dart';
+import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/core/widgets/custom_button.dart';
@@ -68,7 +69,7 @@ class _LandingViewState extends State<LandingView> {
               child: CustomButton(
                 onPressed: () {
                   getIt.get<SharedPreferences>().setBool("viewLanding", true);
-                  // Navigator.pushReplacementNamed(context, Routes.login);
+                  Navigator.pushReplacementNamed(context, Routes.login);
                 },
                 title: S.of(context).startNow,
               ),

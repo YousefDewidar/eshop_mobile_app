@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rfaye3/core/helper/secure_storage.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
@@ -59,27 +60,37 @@ class ProfileViewBody extends StatelessWidget {
         ),
         const Spacer(),
 
-        Container(
-          padding: const EdgeInsets.all(8),
-          width: double.infinity,
-          color: AppColors.lightPrimaryColor.withValues(alpha: 0.15),
+        InkWell(
+          onTap: () async {
+            await SecureStorage.deleteUserData();
+            if (context.mounted) {
+              Navigator.of(
+                context,
+              ).pushNamedAndRemoveUntil(Routes.login, (route) => false);
+            }
+          },
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            width: double.infinity,
+            color: AppColors.lightPrimaryColor.withValues(alpha: 0.15),
 
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(S.of(context).signOut, style: TextStyles.regular16),
-              const SpaceH(20),
-              Transform.rotate(
-                angle: 180 * 3.14 / 180,
-                child: const Icon(
-                  Icons.logout_rounded,
-                  color: AppColors.lightPrimaryColor,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(S.of(context).signOut, style: TextStyles.regular16),
+                const SpaceH(20),
+                Transform.rotate(
+                  angle: 180 * 3.14 / 180,
+                  child: const Icon(
+                    Icons.logout_rounded,
+                    color: AppColors.lightPrimaryColor,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      const SpaceV(60)
+        const SpaceV(60),
       ],
     );
   }

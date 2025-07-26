@@ -12,4 +12,9 @@ abstract class Routes {
   static const profile = 'profile';
   static const orders = 'orders';
   static const personal = 'personal';
+
+  static const verify = 'verify';
+  static const login = 'login';
+  static const signUp = 'signUp';
+  static const forgetPass = 'forgetPass';
 }

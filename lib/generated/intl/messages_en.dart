@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "egp": MessageLookupByLibrary.simpleMessage("EGP"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "face": MessageLookupByLibrary.simpleMessage("Sign in with Facebook"),
+    "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
     "forgetPass3": MessageLookupByLibrary.simpleMessage(
       "Don\'t worry, just enter your email address and we will send you a verification code.",
     ),
@@ -78,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "We offer carefully selected accessories for every taste. Browse photos, read details and reviews, and find the perfect piece to match your style.",
     ),
     "land2Title": MessageLookupByLibrary.simpleMessage("Shop with Style"),
+    "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
     "lastSearch": MessageLookupByLibrary.simpleMessage("Last Search"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "more": MessageLookupByLibrary.simpleMessage("More"),

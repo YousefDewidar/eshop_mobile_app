@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:rfaye3/core/network/api_service.dart';
+import 'package:rfaye3/features/auth/data/repo/auth_repo.dart';
+import 'package:rfaye3/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:rfaye3/features/cart/data/repo/cart_repo.dart';
 import 'package:rfaye3/features/cart/data/repo/cart_repo_impl.dart';
 import 'package:rfaye3/features/checkout/data/repo/checkout_repo.dart';
@@ -16,10 +19,18 @@ var getIt = GetIt.instance;
 Future<void> setupLocator() async {
   getIt.registerSingleton<Dio>(Dio());
   getIt.registerSingleton<ApiService>(ApiService(getIt.get<Dio>()));
+
+  getIt.registerSingleton<AuthRepo>(AuthRepoImpl(getIt.get<ApiService>()));
   getIt.registerSingleton<HomeRepo>(HomeRepoImpl(getIt.get<ApiService>()));
   getIt.registerSingleton<CartRepo>(CartRepoImpl(getIt.get<ApiService>()));
-  getIt.registerSingleton<CheckoutRepo>(CheckoutRepoImpl(getIt.get<ApiService>()));
-  getIt.registerSingleton<ProfileRepo>(ProfileRepoImpl(getIt.get<ApiService>()));
+  getIt.registerSingleton<CheckoutRepo>(
+    CheckoutRepoImpl(getIt.get<ApiService>()),
+  );
+  getIt.registerSingleton<ProfileRepo>(
+    ProfileRepoImpl(getIt.get<ApiService>()),
+  );
+  getIt.registerSingleton<FlutterSecureStorage>(const FlutterSecureStorage());
+  
   final sharedPreferences = await SharedPreferences.getInstance();
   // sharedPreferences.clear();
   getIt.registerSingleton<SharedPreferences>(sharedPreferences);
