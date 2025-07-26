@@ -41,7 +41,7 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-  void removeOneFromCart(String itemIdInCart) async {
+  Future<void> removeOneFromCart(String itemIdInCart) async {
     final result = await cartRepo.removeOneFromCart(itemIdInCart);
     result.fold(
       (fail) {
@@ -54,7 +54,7 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-  void removeItem(String itemIdInCart) async {
+  Future<void> removeItem(String itemIdInCart) async {
     final result = await cartRepo.removeItem(itemIdInCart);
     result.fold(
       (fail) {

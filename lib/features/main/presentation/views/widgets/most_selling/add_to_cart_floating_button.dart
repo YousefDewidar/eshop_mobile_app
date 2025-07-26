@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart' show Lottie;
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
@@ -51,10 +52,7 @@ class _AddToCartFloatingButtonState extends State<AddToCartFloatingButton> {
                 backgroundColor: AppColors.primaryColor,
                 child:
                     isLoading
-                        ? const CircularProgressIndicator(
-                          padding: EdgeInsets.all(10),
-                          color: Colors.white,
-                        )
+                        ? Lottie.asset("assets/animations/Loading.json")
                         : const Icon(Icons.add, color: Colors.white),
               ),
             ),

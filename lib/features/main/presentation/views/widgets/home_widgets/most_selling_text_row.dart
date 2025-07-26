@@ -8,36 +8,33 @@ import 'package:rfaye3/features/main/presentation/views/most_selling_view.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class MostSellingTextRow extends StatelessWidget {
-  const MostSellingTextRow({
-    super.key,
-  });
+  const MostSellingTextRow({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          S.of(context).mostPop,
-          style: TextStyles.bold16,
-        ),
+        Text(S.of(context).mostPop, style: TextStyles.bold16),
         BlocBuilder<MostSeillingCubit, MostSeillingState>(
           builder: (context, state) {
             if (state is MostSeillingSuccess) {
               return InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                      return MostSellingView(
-                        products: state.products,
-                      );
-                    },
-                  ));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return MostSellingView(products: state.products);
+                      },
+                    ),
+                  );
                 },
                 child: Text(
                   S.of(context).more,
-                  style:
-                      TextStyles.regular13.copyWith(color: AppColors.greyColor),
+                  style: TextStyles.regular13.copyWith(
+                    color: AppColors.greyColor,
+                  ),
                 ),
               );
             } else {

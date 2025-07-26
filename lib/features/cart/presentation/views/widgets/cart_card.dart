@@ -85,8 +85,10 @@ class CartCard extends StatelessWidget {
                   }
                 },
                 child: InkWell(
-                  onTap: () {
-                    context.read<CartCubit>().removeItem(product.itemId);
+                  onTap: () async {
+                    await context.read<CartCubit>().removeItem(
+                      product.itemId,
+                    );
                   },
                   child: SvgPicture.asset(Assets.imagesTrash),
                 ),

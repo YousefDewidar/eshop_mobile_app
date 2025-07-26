@@ -26,9 +26,11 @@ class AddressReview extends StatelessWidget {
           children: [
             SvgPicture.asset(Assets.imagesLocation),
             const SpaceH(8),
-            Text(
-              order.address!.fullAddress,
-              style: TextStyles.regular16.copyWith(color: AppColors.greyColor),
+            Expanded(
+              child: Text(
+                order.address!.fullAddress,
+                style: TextStyles.regular16.copyWith(color: AppColors.greyColor),
+              ),
             ),
           ],
         ),

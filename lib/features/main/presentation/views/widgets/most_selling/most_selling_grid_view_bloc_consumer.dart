@@ -27,9 +27,9 @@ class MostSellingGridViewBlocConsumer extends StatelessWidget {
                   6,
                   (index) => const ProductModel(
                     id: "0",
-                    productCode: "",
-                    name: "",
-                    description: "",
+                    productCode: "dsv",
+                    name: "ndsion",
+                    description: "jlbnsjobv idinhsvio",
                     coverPictureUrl: "",
                     price: 1,
                     stock: 1,

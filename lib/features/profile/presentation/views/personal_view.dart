@@ -14,6 +14,7 @@ import 'package:rfaye3/features/profile/data/models/user_info_model.dart';
 import 'package:rfaye3/features/profile/data/repo/profile_repo.dart';
 import 'package:rfaye3/features/profile/presentation/view_model/personal_cubit/personal_cubit.dart';
 import 'package:rfaye3/features/profile/presentation/view_model/personal_cubit/personal_state.dart';
+import 'package:rfaye3/features/profile/presentation/views/user_address_card.dart';
 import 'package:rfaye3/generated/l10n.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -123,7 +124,7 @@ class UserInfoColumn extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return UserAddressCard(
                     address:
-                        userInfoModel?.addresses?.first ??
+                        userInfoModel?.addresses?[index] ??
                         Address(
                           id: "",
                           state: "advv",
@@ -137,44 +138,6 @@ class UserInfoColumn extends StatelessWidget {
                 },
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class UserAddressCard extends StatelessWidget {
-  const UserAddressCard({super.key, required this.address});
-  final Address address;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsetsDirectional.only(end: 10.0),
-      child: Container(
-        constraints: const BoxConstraints(
-          maxWidth: 250,
-          minHeight: 100,
-          maxHeight: 150,
-        ),
-        padding: const EdgeInsets.all(6),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Theme.of(context).colorScheme.surface,
-          border: Border.all(color: Colors.grey.shade400, width: 1),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 6),
-
-            Text(address.fullAddress, overflow: TextOverflow.ellipsis),
-            // if (address.notes.isNotEmpty)
-            Text(address.notes, overflow: TextOverflow.ellipsis),
-
-            const SizedBox(height: 6),
-            Text(address.phoneNumber, overflow: TextOverflow.ellipsis),
           ],
         ),
       ),

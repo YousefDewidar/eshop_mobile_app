@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 
 abstract class Failuer {
@@ -52,7 +54,11 @@ class ServerFailure extends Failuer {
     }
   }
   factory ServerFailure._fromBadResponse(Response response) {
-    if ([400, 401, 403].contains(response.statusCode)) {
+    log(response.toString());
+    if (response.statusCode == 401) {
+      return ServerFailure(message: 'Unauthorized');
+    }
+    if ([400, 403].contains(response.statusCode)) {
       final errors = response.data['errors'];
       if (errors is Map && errors.isNotEmpty) {
         final firstErrorList = errors[errors.keys.first];
