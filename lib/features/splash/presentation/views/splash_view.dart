@@ -5,7 +5,6 @@ import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
-import 'package:rfaye3/features/auth/data/models/user_tokens.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -28,7 +27,7 @@ class _SplashViewState extends State<SplashView> {
     bool seenLanding =
         getIt.get<SharedPreferences>().getBool("viewLanding") ?? false;
 
-    final data = await SecureStorage.getUserData();
+    final data = await SecureStorage.getUserTokens();
 
     if (data.accessToken != null) {
       Future.delayed(const Duration(seconds: 2), () {

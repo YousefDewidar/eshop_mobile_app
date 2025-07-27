@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
@@ -14,7 +13,6 @@ class ServerFailure extends Failuer {
 
   factory ServerFailure.fromError(Object e) {
     if (e is DioException) {
-      log(e.response.toString());
       switch (e.type) {
         case DioExceptionType.connectionTimeout:
           return ServerFailure(

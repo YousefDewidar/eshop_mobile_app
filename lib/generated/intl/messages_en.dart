@@ -102,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "The connection to the server has been lost. Please check your internet connection and try again",
     ),
     "noSearch": MessageLookupByLibrary.simpleMessage("No Search Results"),
+    "notAvailable": MessageLookupByLibrary.simpleMessage("Not Available Now"),
     "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "notification": MessageLookupByLibrary.simpleMessage("Notifications"),
     "or": MessageLookupByLibrary.simpleMessage("Or"),

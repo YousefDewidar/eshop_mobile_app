@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,7 +19,7 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
   await setupLocator();
 
-  runApp(const Rfaye3App());
+  runApp(DevicePreview(enabled: true, builder: (context) => const Rfaye3App()));
 }
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -104,7 +105,7 @@ class _Rfaye3AppState extends State<Rfaye3App> {
             onGenerateRoute: onGenerateRoute,
             initialRoute: Routes.splash,
           );
-        }
+        },
       ),
     );
   }

@@ -174,6 +174,16 @@ class S {
     return Intl.message('Last Name', name: 'lastName', desc: '', args: []);
   }
 
+  /// `Not Available Now`
+  String get notAvailable {
+    return Intl.message(
+      'Not Available Now',
+      name: 'notAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `By creating an account, you agree to`
   String get termCon1 {
     return Intl.message(

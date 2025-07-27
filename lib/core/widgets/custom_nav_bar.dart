@@ -80,34 +80,37 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
     required String inActiveIcon,
     required String activeIcon,
   }) {
+    final isCart = title == S.of(context).cart;
+    final cartCount = context.watch<CartCubit>().totalCount;
+
     return SalomonBottomBarItem(
       icon: SizedBox(
-        height: 40,
-        // width: 60,
+        height: 50,
+        width: MediaQuery.of(context).size.width *.1,
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            if (context.watch<CartCubit>().cartList.isNotEmpty &&
-                title == S.of(context).cart)
+            if (isCart && cartCount > 0)
               Positioned(
-                right: -10,
-                top: 0,
+                right: 0,
+                top: 5,
                 child: CircleAvatar(
                   backgroundColor: AppColors.primaryColor,
                   radius: 9,
                   child: Text(
-                    context.watch<CartCubit>().totalCount.toString(),
+                    cartCount.toString(),
                     style: const TextStyle(color: Colors.white, fontSize: 10),
                   ),
                 ),
               ),
-            Center(child: SvgPicture.asset(inActiveIcon, height: 20)),
+            Center(child: SvgPicture.asset(inActiveIcon, height: 22)),
           ],
         ),
       ),
       activeIcon: CircleAvatar(
         backgroundColor: AppColors.primaryColor,
-        child: SvgPicture.asset(activeIcon, height: 20),
+        radius: 20,
+        child: SvgPicture.asset(activeIcon, height: 22),
       ),
       title: Text("   $title"),
     );

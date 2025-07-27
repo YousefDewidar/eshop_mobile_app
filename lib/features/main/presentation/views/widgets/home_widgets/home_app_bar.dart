@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rfaye3/core/helper/secure_storage.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/notification_icon.dart';
@@ -16,7 +17,7 @@ class HomeAppBar extends StatelessWidget {
         style: TextStyles.regular16.copyWith(color: const Color(0xff949D9E)),
       ),
       subtitle: Text(
-        "focla",
+        SecureStorage.getUserData().name ?? "",
         style: TextStyles.bold16.copyWith(
           color: Theme.of(context).textTheme.bodyLarge!.color,
         ),

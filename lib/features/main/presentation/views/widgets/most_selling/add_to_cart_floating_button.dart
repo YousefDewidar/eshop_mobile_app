@@ -26,37 +26,32 @@ class _AddToCartFloatingButtonState extends State<AddToCartFloatingButton> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    return Positioned.directional(
-      textDirection: widget.isArabic ? TextDirection.ltr : TextDirection.rtl,
-      bottom: 16,
-      start: 10,
-      child: BlocConsumer<CartCubit, CartState>(
-        listener: (context, state) {
-          if (state is AddToCartLoading &&
-              state.productId == widget.product.id) {
-            isLoading = true;
-          } else if (state is CartLoaded) {
-            isLoading = false;
-          }
-          if (state is CartFail) {
-            isLoading = false;
-            showNotification(context, state.error, NotiType.error);
-          }
-        },
-        builder:
-            (context, state) => InkWell(
-              onTap: () {
-                context.read<CartCubit>().addToCart(widget.product.id);
-              },
-              child: CircleAvatar(
-                backgroundColor: AppColors.primaryColor,
-                child:
-                    isLoading
-                        ? Lottie.asset("assets/animations/Loading.json")
-                        : const Icon(Icons.add, color: Colors.white),
-              ),
+    return BlocConsumer<CartCubit, CartState>(
+      listener: (context, state) {
+        if (state is AddToCartLoading &&
+            state.productId == widget.product.id) {
+          isLoading = true;
+        } else if (state is CartLoaded) {
+          isLoading = false;
+        }
+        if (state is CartFail) {
+          isLoading = false;
+          showNotification(context, state.error, NotiType.error);
+        }
+      },
+      builder:
+          (context, state) => InkWell(
+            onTap: () {
+              context.read<CartCubit>().addToCart(widget.product.id);
+            },
+            child: CircleAvatar(
+              backgroundColor: AppColors.primaryColor,
+              child:
+                  isLoading
+                      ? Lottie.asset("assets/animations/Loading.json")
+                      : const Icon(Icons.add, color: Colors.white),
             ),
-      ),
+          ),
     );
   }
 }

@@ -3,6 +3,7 @@ abstract class Routes {
   static const landing = 'landing';
   static const home = 'home';
 
+  static const mostSelling = 'mostSelling';
   static const search = 'search';
   static const notification = 'notification';
   static const checkout = 'checkout';

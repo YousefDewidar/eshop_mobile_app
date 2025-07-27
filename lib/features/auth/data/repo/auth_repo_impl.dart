@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:rfaye3/core/helper/secure_storage.dart';
-import 'package:rfaye3/features/auth/data/models/user_model.dart';
 import 'package:rfaye3/features/auth/data/repo/auth_repo.dart';
 import 'package:rfaye3/core/network/api_service.dart';
 import 'package:rfaye3/core/network/failuer.dart';
@@ -10,11 +7,6 @@ import 'package:rfaye3/core/network/failuer.dart';
 class AuthRepoImpl implements AuthRepo {
   final ApiService _apiService;
   AuthRepoImpl(this._apiService);
-
-  @override
-  Future<Either<Failuer, UserModel>> getUser() {
-    throw UnimplementedError();
-  }
 
   @override
   Future<Either<Failuer, void>> resendOtp({required String email}) async {
@@ -60,11 +52,6 @@ class AuthRepoImpl implements AuthRepo {
     throw UnimplementedError();
   }
 
-  @override
-  Future<Either<Failuer, void>> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
-  }
 
   @override
   Future<Either<Failuer, void>> signupWithEmailAndPassword({

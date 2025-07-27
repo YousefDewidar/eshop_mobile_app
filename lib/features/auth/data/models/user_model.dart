@@ -2,21 +2,19 @@
 import 'dart:convert';
 
 class UserModel {
-  final String email;
-  final String name;
-  final String uId;
+  final String? email;
+  final String? name;
 
-  const UserModel({required this.uId, required this.email, required this.name});
+  const UserModel({required this.email, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'uId': uId, 'email': email, 'name': name};
+    return <String, dynamic>{'email': email, 'name': name};
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      uId: map['uId'] as String,
-      email: map['email'] as String,
-      name: map['name'] as String,
+      email: map['email'] as String?,
+      name: map['name'] as String?,
     );
   }
 

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/routes/routes.dart';
@@ -43,11 +44,13 @@ class CartViewBody extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: kHoripadding),
           child: CustomButton(
-            isEnabled: context.read<CartCubit>().cartList.isNotEmpty,
+            isEnabled: (context.read<CartCubit>().cartList.isNotEmpty),
+
             title:
                 "${S.of(context).checkout} ${context.watch<CartCubit>().totalPrice.toStringAsFixed(2)} ${S.of(context).egp}",
             onPressed: () async {
               if (context.read<CartCubit>().cartList.isEmpty) return;
+              if (checkAllProductsAveilable(context) != null) return;
               final orderDone =
                   await Navigator.pushNamed(
                         context,
@@ -74,5 +77,28 @@ class CartViewBody extends StatelessWidget {
         const SpaceV(10),
       ],
     );
+  }
+
+  String? checkAllProductsAveilable(BuildContext context) {
+    String? productNotAveilable;
+    context.read<CartCubit>().cartList.forEach((element) {
+      if (element.productStock == 0) {
+        productNotAveilable = element.productName;
+        showNotification(
+          context,
+          "$productNotAveilable ${S.of(context).notAvailable}",
+          NotiType.warning,
+        );
+      } else if (element.quantity > element.productStock) {
+        productNotAveilable = element.productName;
+        showNotification(
+          context,
+          "المتبقي من $productNotAveilable هو ${element.productStock} قطعة",
+          NotiType.warning,
+        );
+      }
+    });
+
+    return productNotAveilable;
   }
 }

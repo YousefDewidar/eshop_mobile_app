@@ -36,6 +36,7 @@ dependencies:
   connectivity_plus: ^6.1.4
   flutter_add_to_cart_button:
   flutter_secure_storage: ^9.2.4
+  jwt_decoder:
 
 dev_dependencies:
   intl_utils:

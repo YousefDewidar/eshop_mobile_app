@@ -4,11 +4,11 @@ import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/main/presentation/view_model/most_seilling_cubit/most_seilling_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/most_seilling_cubit/most_seilling_state.dart';
-import 'package:rfaye3/features/main/presentation/views/widgets/most_selling/products_grid_view.dart';
+import 'package:rfaye3/features/main/presentation/views/widgets/most_selling/products_list_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class MostSellingGridViewBlocConsumer extends StatelessWidget {
-  const MostSellingGridViewBlocConsumer({super.key});
+class MostSellingListViewBlocConsumer extends StatelessWidget {
+  const MostSellingListViewBlocConsumer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MostSellingGridViewBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         if (state is MostSeillingLoading) {
           return Skeletonizer.sliver(
-            child: ProductsGridView(
+            child: ProductsListView(
               products: [
                 ...List.generate(
                   6,
@@ -43,7 +43,7 @@ class MostSellingGridViewBlocConsumer extends StatelessWidget {
             ),
           );
         } else if (state is MostSeillingSuccess) {
-          return ProductsGridView(products: state.products);
+          return ProductsListView(products: state.products);
         } else {
           return const SliverToBoxAdapter(child: SizedBox());
         }

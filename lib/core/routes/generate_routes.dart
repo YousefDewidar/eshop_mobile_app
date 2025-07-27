@@ -9,6 +9,7 @@ import 'package:rfaye3/features/checkout/presentation/views/checkout_view.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/main/presentation/views/main_view.dart';
+import 'package:rfaye3/features/main/presentation/views/most_selling_view.dart';
 import 'package:rfaye3/features/main/presentation/views/notification_view.dart';
 import 'package:rfaye3/features/main/presentation/views/product_details_view.dart';
 import 'package:rfaye3/features/main/presentation/views/search_view.dart';
@@ -27,6 +28,13 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
       return MaterialPageRoute(builder: (context) => const LandingView());
     case Routes.home:
       return MaterialPageRoute(builder: (context) => const MainView());
+    case Routes.mostSelling:
+      return MaterialPageRoute(
+        builder:
+            (context) => MostSellingView(
+              products: setting.arguments as List<ProductModel>,
+            ),
+      );
     case Routes.search:
       return MaterialPageRoute(builder: (context) => const SearchView());
     case Routes.notification:

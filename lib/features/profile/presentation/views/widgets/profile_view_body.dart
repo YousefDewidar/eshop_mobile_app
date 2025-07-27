@@ -14,84 +14,88 @@ class ProfileViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(S.of(context).profile, style: TextStyles.bold19),
-        const SpaceV(10),
-        ListTile(
-          contentPadding: const EdgeInsets.symmetric(horizontal: kHoripadding),
-          title: Text(
-            "يوسف دويدار",
-            style: TextStyles.bold16.copyWith(
-              color: Theme.of(context).textTheme.bodyLarge!.color,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Text(S.of(context).profile, style: TextStyles.bold19),
+          const SpaceV(10),
+          ListTile(
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: kHoripadding,
             ),
-          ),
-          subtitle: Text(
-            "mail@gmail.com",
-            style: TextStyles.regular16.copyWith(
-              color: const Color(0xff949D9E),
+            title: Text(
+              SecureStorage.getUserData().name ?? "",
+              style: TextStyles.bold16.copyWith(
+                color: Theme.of(context).textTheme.bodyLarge!.color,
+              ),
             ),
+            subtitle: Text(
+              SecureStorage.getUserData().email ?? "",
+              style: TextStyles.regular16.copyWith(
+                color: const Color(0xff949D9E),
+              ),
+            ),
+
+            leading: Image.asset(Assets.imagesProfileImage, height: 120),
+          ),
+          const SpaceV(10),
+
+          SettingItem(
+            title: S.of(context).set1,
+            icon: Assets.imagesSet1,
+            secPageName: Routes.personal,
+          ),
+          SettingItem(
+            title: S.of(context).set2,
+            icon: Assets.imagesSet2,
+            secPageName: Routes.orders,
           ),
 
-          leading: Image.asset(Assets.imagesProfileImage, height: 120),
-        ),
-        const SpaceV(10),
+          SettingItem(
+            title: S.of(context).set6,
+            icon: Assets.imagesSet6,
+            langSwitch: true,
+          ),
+          SettingItem(
+            title: S.of(context).set7,
+            icon: Assets.imagesSet7,
+            hasSwitch: true,
+          ),
+          SpaceV(MediaQuery.of(context).size.height * 0.2),
 
-        SettingItem(
-          title: S.of(context).set1,
-          icon: Assets.imagesSet1,
-          secPageName: Routes.personal,
-        ),
-        SettingItem(
-          title: S.of(context).set2,
-          icon: Assets.imagesSet2,
-          secPageName: Routes.orders,
-        ),
+          InkWell(
+            onTap: () async {
+              await SecureStorage.deleteUserData();
+              if (context.mounted) {
+                Navigator.of(
+                  context,
+                ).pushNamedAndRemoveUntil(Routes.login, (route) => false);
+              }
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              width: double.infinity,
+              color: AppColors.lightPrimaryColor.withValues(alpha: 0.15),
 
-        SettingItem(
-          title: S.of(context).set6,
-          icon: Assets.imagesSet6,
-          langSwitch: true,
-        ),
-        SettingItem(
-          title: S.of(context).set7,
-          icon: Assets.imagesSet7,
-          hasSwitch: true,
-        ),
-        const Spacer(),
-
-        InkWell(
-          onTap: () async {
-            await SecureStorage.deleteUserData();
-            if (context.mounted) {
-              Navigator.of(
-                context,
-              ).pushNamedAndRemoveUntil(Routes.login, (route) => false);
-            }
-          },
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            width: double.infinity,
-            color: AppColors.lightPrimaryColor.withValues(alpha: 0.15),
-
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(S.of(context).signOut, style: TextStyles.regular16),
-                const SpaceH(20),
-                Transform.rotate(
-                  angle: 180 * 3.14 / 180,
-                  child: const Icon(
-                    Icons.logout_rounded,
-                    color: AppColors.lightPrimaryColor,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(S.of(context).signOut, style: TextStyles.regular16),
+                  const SpaceH(20),
+                  Transform.rotate(
+                    angle: 180 * 3.14 / 180,
+                    child: const Icon(
+                      Icons.logout_rounded,
+                      color: AppColors.lightPrimaryColor,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-        const SpaceV(60),
-      ],
+          const SpaceV(60),
+        ],
+      ),
     );
   }
 }

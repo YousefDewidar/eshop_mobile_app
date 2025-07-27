@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/features/auth/data/repo/auth_repo.dart';
@@ -44,7 +43,6 @@ class LoginCubit extends Cubit<LoginState> {
     final res = await authRepo.resendOtp(email: email);
     res.fold(
       (failuer) {
-        log(failuer.message);
         emit(LoginFailure(message: failuer.message));
         return failuer.message;
       },

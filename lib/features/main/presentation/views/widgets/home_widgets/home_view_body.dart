@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/features/main/presentation/view_model/most_seilling_cubit/most_seilling_cubit.dart';
-import 'package:rfaye3/features/main/presentation/views/widgets/most_selling/most_selling_grid_view_bloc_consumer.dart';
+import 'package:rfaye3/features/main/presentation/view_model/most_seilling_cubit/most_seilling_state.dart';
+import 'package:rfaye3/features/main/presentation/views/widgets/most_selling/most_selling_list_view_bloc_consumer.dart';
 import 'package:rfaye3/core/widgets/search_text_field.dart';
 import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_widgets/home_app_bar.dart';
-import 'package:rfaye3/features/main/presentation/views/widgets/home_widgets/most_selling_text_row.dart';
+import 'package:rfaye3/core/widgets/custom_text_with_view_more.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_widgets/offer_list_view.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
@@ -42,18 +43,35 @@ class HomeViewBody extends StatelessWidget {
             ),
           ),
           const SliverToBoxAdapter(child: OfferListView()),
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.only(
-                left: kHoripadding,
-                right: kHoripadding,
-                top: 12,
-                bottom: 8,
-              ),
-              child: MostSellingTextRow(),
+          const SliverToBoxAdapter(child: SpaceV(16)),
+          SliverToBoxAdapter(
+            child: BlocBuilder<MostSeillingCubit, MostSeillingState>(
+              builder: (context, state) {
+                return CustomTextWithViewMore(
+                  title: S.of(context).mostPop,
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      Routes.mostSelling,
+                      arguments:
+                          state is MostSeillingSuccess ? state.products : [],
+                    );
+                  },
+                );
+              },
             ),
           ),
-          const MostSellingGridViewBlocConsumer(),
+          const SliverToBoxAdapter(child: SpaceV(16)),
+
+          const MostSellingListViewBlocConsumer(),
+          const SliverToBoxAdapter(child: SpaceV(16)),
+          SliverToBoxAdapter(
+            child: CustomTextWithViewMore(title: "افضل العروض", onTap: () {}),
+          ),
+          const SliverToBoxAdapter(child: SpaceV(16)),
+          SliverToBoxAdapter(
+            child: CustomTextWithViewMore(title: "مقترحة لك", onTap: () {}),
+          ),
           const SliverToBoxAdapter(child: SpaceV(16)),
         ],
       ),

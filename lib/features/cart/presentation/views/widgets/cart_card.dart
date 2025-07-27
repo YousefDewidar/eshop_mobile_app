@@ -1,3 +1,4 @@
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +20,7 @@ class CartCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Row(
       children: [
         // product Image
@@ -61,7 +63,13 @@ class CartCard extends StatelessWidget {
                 ),
               ),
               const SpaceV(16),
-              AddMinusProduct(product: product),
+
+              product.productStock == 0
+                  ? Text(
+                    S.of(context).outOfStock,
+                    style: TextStyles.regular13.copyWith(color: Colors.red),
+                  )
+                  : AddMinusProduct(product: product),
             ],
           ),
         ),
@@ -86,9 +94,7 @@ class CartCard extends StatelessWidget {
                 },
                 child: InkWell(
                   onTap: () async {
-                    await context.read<CartCubit>().removeItem(
-                      product.itemId,
-                    );
+                    await context.read<CartCubit>().removeItem(product.itemId);
                   },
                   child: SvgPicture.asset(Assets.imagesTrash),
                 ),

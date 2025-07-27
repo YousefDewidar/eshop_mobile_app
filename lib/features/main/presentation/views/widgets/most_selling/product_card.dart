@@ -34,7 +34,8 @@ class ProductCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(4),
           color: Theme.of(context).colorScheme.surface,
         ),
-        child: Stack(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (product.stock == 0)
               Container(
@@ -47,57 +48,65 @@ class ProductCard extends StatelessWidget {
                   style: TextStyles.medium15.copyWith(color: Colors.white),
                 ),
               ),
+            const Spacer(),
+            Expanded(
+              flex: 2,
+              child: Align(
+                alignment: Alignment.center,
+                child: CachedNetworkImage(
+                  imageUrl: product.coverPictureUrl,
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  fit: BoxFit.contain,
+                  placeholder:
+                      (context, url) => const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
+                  errorWidget:
+                      (context, url, error) => const Center(
+                        child: Icon(
+                          Icons.image_not_supported_outlined,
+                          size: 50,
+                        ),
+                      ),
+                ),
+              ),
+            ),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+
+              child: Row(
                 children: [
-                  const Spacer(),
                   Expanded(
-                    flex: 2,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: CachedNetworkImage(
-                        imageUrl: product.coverPictureUrl,
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        fit: BoxFit.contain,
-                        placeholder:
-                            (context, url) => const Center(
-                              child: CircularProgressIndicator(
-                                color: AppColors.primaryColor,
-                              ),
-                            ),
-                        errorWidget:
-                            (context, url, error) => const Center(
-                              child: Icon(
-                                Icons.image_not_supported_outlined,
-                                size: 50,
-                              ),
-                            ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(product.name, style: TextStyles.semiBold13),
+                        const SpaceV(4),
+                        Text(
+                          "${product.price} ${S.of(context).egp}",
+                          style: TextStyles.bold13.copyWith(
+                            color: AppColors.secondaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  product.stock == 0
+                      ? const SizedBox()
+                      : AddToCartFloatingButton(
+                        isArabic: isArabic,
+                        product: product,
                       ),
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(product.name, style: TextStyles.semiBold13),
-                  const SpaceV(4),
-                  Text(
-                    "${product.price} ${S.of(context).egp}",
-                    style: TextStyles.bold13.copyWith(
-                      color: AppColors.secondaryColor,
-                    ),
-                  ),
                 ],
               ),
             ),
-
-            // const FavIcon(),
-            product.stock == 0
-                ? const SizedBox()
-                : AddToCartFloatingButton(isArabic: isArabic, product: product),
           ],
         ),
       ),
     );
   }
 }
-

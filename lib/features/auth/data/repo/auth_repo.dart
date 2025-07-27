@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:rfaye3/features/auth/data/models/user_model.dart';
 import 'package:rfaye3/core/network/failuer.dart';
 
 abstract class AuthRepo {
@@ -15,8 +14,6 @@ abstract class AuthRepo {
     required String password,
   });
 
-  Future<Either<Failuer, void>> signOut();
-
   Future<Either<Failuer, void>> verifyEmail({
     required String code,
     required String email,
@@ -29,6 +26,4 @@ abstract class AuthRepo {
   Future<Either<Failuer, void>> resendOtp({required String email});
 
   Future<Either<Failuer, void>> signInWithGoogle();
-
-  Future<Either<Failuer, UserModel>> getUser();
 }

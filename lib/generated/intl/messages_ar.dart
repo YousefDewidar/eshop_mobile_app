@@ -102,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "انتهت مهلة اتصالك بالخادم يرجي التحقق من اتصال الشبكة وإعادة المحاولة",
     ),
     "noSearch": MessageLookupByLibrary.simpleMessage("لا يوجد نتائج بحث"),
+    "notAvailable": MessageLookupByLibrary.simpleMessage("غير متوفر حاليا"),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "notification": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "or": MessageLookupByLibrary.simpleMessage("أو"),

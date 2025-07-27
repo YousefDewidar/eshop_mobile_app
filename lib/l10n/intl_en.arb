@@ -15,6 +15,7 @@
   "fullName": "Full Name",
   "firstName": "First Name",
   "lastName": "Last Name",
+  "notAvailable": "Not Available Now",
   "termCon1": "By creating an account, you agree to",
   "termCon2": "Terms & Conditions",
   "allreadyhaveAccount": "Already have an account?",

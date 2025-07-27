@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
+import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/cart/data/models/cart_product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
@@ -30,6 +31,17 @@ class _AddMinusProductState extends State<AddMinusProduct> {
                   : () async {
                     addLoading = true;
                     setState(() {});
+                    if (widget.product.quantity >=
+                        widget.product.productStock) {
+                      showNotification(
+                        context,
+                        "الكمية غير متاحة",
+                        NotiType.warning,
+                      );
+                      addLoading = false;
+                      setState(() {});
+                      return;
+                    }
                     await context.read<CartCubit>().addToCart(
                       widget.product.productId,
                     );
