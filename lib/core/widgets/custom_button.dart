@@ -23,7 +23,7 @@ class CustomButton extends StatelessWidget {
         backgroundColor: WidgetStatePropertyAll(
           isEnabled
               ? AppColors.primaryColor
-              : const Color.fromARGB(143, 45, 159, 93),
+              : const Color.fromARGB(143, 138, 143, 140),
         ),
         fixedSize: const WidgetStatePropertyAll(Size.fromHeight(59)),
         shape: const WidgetStatePropertyAll(

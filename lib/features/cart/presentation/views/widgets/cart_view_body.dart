@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/routes/routes.dart';
@@ -10,6 +9,7 @@ import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/cart/presentation/views/widgets/cart_list_view.dart';
+import 'package:rfaye3/features/cart/presentation/views/widgets/success_order_bottom_sheet.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class CartViewBody extends StatelessWidget {
@@ -62,11 +62,13 @@ class CartViewBody extends StatelessWidget {
                 await context.read<CartCubit>().getAllCartList();
                 if (!context.mounted) return;
                 if (context.read<CartCubit>().cartList.isEmpty) {
-                  showNotification(
-                    context,
-                    "تم طلب الاوردر بنجاح",
-                    NotiType.success,
+                  showModalBottomSheet(
+                    showDragHandle: true,
+                    context: context,
+                    builder: (context) => const SuccessOrderBottomSheet(),
                   );
+
+                  // sa
                 } else {
                   showNotification(context, "تم إلغاء الطلب", NotiType.error);
                 }
@@ -74,6 +76,7 @@ class CartViewBody extends StatelessWidget {
             },
           ),
         ),
+
         const SpaceV(10),
       ],
     );

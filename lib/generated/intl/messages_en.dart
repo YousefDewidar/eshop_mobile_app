@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "apartment": MessageLookupByLibrary.simpleMessage("Apartment / Landmark"),
     "apple": MessageLookupByLibrary.simpleMessage("Sign in with Apple"),
+    "cancle": MessageLookupByLibrary.simpleMessage("Cancle"),
     "cart": MessageLookupByLibrary.simpleMessage("Cart"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
@@ -108,6 +109,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "or": MessageLookupByLibrary.simpleMessage("Or"),
     "orderDate": MessageLookupByLibrary.simpleMessage("Order Date"),
     "orderNumber": MessageLookupByLibrary.simpleMessage("Order Number"),
+    "orderSuccess": MessageLookupByLibrary.simpleMessage(
+      "Your order has been successfully placed",
+    ),
+    "orderSuccess2": MessageLookupByLibrary.simpleMessage(
+      "You can track your order step by step",
+    ),
+    "orderSuccess3": MessageLookupByLibrary.simpleMessage("Follow Order"),
     "ordersCount": MessageLookupByLibrary.simpleMessage("Orders Count"),
     "ourProduct": MessageLookupByLibrary.simpleMessage("Our Products"),
     "outOfStock": MessageLookupByLibrary.simpleMessage("Out of stock"),

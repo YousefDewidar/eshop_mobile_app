@@ -3,11 +3,13 @@ import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/space.dart';
+import 'package:rfaye3/features/profile/data/models/order_model.dart';
 import 'package:rfaye3/generated/l10n.dart';
 import 'package:svg_flutter/svg.dart';
 
 class MyOrderCard extends StatefulWidget {
-  const MyOrderCard({super.key});
+  final OrderModel order;
+  const MyOrderCard({super.key, required this.order});
 
   @override
   State<MyOrderCard> createState() => _MyOrderCardState();
@@ -47,7 +49,7 @@ class _MyOrderCardState extends State<MyOrderCard> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "${S.of(context).orderNumber}: #123",
+                              "${S.of(context).orderNumber}: ${widget.order.orderCode}",
                               style: TextStyles.bold16,
                             ),
                             IconButton(
@@ -70,19 +72,36 @@ class _MyOrderCardState extends State<MyOrderCard> {
                           ],
                         ),
                         Text(
-                          "${S.of(context).orderDate}: 22/12/2022",
+                          "${S.of(context).orderDate}: ${widget.order.createdAt.toString().split(' ').first}",
                           style: TextStyles.regular13.copyWith(
                             color: AppColors.greyColor,
                           ),
                         ),
                         const SpaceV(5),
+
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("${S.of(context).ordersCount}: 10"),
-                            const SpaceH(30),
                             Text(
-                              "250 ${S.of(context).egp}",
+                              "${widget.order.totalPrice} ${S.of(context).egp}",
                               style: TextStyles.bold16,
+                            ),
+
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                color:
+                                    widget.order.status == 'Pending'
+                                        ? AppColors.lightSecondaryColor
+                                            .withValues(alpha: 0.3)
+                                        : AppColors.lightPrimaryColor
+                                            .withValues(alpha: 0.3),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Text(widget.order.status),
                             ),
                           ],
                         ),
@@ -98,20 +117,32 @@ class _MyOrderCardState extends State<MyOrderCard> {
                 curve: Curves.easeInOut,
                 child:
                     isExpanded
-                        ? const Column(
+                        ? Column(
                           children: [
-                            SpaceV(10),
-                            Divider(),
-                            SpaceV(5),
+                            const SpaceV(10),
+                            const Divider(),
+                            const SpaceV(5),
+                            ExpandedInfoCard(
+                              title: "طريقة الدفع",
+                              date: widget.order.paymentMethod,
+                            ),
                             ExpandedInfoCard(
                               title: "تم الطلب وجاري الشحن",
-                              date: "22 مارس , 2024",
+                              date:
+                                  widget.order.createdAt
+                                      .toString()
+                                      .split(' ')
+                                      .first,
                             ),
                             ExpandedInfoCard(
                               title: "تم الشحن وجاري التوصيل",
-                              date: "23 مارس , 2024",
+                              date:
+                                  widget.order.updatedAt
+                                      .toString()
+                                      .split(' ')
+                                      .first,
                             ),
-                            ExpandedInfoCard(
+                            const ExpandedInfoCard(
                               title: "تم التسليم",
                               date: "قيد الانتظار",
                               done: false,

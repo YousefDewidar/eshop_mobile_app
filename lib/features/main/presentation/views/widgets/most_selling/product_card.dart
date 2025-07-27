@@ -29,83 +29,89 @@ class ProductCard extends StatelessWidget {
           },
         );
       },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-          color: Theme.of(context).colorScheme.surface,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (product.stock == 0)
-              Container(
-                width: double.infinity,
-                color: Colors.red,
-                padding: const EdgeInsets.only(top: 5, bottom: 5),
-                child: Text(
-                  S.of(context).outOfStock,
-                  textAlign: TextAlign.center,
-                  style: TextStyles.medium15.copyWith(color: Colors.white),
-                ),
-              ),
-            const Spacer(),
-            Expanded(
-              flex: 2,
-              child: Align(
-                alignment: Alignment.center,
-                child: CachedNetworkImage(
-                  imageUrl: product.coverPictureUrl,
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  fit: BoxFit.contain,
-                  placeholder:
-                      (context, url) => const Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                  errorWidget:
-                      (context, url, error) => const Center(
-                        child: Icon(
-                          Icons.image_not_supported_outlined,
-                          size: 50,
-                        ),
-                      ),
-                ),
-              ),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+              color: Theme.of(context).colorScheme.surface,
             ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(product.name, style: TextStyles.semiBold13),
-                        const SpaceV(4),
-                        Text(
-                          "${product.price} ${S.of(context).egp}",
-                          style: TextStyles.bold13.copyWith(
-                            color: AppColors.secondaryColor,
-                          ),
-                        ),
-                      ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (product.stock == 0)
+                  Container(
+                    width: double.infinity,
+                    color: Colors.red,
+                    padding: const EdgeInsets.only(top: 5, bottom: 5),
+                    child: Text(
+                      S.of(context).outOfStock,
+                      textAlign: TextAlign.center,
+                      style: TextStyles.medium15.copyWith(color: Colors.white),
                     ),
                   ),
 
-                  product.stock == 0
-                      ? const SizedBox()
-                      : AddToCartFloatingButton(
-                        isArabic: isArabic,
-                        product: product,
+                Expanded(
+                  flex: 6,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: CachedNetworkImage(
+                      imageUrl: product.coverPictureUrl,
+                      width: double.infinity,
+
+                      fit: BoxFit.fill,
+                      placeholder:
+                          (context, url) => const Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.primaryColor,
+                            ),
+                          ),
+                      errorWidget:
+                          (context, url, error) => const Center(
+                            child: Icon(
+                              Icons.image_not_supported_outlined,
+                              size: 50,
+                            ),
+                          ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 20,
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(product.name, style: TextStyles.semiBold13),
+                            const SpaceV(4),
+                            Text(
+                              "${product.price} ${S.of(context).egp}",
+                              style: TextStyles.bold13.copyWith(
+                                color: AppColors.secondaryColor,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                ],
-              ),
+
+                      product.stock == 0
+                          ? const SizedBox()
+                          : AddToCartFloatingButton(
+                            isArabic: isArabic,
+                            product: product,
+                          ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

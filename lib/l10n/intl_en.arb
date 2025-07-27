@@ -107,5 +107,9 @@
   "personalInfo": "Personal Info",
   "noInternet": "No Internet Connection",
   "noInternet2": "The connection to the server has been lost. Please check your internet connection and try again",
-  "tryAgain": "Try Again"
+  "tryAgain": "Try Again",
+  "orderSuccess": "Your order has been successfully placed",
+  "orderSuccess2": "You can track your order step by step",
+  "orderSuccess3": "Follow Order",
+  "cancle": "Cancle"
 }

@@ -13,7 +13,7 @@ class ProductsListView extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kHoripadding),
         child: SizedBox(
-          height: 220,
+          height: 240,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: products.length > 10 ? 10 : products.length,
@@ -21,7 +21,7 @@ class ProductsListView extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsetsDirectional.only(end: 10),
                 child: SizedBox(
-                  height: 220,
+                  height: 224,
                   width: 200,
                   child: ProductCard(product: products[index]),
                 ),

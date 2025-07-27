@@ -828,6 +828,41 @@ class S {
   String get tryAgain {
     return Intl.message('Try Again', name: 'tryAgain', desc: '', args: []);
   }
+
+  /// `Your order has been successfully placed`
+  String get orderSuccess {
+    return Intl.message(
+      'Your order has been successfully placed',
+      name: 'orderSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can track your order step by step`
+  String get orderSuccess2 {
+    return Intl.message(
+      'You can track your order step by step',
+      name: 'orderSuccess2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follow Order`
+  String get orderSuccess3 {
+    return Intl.message(
+      'Follow Order',
+      name: 'orderSuccess3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancle`
+  String get cancle {
+    return Intl.message('Cancle', name: 'cancle', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

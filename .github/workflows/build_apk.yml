@@ -32,8 +32,10 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B)
           curl -F document=@build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk \
               -F chat_id=$TELEGRAM_CHAT_ID \
               -F caption="📦 APK جديد
+              📝 الرسالة: $COMMIT_MESSAGE
               🕒 التاريخ: $(date +'%Y-%m-%d %H:%M')" \
               https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument
