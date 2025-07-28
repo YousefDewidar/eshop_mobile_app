@@ -31,7 +31,11 @@ class CategoriesListViewBlocConsumer extends StatelessWidget {
             ),
           );
         } else if (state is CategoriesSuccess) {
-          return CategoriesListView(categories: state.categories);
+          return state.categories.isEmpty
+              ? const SliverToBoxAdapter(
+                child: Text("لا يوجد فئات", textAlign: TextAlign.center),
+              )
+              : CategoriesListView(categories: state.categories);
         } else {
           return const SliverToBoxAdapter(child: SizedBox());
         }

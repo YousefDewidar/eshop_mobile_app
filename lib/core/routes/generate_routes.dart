@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rfaye3/features/auth/ui/views/forget_pass_view.dart';
-import 'package:rfaye3/features/auth/ui/views/login_view.dart';
-import 'package:rfaye3/features/auth/ui/views/signup_view.dart';
-import 'package:rfaye3/features/auth/ui/views/verify_code_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/forget_pass_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/login_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/new_password_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/signup_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/validate_otp_view.dart';
+import 'package:rfaye3/features/auth/presentation/views/verify_code_view.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/features/checkout/presentation/views/add_address_view.dart';
 import 'package:rfaye3/features/checkout/presentation/views/checkout_view.dart';
@@ -72,6 +74,21 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
       return MaterialPageRoute(
         builder:
             (context) => VerifyCodeView(email: setting.arguments as String),
+      );
+    case Routes.validateOtp:
+      return MaterialPageRoute(
+        builder:
+            (context) => ValidateOtpView(email: setting.arguments as String),
+      );
+    case Routes.newPassword:
+      return MaterialPageRoute(
+        builder: (context) {
+          final args = setting.arguments as Map<String, dynamic>;
+          return NewPasswordView(
+            email: args['email'] as String,
+            otp: args['otp'] as String,
+          );
+        },
       );
     default:
       return null;

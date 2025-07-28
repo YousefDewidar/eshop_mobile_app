@@ -9,20 +9,26 @@ class AuthRepoImpl implements AuthRepo {
   AuthRepoImpl(this._apiService);
 
   @override
-  Future<Either<Failuer, void>> resendOtp({required String email}) async {
+  Future<Either<Failuer, void>> signupWithEmailAndPassword({
+    required String email,
+    required String password,
+    required String fName,
+    required String lName,
+  }) async {
     try {
-      await _apiService.post("/api/auth/resend-otp", data: {"email": email});
-      
+      await _apiService.post(
+        "/api/auth/register",
+        data: {
+          "email": email,
+          "password": password,
+          "firstname": fName,
+          "lastname": lName,
+        },
+      );
       return const Right(null);
     } catch (e) {
       return Left(ServerFailure.fromError(e));
     }
-  }
-
-  @override
-  Future<Either<Failuer, void>> resetPassword({required String email}) {
-    // TODO: implement resetPassword
-    throw UnimplementedError();
   }
 
   @override
@@ -47,29 +53,16 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failuer, void>> signInWithGoogle() {
-    // TODO: implement signInWithGoogle
-    throw UnimplementedError();
-  }
-
-
-  @override
-  Future<Either<Failuer, void>> signupWithEmailAndPassword({
+  Future<Either<Failuer, void>> verifyEmail({
+    required String code,
     required String email,
-    required String password,
-    required String fName,
-    required String lName,
   }) async {
     try {
       await _apiService.post(
-        "/api/auth/register",
-        data: {
-          "email": email,
-          "password": password,
-          "firstname": fName,
-          "lastname": lName,
-        },
+        "/api/auth/verify-email",
+        data: {"email": email, "otp": code},
       );
+
       return const Right(null);
     } catch (e) {
       return Left(ServerFailure.fromError(e));
@@ -77,17 +70,68 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failuer, void>> updatePassword({required String newPassword}) {
-    // TODO: implement updatePassword
+  Future<Either<Failuer, void>> resendOtp({required String email}) async {
+    try {
+      await _apiService.post("/api/auth/resend-otp", data: {"email": email});
+
+      return const Right(null);
+    } catch (e) {
+      return Left(ServerFailure.fromError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failuer, void>> signInWithGoogle() {
+    // TODO: implement signInWithGoogle
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failuer, void>> verifyEmail({
+  Future<Either<Failuer, void>> forgetPassword({required String email}) async {
+    try {
+      await _apiService.post(
+        "/api/auth/forgot-password",
+        data: {"email": email},
+      );
+
+      return const Right(null);
+    } catch (e) {
+      return Left(ServerFailure.fromError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failuer, void>> validateOtp({
+    required String email,
+    required String code,
+  }) async {
+    try {
+      await _apiService.post(
+        "/api/auth/validate-otp",
+        data: {"email": email, "otp": code},
+      );
+
+      return const Right(null);
+    } catch (e) {
+      return Left(ServerFailure.fromError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failuer, void>> resetPassword({
+    required String newPassword,
     required String code,
     required String email,
-  }) {
-    // TODO: implement verifyEmail
-    throw UnimplementedError();
+  }) async {
+    try {
+      await _apiService.post(
+        "/api/auth/reset-password",
+        data: {"email": email, "otp": code, "newPassword": newPassword},
+      );
+
+      return const Right(null);
+    } catch (e) {
+      return Left(ServerFailure.fromError(e));
+    }
   }
 }

@@ -19,9 +19,21 @@ abstract class AuthRepo {
     required String email,
   });
 
-  Future<Either<Failuer, void>> resetPassword({required String email});
+  // Step 1 forgot pass
+  Future<Either<Failuer, void>> forgetPassword({required String email});
 
-  Future<Either<Failuer, void>> updatePassword({required String newPassword});
+  // Step 2 forgot pass
+  Future<Either<Failuer, void>> validateOtp({
+    required String email,
+    required String code,
+  });
+
+  // Step 3 forgot pass
+  Future<Either<Failuer, void>> resetPassword({
+    required String newPassword,
+    required String code,
+    required String email,
+  });
 
   Future<Either<Failuer, void>> resendOtp({required String email});
 

@@ -17,5 +17,8 @@ abstract class Routes {
   static const verify = 'verify';
   static const login = 'login';
   static const signUp = 'signUp';
+
   static const forgetPass = 'forgetPass';
+  static const validateOtp = 'validateOtp';
+  static const newPassword = 'newPassword';
 }

@@ -86,10 +86,10 @@ class _Rfaye3AppState extends State<Rfaye3App> {
         builder: (context) {
           return MaterialApp(
             navigatorKey: navigatorKey,
-            themeMode:
-                context.watch<SettingsCubit>().isDark
-                    ? ThemeMode.dark
-                    : ThemeMode.light,
+            themeMode: ThemeMode.dark,
+            // context.watch<SettingsCubit>().isDark
+            //     ? ThemeMode.dark
+            //     : ThemeMode.light,
             theme: AppThemes.getLightData(),
             darkTheme: AppThemes.getDarkData(),
             localizationsDelegates: const [
