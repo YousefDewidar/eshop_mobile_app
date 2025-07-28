@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/helper/secure_storage.dart';
 import 'package:rfaye3/core/routes/routes.dart';
@@ -19,6 +20,7 @@ class ProfileViewBody extends StatelessWidget {
         children: [
           Text(S.of(context).profile, style: TextStyles.bold19),
           const SpaceV(10),
+
           ListTile(
             contentPadding: const EdgeInsets.symmetric(
               horizontal: kHoripadding,
@@ -36,7 +38,22 @@ class ProfileViewBody extends StatelessWidget {
               ),
             ),
 
-            leading: Image.asset(Assets.imagesProfileImage, height: 120),
+            leading:
+                SecureStorage.getUserData().image == null
+                    ? Image.asset(Assets.imagesProfileImage, width: 44)
+                    : Container(
+                      width: 60,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.primaryColor,
+                        image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                            SecureStorage.getUserData().image!,
+                          ),
+                        ),
+                      ),
+                    ),
           ),
           const SpaceV(10),
 

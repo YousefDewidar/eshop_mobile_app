@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:rfaye3/core/helper/secure_storage.dart';
 import 'package:rfaye3/features/auth/data/repo/auth_repo.dart';
 import 'package:rfaye3/core/network/api_service.dart';
@@ -46,6 +49,7 @@ class AuthRepoImpl implements AuthRepo {
         res.data['accessToken'],
         res.data['refreshToken'],
       );
+
       return const Right(null);
     } catch (e) {
       return Left(ServerFailure.fromError(e));
@@ -81,9 +85,37 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failuer, void>> signInWithGoogle() {
-    // TODO: implement signInWithGoogle
-    throw UnimplementedError();
+  Future<Either<Failuer, void>> signInWithGoogle() async {
+    try {
+      const webClientId =
+          '685240802030-pbvfc9ner95oqgmnmeajk3gihmf2qbqt.apps.googleusercontent.com';
+
+      final GoogleSignIn googleSignIn = GoogleSignIn(
+        serverClientId: webClientId,
+      );
+      googleSignIn.signOut();
+
+      final googleUser = await googleSignIn.signIn();
+      final googleAuth = await googleUser!.authentication;
+      final idToken = googleAuth.idToken;
+
+      final res = await _apiService.post(
+        "/api/auth/google/mobile",
+        data: {"idToken": idToken},
+      );
+
+      log(res.data.toString());
+
+      await SecureStorage.saveUserData(
+        res.data['accessToken'],
+        res.data['refreshToken'],
+      );
+
+      return const Right(null);
+    } catch (e) {
+    
+      return Left(ServerFailure.fromError(e));
+    }
   }
 
   @override

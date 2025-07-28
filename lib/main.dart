@@ -10,6 +10,8 @@ import 'package:rfaye3/core/routes/generate_routes.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_themes.dart';
 import 'package:rfaye3/core/widgets/no_internet_view.dart';
+import 'package:rfaye3/features/cart/data/repo/cart_repo.dart';
+import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/profile/presentation/view_model/settings_cubit/settings_cubit.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
@@ -80,16 +82,22 @@ class _Rfaye3AppState extends State<Rfaye3App> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SettingsCubit()..init(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => SettingsCubit()..init()),
+        BlocProvider(
+          create:
+              (context) => CartCubit(getIt.get<CartRepo>())..getAllCartList(),
+        ),
+      ],
       child: Builder(
         builder: (context) {
           return MaterialApp(
             navigatorKey: navigatorKey,
-            themeMode: ThemeMode.dark,
-            // context.watch<SettingsCubit>().isDark
-            //     ? ThemeMode.dark
-            //     : ThemeMode.light,
+            themeMode:
+                context.watch<SettingsCubit>().isDark
+                    ? ThemeMode.dark
+                    : ThemeMode.light,
             theme: AppThemes.getLightData(),
             darkTheme: AppThemes.getDarkData(),
             localizationsDelegates: const [

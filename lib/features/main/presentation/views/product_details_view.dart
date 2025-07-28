@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
@@ -68,23 +67,23 @@ class ProductDetailsView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Text(product.name, style: TextStyles.bold23),
+                      const SpaceV(4),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(product.name, style: TextStyles.semiBold13),
-                          const SpaceV(4),
                           Text(
-                            "${product.price}${S.of(context).egp}",
-                            style: TextStyles.bold13.copyWith(
+                            "${product.price} ${S.of(context).egp}",
+                            style: TextStyles.bold23.copyWith(
                               color: AppColors.secondaryColor,
                             ),
                           ),
                           Text(
-                            "${S.of(context).weight}: ${product.weight}",
-                            style: TextStyles.bold13.copyWith(
+                            "${S.of(context).weight}: ${product.weight} ${S.of(context).gram}",
+                            style: TextStyles.semiBold16.copyWith(
                               color: AppColors.secondaryColor,
                             ),
                           ),
@@ -119,7 +118,7 @@ class ProductDetailsView extends StatelessWidget {
                   const SpaceV(10),
                   Text(
                     product.description,
-                    style: TextStyles.regular13.copyWith(
+                    style: TextStyles.regular16.copyWith(
                       color: AppColors.greyColor,
                     ),
                   ),

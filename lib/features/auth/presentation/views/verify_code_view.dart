@@ -22,7 +22,9 @@ class VerifyCodeView extends StatelessWidget {
       child: BlocConsumer<VerifyCubit, VerifyState>(
         listener: (context, state) {
           if (state is VerifyEmailSuccess) {
-            Navigator.pushReplacementNamed(context, Routes.home);
+            showNotification(context, "تم تأكيد حسابك بنجاح", NotiType.success);
+
+            Navigator.pushReplacementNamed(context, Routes.login);
           } else if (state is VerifyEmailFailure) {
             showNotification(context, state.message, NotiType.error);
           }

@@ -4,17 +4,19 @@ import 'dart:convert';
 class UserModel {
   final String? email;
   final String? name;
+  final String? image;
 
-  const UserModel({required this.email, required this.name});
+  const UserModel({required this.email, required this.name, this.image});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'email': email, 'name': name};
+    return <String, dynamic>{'email': email, 'name': name, 'image': image};
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
       email: map['email'] as String?,
       name: map['name'] as String?,
+      image: map['picture'] as String?,
     );
   }
 

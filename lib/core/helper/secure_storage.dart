@@ -1,3 +1,4 @@
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:rfaye3/core/helper/di.dart';
@@ -25,20 +26,24 @@ class SecureStorage {
     await writeSecureData('refreshToken', refreshToken);
 
     final decodedToken = JwtDecoder.decode(accessToken);
+
     await prefs.setString('userEmail', decodedToken['email']);
     await prefs.setString('userName', decodedToken['name']);
+    await prefs.setString('userImage', decodedToken['picture']);
   }
 
   static Future<void> deleteUserData() async {
     await secureStorage.deleteAll();
     await prefs.remove('userEmail');
     await prefs.remove('userName');
+    await prefs.remove('userImage');
   }
 
   static UserModel getUserData() {
     final email = prefs.getString('userEmail');
     final name = prefs.getString('userName');
-    return UserModel(name: name, email: email);
+    final image = prefs.getString('userImage');
+    return UserModel(name: name, email: email, image: image);
   }
 
   static Future<UserTokens> getUserTokens() async {

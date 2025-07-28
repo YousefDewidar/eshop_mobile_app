@@ -6,10 +6,7 @@ import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search_cubit.dart';
 
 class SearchHistoryCard extends StatelessWidget {
-  const SearchHistoryCard({
-    super.key,
-    required this.searchHistory,
-  });
+  const SearchHistoryCard({super.key, required this.searchHistory});
   final String searchHistory;
 
   @override
@@ -23,17 +20,17 @@ class SearchHistoryCard extends StatelessWidget {
         minTileHeight: 0,
         title: Text(
           searchHistory,
-          style: TextStyles.regular16,
+          style: TextStyles.regular16.copyWith(
+            color: Theme.of(context).textTheme.bodyLarge!.color,
+          ),
         ),
         trailing: InkWell(
           onTap: () async {
             await context.read<SearchCubit>().clearSearchHistory(
-                  searchText: searchHistory,
-                );
+              searchText: searchHistory,
+            );
           },
-          child: const Icon(
-            Icons.close_rounded,
-          ),
+          child: const Icon(Icons.close_rounded, color: AppColors.greyColor),
         ),
         leading: const Icon(
           Icons.access_time_rounded,

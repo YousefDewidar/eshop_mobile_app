@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.rfaye3"
+    namespace = "com.yousef.rfaye3"
     compileSdk = 34
     ndkVersion = flutter.ndkVersion
 
@@ -19,7 +19,7 @@ android {
     }
 
   defaultConfig {
-    applicationId = "com.example.rfaye3"
+    applicationId = "com.yousef.rfaye3"
     minSdk = 23  
     targetSdk = flutter.targetSdkVersion
     versionCode = flutter.versionCode

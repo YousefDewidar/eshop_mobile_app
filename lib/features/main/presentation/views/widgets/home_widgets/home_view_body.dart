@@ -30,12 +30,9 @@ class HomeViewBody extends StatelessWidget {
                 children: [
                   const HomeAppBar(),
                   const SpaceV(16),
-                  GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, Routes.search),
-                    child: SearchTextField(
-                      enabled: false,
-                      hint: S.of(context).homeSearchHint,
-                    ),
+                  SearchTextField(
+                    enabled: false,
+                    hint: S.of(context).homeSearchHint,
                   ),
                   const SpaceV(12),
                 ],

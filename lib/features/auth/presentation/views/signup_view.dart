@@ -27,13 +27,12 @@ class SignupView extends StatelessWidget {
         builder: (context, state) {
           return ModalProgressHUD(
             progressIndicator: const CircularProgressIndicator(
-                color: AppColors.secondaryColor),
+              color: AppColors.secondaryColor,
+            ),
             inAsyncCall: state is SignupLoading,
             child: Scaffold(
               appBar: customAppBar(context, S.of(context).signUp),
-              body: const SafeArea(
-                child: SignupViewBody(),
-              ),
+              body: const SafeArea(child: SignupViewBody()),
             ),
           );
         },

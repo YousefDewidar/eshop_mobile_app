@@ -16,7 +16,7 @@ class HomeRepoImpl implements HomeRepo {
       Response data = await apiService.get("/api/products");
 
       final products =
-          (data.data as List).map((e) {
+          (data.data['items'] as List).map((e) {
             return ProductModel.fromJson(e);
           }).toList();
 
@@ -50,7 +50,13 @@ class HomeRepoImpl implements HomeRepo {
     required String query,
   }) async {
     try {
-      List<ProductModel> products = [];
+      Response data = await apiService.get("/api/products/?searchTerm=$query");
+
+      final products =
+          (data.data['items'] as List).map((e) {
+            return ProductModel.fromJson(e);
+          }).toList();
+
       return right(products);
     } catch (e) {
       return left(ServerFailure.fromError(e));

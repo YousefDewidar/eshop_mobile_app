@@ -8,7 +8,7 @@
 PRODUCT_NAME = rfaye3
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.rfaye3
+PRODUCT_BUNDLE_IDENTIFIER = com.yousef.rfaye3
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2025 com.example. All rights reserved.

@@ -1,3 +1,4 @@
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
@@ -13,6 +14,7 @@ class ServerFailure extends Failuer {
 
   factory ServerFailure.fromError(Object e) {
     if (e is DioException) {
+      log(e.toString());
       switch (e.type) {
         case DioExceptionType.connectionTimeout:
           return ServerFailure(
@@ -67,7 +69,6 @@ class ServerFailure extends Failuer {
 
       return ServerFailure(message: 'Unknown error occurred');
     } else if (response.statusCode == 429) {
-
       return ServerFailure(
         message: 'Too many requests, please try again after some time',
       );
