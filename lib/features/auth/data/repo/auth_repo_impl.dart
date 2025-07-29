@@ -113,7 +113,6 @@ class AuthRepoImpl implements AuthRepo {
 
       return const Right(null);
     } catch (e) {
-    
       return Left(ServerFailure.fromError(e));
     }
   }

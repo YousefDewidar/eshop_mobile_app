@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rfaye3/core/helper/payment_service.dart';
-import 'package:rfaye3/core/utils/app_colors.dart';
-
 import 'package:rfaye3/features/checkout/data/models/order_payload_model.dart';
 import 'package:rfaye3/features/checkout/data/models/shipping_type.dart';
 import 'package:rfaye3/features/checkout/data/repo/checkout_repo.dart';
@@ -34,17 +30,17 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       (fail) {
         emit(CheckoutFail(fail.message));
       },
-      (csk) async {
-        if (order.shippingType == ShippingType.Paymob) {
-          await PaymobService().payWithPaymob(
-            csk,
-            buttonBackgroundColor: AppColors.primaryColor,
-            buttonTextColor: Colors.white,
-            saveCardDefault: true,
-            showSaveCard: true,
-          );
-        }
-        emit(CheckoutSuccess());
+      (webViewLink) {
+        // if (order.shippingType == ShippingType.Paymob) {
+        //   await PaymobService().payWithPaymob(
+        //     csk,
+        //     buttonBackgroundColor: AppColors.primaryColor,
+        //     buttonTextColor: Colors.white,
+        //     saveCardDefault: true,
+        //     showSaveCard: true,
+        //   );
+        // }
+        emit(CheckoutSuccess(webViewLink));
       },
     );
   }

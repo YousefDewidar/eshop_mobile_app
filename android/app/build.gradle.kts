@@ -1,8 +1,16 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
 }
+
+    val keystoreProperties = Properties()
+    val keystorePropertiesFile = rootProject.file("key.properties")
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(keystorePropertiesFile.inputStream())
+    }
 
 android {
     namespace = "com.yousef.rfaye3"
@@ -18,21 +26,38 @@ android {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
-  defaultConfig {
-    applicationId = "com.yousef.rfaye3"
-    minSdk = 23  
-    targetSdk = flutter.targetSdkVersion
-    versionCode = flutter.versionCode
-    versionName = flutter.versionName
-}
 
-    buildTypes {
-        release {
-            signingConfig = signingConfigs.getByName("debug")
+    defaultConfig {
+        applicationId = "com.yousef.rfaye3"
+        minSdk = 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        create("release") {
+            if (keystorePropertiesFile.exists()) {
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+            }
         }
     }
 
-    // إضافة buildFeatures
+    buildTypes {
+        getByName("release") {
+            signingConfig = signingConfigs.findByName("release")
+            isMinifyEnabled = false
+            isShrinkResources = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
     buildFeatures {
         dataBinding = true
     }
@@ -42,7 +67,6 @@ flutter {
     source = "../.."
 }
 
-// إضافة التبعيات
 dependencies {
     implementation("com.paymob.sdk:Paymob-SDK:1.5.9")
 }

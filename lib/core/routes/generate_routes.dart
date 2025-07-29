@@ -8,6 +8,7 @@ import 'package:rfaye3/features/auth/presentation/views/verify_code_view.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/features/checkout/presentation/views/add_address_view.dart';
 import 'package:rfaye3/features/checkout/presentation/views/checkout_view.dart';
+import 'package:rfaye3/features/checkout/presentation/views/web_view_payment.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/main/presentation/views/main_view.dart';
@@ -79,6 +80,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
       return MaterialPageRoute(
         builder:
             (context) => ValidateOtpView(email: setting.arguments as String),
+      );
+    case Routes.paymentWebView:
+      return MaterialPageRoute(
+        builder: (context) => InAppWebViewPage(url: setting.arguments as String),
       );
     case Routes.newPassword:
       return MaterialPageRoute(

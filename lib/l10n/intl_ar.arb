@@ -93,7 +93,7 @@
   "state": "المحافظة",
   "city": "المدينة",
   "street": "الشارع",
-  "apartment": "تفاصيل إضافية",
+  "apartment": "الشقة",
   "phoneNumber": "رقم الموبايل",
   "notes": "ملاحظات",
   "addFirstAddress": "ضيف عنوانك الأول",
@@ -111,5 +111,5 @@
   "orderSuccess": "طلبك تم بنجاح",
   "orderSuccess2": "دلوقت تقدر تتبع طلبك خطوة بخطوة",
   "orderSuccess3": "متابعة الطلب",
-  "cancle":"خروج"
+  "cancle": "خروج"
 }

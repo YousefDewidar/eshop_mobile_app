@@ -6,6 +6,7 @@ import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/checkout/presentation/view_model/checkout_cubit/checkout_cubit.dart';
 import 'package:rfaye3/features/checkout/presentation/view_model/checkout_cubit/checkout_state.dart';
+import 'package:rfaye3/features/checkout/presentation/views/web_view_payment.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/checkout_appbar.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/checkout_page_view.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/steps_row.dart';
@@ -61,14 +62,32 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           CheckoutPageView(pageController: pageController),
           const SpaceV(24),
           BlocListener<CheckoutCubit, CheckoutState>(
-            listener: (context, state) {
+            listener: (context, state) async {
               if (state is CheckoutFail) {
                 showNotification(
                   context,
-                  'حدذ خطأ اثناء الدفع',
+                  'حدث خطأ اثناء الدفع',
                   NotiType.error,
                 );
               } else if (state is CheckoutSuccess) {
+                // await Navigator.pushNamed(
+                //   context,
+                //   Routes.paymentWebView,
+                //   arguments: state.webViewLink,
+                // );
+                await showModalBottomSheet(
+                  context: context,
+                  enableDrag: false,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder:
+                      (context) => FractionallySizedBox(
+                        heightFactor: 0.9,
+                        alignment: Alignment.topCenter,
+                        child: InAppWebViewPage(url: state.webViewLink),
+                      ),
+                );
+                if (!context.mounted) return;
                 Navigator.pop(context, true);
               }
             },

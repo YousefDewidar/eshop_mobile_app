@@ -68,7 +68,7 @@ class CheckoutRepoImpl implements CheckoutRepo {
         },
       );
 
-      return Right(res.data['paymentClientSecret']);
+      return Right(res.data['unifiedCheckoutUrl']);
     } catch (e) {
       return Left(ServerFailure.fromError(e));
     }

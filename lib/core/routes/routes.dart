@@ -21,4 +21,6 @@ abstract class Routes {
   static const forgetPass = 'forgetPass';
   static const validateOtp = 'validateOtp';
   static const newPassword = 'newPassword';
+
+  static const paymentWebView = 'paymentWebView';
 }

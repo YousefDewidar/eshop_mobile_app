@@ -38,6 +38,8 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   jwt_decoder:
   languagetool_textfield: ^0.1.1
+  flutter_inappwebview:
+  url_launcher:
 
 dev_dependencies:
   intl_utils:
