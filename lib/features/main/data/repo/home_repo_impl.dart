@@ -12,9 +12,19 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl(this.apiService);
 
   @override
-  Future<Either<Failuer, List<ProductModel>>> getMostSellingProducts() async {
+  Future<Either<Failuer, List<ProductModel>>> getAllProducts({
+    num minPrice = 0,
+    num maxPrice = 1000000,
+    String sortBy = '',
+    String sortOrder = '',
+    String category = '',
+    int pageSize = 10,
+    int pageNum = 1,
+  }) async {
     try {
-      Response data = await apiService.get("/api/products");
+      Response data = await apiService.get(
+        "/api/products/?MinPrice=$minPrice&MaxPrice=$maxPrice&SortBy=$sortBy&SortOrder=$sortOrder&category=$category&page=$pageNum&pageSize=$pageSize",
+      );
 
       final products =
           (data.data['items'] as List).map((e) {
@@ -33,7 +43,7 @@ class HomeRepoImpl implements HomeRepo {
       try {
         Response data = await apiService.get("/api/categories");
         List<CategoryModel> products =
-            (data.data as List).map((e) {
+            (data.data['categories'] as List).map((e) {
               return CategoryModel.fromJson(e);
             }).toList();
 
@@ -49,9 +59,15 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failuer, List<ProductModel>>> searchProducts({
     required String query,
+    required String catName,
+    required num minPrice,
+    required num maxPrice,
+    required String sortOrder,
   }) async {
     try {
-      Response data = await apiService.get("/api/products/?searchTerm=$query");
+      Response data = await apiService.get(
+        "/api/products/?searchTerm=$query&category=$catName&MinPrice=$minPrice&MaxPrice=$maxPrice&SortBy=price&SortOrder=$sortOrder",
+      );
 
       final products =
           (data.data['items'] as List).map((e) {

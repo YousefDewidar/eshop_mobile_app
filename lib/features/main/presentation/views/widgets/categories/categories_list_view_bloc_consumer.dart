@@ -25,7 +25,12 @@ class CategoriesListViewBlocConsumer extends StatelessWidget {
               categories: [
                 ...List.generate(
                   6,
-                  (index) => CategoryModel(id: "", name: "avadscvadvasd"),
+                  (index) => CategoryModel(
+                    id: "",
+                    name: "avadscvadvasd",
+                    description: '',
+                    coverPictureUrl: '',
+                  ),
                 ),
               ],
             ),

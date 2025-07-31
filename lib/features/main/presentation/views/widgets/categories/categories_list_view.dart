@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/features/main/data/models/category_model.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/categories/category_card.dart';
@@ -15,7 +16,16 @@ class CategoriesListView extends StatelessWidget {
         itemCount: categories.length,
         gridDelegate: customDelegate(),
         itemBuilder: (context, index) {
-          return CategoriesCard(category: categories[index]);
+          return InkWell(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                Routes.search,
+                arguments: categories[index].name,
+              );
+            },
+            child: CategoriesCard(category: categories[index]),
+          );
         },
       ),
     );

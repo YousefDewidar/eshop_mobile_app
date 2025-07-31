@@ -12,7 +12,7 @@ import 'package:rfaye3/features/checkout/presentation/views/web_view_payment.dar
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/main/presentation/views/main_view.dart';
-import 'package:rfaye3/features/main/presentation/views/most_selling_view.dart';
+import 'package:rfaye3/features/main/presentation/views/view_more_products_view.dart';
 import 'package:rfaye3/features/main/presentation/views/notification_view.dart';
 import 'package:rfaye3/features/main/presentation/views/product_details_view.dart';
 import 'package:rfaye3/features/main/presentation/views/product_reviews_view.dart';
@@ -34,13 +34,19 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
       return MaterialPageRoute(builder: (context) => const MainView());
     case Routes.mostSelling:
       return MaterialPageRoute(
-        builder:
-            (context) => MostSellingView(
-              products: setting.arguments as List<ProductModel>,
-            ),
+        builder: (context) {
+          final args = setting.arguments as Map<String, dynamic>;
+
+          return ViewMoreProductsView(
+            title: args['title'] as String,
+            products: args['products'] as List<ProductModel>,
+          );
+        },
       );
     case Routes.search:
-      return MaterialPageRoute(builder: (context) => const SearchView());
+      return MaterialPageRoute(
+        builder: (context) => SearchView(q: setting.arguments as String?),
+      );
     case Routes.notification:
       return MaterialPageRoute(builder: (context) => const NotificationView());
     case Routes.checkout:

@@ -7,7 +7,7 @@ import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
-import 'package:rfaye3/features/main/presentation/views/widgets/most_selling/add_to_cart_floating_button.dart';
+import 'package:rfaye3/features/main/presentation/views/widgets/home_products/add_to_cart_floating_button.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class ProductCard extends StatelessWidget {

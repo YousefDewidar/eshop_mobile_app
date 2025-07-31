@@ -96,4 +96,23 @@ class ProductModel extends Equatable {
       return description;
     }
   }
+
+  static ProductModel getDummyProduct() => const ProductModel(
+    id: "0",
+    productCode: "dsv",
+    name: "ndsion",
+    description: "jlbnsjobv idinhsvio",
+    coverPictureUrl: "",
+    price: 1,
+    stock: 1,
+    weight: 1,
+    color: "",
+    discountPercentage: 1,
+    sellerId: "",
+    arabicName: 'sca',
+    arabicDescription: 'as',
+    categories: ['ca', 'as'],
+    rating: 3.2,
+    reviewsCount: 5,
+  );
 }

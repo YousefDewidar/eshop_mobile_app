@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:rfaye3/core/helper/secure_storage.dart';
@@ -43,6 +45,7 @@ class AuthRepoImpl implements AuthRepo {
         data: {"email": email, "password": password},
       );
 
+
       await SecureStorage.saveUserData(
         res.data['accessToken'],
         res.data['refreshToken'],
@@ -50,6 +53,7 @@ class AuthRepoImpl implements AuthRepo {
 
       return const Right(null);
     } catch (e) {
+      log(e.toString());
       return Left(ServerFailure.fromError(e));
     }
   }

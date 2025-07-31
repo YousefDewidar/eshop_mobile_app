@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rfaye3/features/main/presentation/views/widgets/most_selling/app_bar_with_notification.dart';
+import 'package:rfaye3/features/main/presentation/views/widgets/home_products/app_bar_with_notification.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/search/clear_all_text.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/search/products_result_grid_view_bloc_consumer.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/search/search_field.dart';

@@ -8,10 +8,24 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this._homeRepo) : super(SearchInitial());
 
   final HomeRepo _homeRepo;
+  String catName = '';
 
-  Future<void> searchProducts({required String query}) async {
+  Future<void> searchProducts({
+    String query = '',
+    String catName = '',
+    String sortOrder = 'desc',
+    num minPrice = 0,
+    num maxPrice = 1000000,
+  }) async {
     emit(SearchLoading());
-    final data = await _homeRepo.searchProducts(query: query);
+    this.catName = catName;
+    final data = await _homeRepo.searchProducts(
+      query: query,
+      catName: catName,
+      minPrice: minPrice,
+      maxPrice: maxPrice,
+      sortOrder: sortOrder,
+    );
     data.fold(
       (failuer) {
         emit(SearchFailure(message: failuer.message));
