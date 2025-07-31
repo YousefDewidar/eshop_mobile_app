@@ -49,8 +49,8 @@ android {
     buildTypes {
         getByName("release") {
             signingConfig = signingConfigs.findByName("release")
-            isMinifyEnabled = false
-            isShrinkResources = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -58,9 +58,7 @@ android {
         }
     }
 
-    buildFeatures {
-        dataBinding = true
-    }
+  
 }
 
 flutter {
@@ -68,5 +66,4 @@ flutter {
 }
 
 dependencies {
-    implementation("com.paymob.sdk:Paymob-SDK:1.5.9")
 }

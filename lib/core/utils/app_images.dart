@@ -70,17 +70,9 @@ class Assets {
   /// assets/images/page_view_item1_background_image.svg
   static const String imagesPageViewItem1BackgroundImage = "assets/images/page_view_item1_background_image.svg";
 
-  /// Assets for imagesPageViewItem1Image
-  /// assets/images/page_view_item1_image.svg
-  static const String imagesPageViewItem1Image = "assets/images/page_view_item1_image.svg";
-
   /// Assets for imagesPageViewItem2BackgroundImage
   /// assets/images/page_view_item2_background_image.svg
   static const String imagesPageViewItem2BackgroundImage = "assets/images/page_view_item2_background_image.svg";
-
-  /// Assets for imagesPageViewItem2Image
-  /// assets/images/page_view_item2_image.svg
-  static const String imagesPageViewItem2Image = "assets/images/page_view_item2_image.svg";
 
   /// Assets for imagesPaypal
   /// assets/images/Paypal.svg
@@ -93,10 +85,6 @@ class Assets {
   /// Assets for imagesProfileImage
   /// assets/images/profile_image.png
   static const String imagesProfileImage = "assets/images/profile_image.png";
-
-  /// Assets for imagesSale
-  /// assets/images/sale.svg
-  static const String imagesSale = "assets/images/sale.svg";
 
   /// Assets for imagesSearchIcon
   /// assets/images/search_icon.svg
@@ -142,10 +130,6 @@ class Assets {
   /// assets/images/trash.svg
   static const String imagesTrash = "assets/images/trash.svg";
 
-  /// Assets for imagesVector
-  /// assets/images/Vector.svg
-  static const String imagesVector = "assets/images/Vector.svg";
-
   /// Assets for imagesVuesaxBoldHome
   /// assets/images/vuesax/bold/home.svg
   static const String imagesVuesaxBoldHome = "assets/images/vuesax/bold/home.svg";
@@ -177,9 +161,5 @@ class Assets {
   /// Assets for imagesVuesaxOutlineUser
   /// assets/images/vuesax/outline/user.svg
   static const String imagesVuesaxOutlineUser = "assets/images/vuesax/outline/user.svg";
-
-  /// Assets for imagesWatermelonTest
-  /// assets/images/watermelon_test.png
-  static const String imagesWatermelonTest = "assets/images/watermelon_test.png";
 }
 

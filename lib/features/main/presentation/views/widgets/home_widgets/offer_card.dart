@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
-import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
@@ -19,14 +18,15 @@ class OfferCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Positioned(
-            left: 0,
-            child: Image.asset(
-              Assets.imagesWatermelonTest,
-              width: 180,
-              height: 150,
-            ),
-          ),
+          // Positioned(
+          //   left: 0,
+          //   child:
+          //    Image.asset(
+          //     Assets.,
+          //     width: 180,
+          //     height: 150,
+          //   ),
+          // ),
           Align(
             alignment: Alignment.centerRight,
             child: ClipPath(

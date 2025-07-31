@@ -14,7 +14,6 @@ import 'package:rfaye3/features/cart/data/repo/cart_repo.dart';
 import 'package:rfaye3/features/cart/presentation/view_model/cart_cubit/cart_cubit.dart';
 import 'package:rfaye3/features/profile/presentation/view_model/settings_cubit/settings_cubit.dart';
 import 'package:rfaye3/generated/l10n.dart';
-// TODO : remove paymob mobile sdk
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

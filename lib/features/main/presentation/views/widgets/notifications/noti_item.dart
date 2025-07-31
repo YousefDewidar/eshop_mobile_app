@@ -37,7 +37,7 @@ class _NotificationItemState extends State<NotificationItem> {
         titleAlignment: ListTileTitleAlignment.top,
         minTileHeight: 60,
         leading: SvgPicture.asset(
-          Assets.imagesSale,
+          Assets.imagesDone,
           width: 60,
           height: 60,
           fit: BoxFit.fill,

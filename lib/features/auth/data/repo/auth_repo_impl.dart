@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:rfaye3/core/helper/secure_storage.dart';
@@ -103,8 +101,6 @@ class AuthRepoImpl implements AuthRepo {
         "/api/auth/google/mobile",
         data: {"idToken": idToken},
       );
-
-      log(res.data.toString());
 
       await SecureStorage.saveUserData(
         res.data['accessToken'],
