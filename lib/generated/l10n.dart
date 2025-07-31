@@ -863,6 +863,41 @@ class S {
   String get cancle {
     return Intl.message('Cancle', name: 'cancle', desc: '', args: []);
   }
+
+  /// `Add Review`
+  String get addReview {
+    return Intl.message('Add Review', name: 'addReview', desc: '', args: []);
+  }
+
+  /// `Reviews`
+  String get review2 {
+    return Intl.message('Reviews', name: 'review2', desc: '', args: []);
+  }
+
+  /// `How do you rate this product`
+  String get addRate {
+    return Intl.message(
+      'How do you rate this product',
+      name: 'addRate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thanks for rating`
+  String get addRate2 {
+    return Intl.message(
+      'Thanks for rating',
+      name: 'addRate2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your comments`
+  String get addRate3 {
+    return Intl.message('Your comments', name: 'addRate3', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

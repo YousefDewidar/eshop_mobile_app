@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
@@ -70,7 +71,7 @@ class ProductDetailsView extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(product.name, style: TextStyles.bold23),
+                      Text(product.getProductNameByLang(context), style: TextStyles.bold23),
                       const SpaceV(4),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,33 +92,40 @@ class ProductDetailsView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SpaceV(10),
                   Row(
-                    spacing: 8,
                     children: [
                       const Icon(Icons.star, color: AppColors.secondaryColor),
-
-                      // Text(
-                      //   product.r.toString(),
-                      //   style: TextStyles.semiBold13,
-                      // ),
-                      // Text(
-                      //   "(${product.rateCount}+)",
-                      //   style: TextStyles.semiBold13,
-                      // ),
                       Text(
-                        S.of(context).review,
-                        style: TextStyles.semiBold13.copyWith(
-                          color: AppColors.lightPrimaryColor,
-                          decorationColor: AppColors.lightPrimaryColor,
-                          decoration: TextDecoration.underline,
+                        product.rating.toString(),
+                        style: TextStyles.semiBold13,
+                      ),
+                      const SpaceH(5),
+                      Text(
+                        "(${product.reviewsCount})",
+                        style: TextStyles.semiBold13,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            Routes.productReviewsView,
+                            arguments: product,
+                          );
+                        },
+                        child: Text(
+                          S.of(context).review,
+                          style: TextStyles.semiBold13.copyWith(
+                            color: AppColors.lightPrimaryColor,
+                            decorationColor: AppColors.lightPrimaryColor,
+                            decoration: TextDecoration.underline,
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  const SpaceV(10),
+
                   Text(
-                    product.description,
+                    product.getProductDescByLang(context),
                     style: TextStyles.regular16.copyWith(
                       color: AppColors.greyColor,
                     ),

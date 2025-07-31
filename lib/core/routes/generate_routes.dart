@@ -15,6 +15,7 @@ import 'package:rfaye3/features/main/presentation/views/main_view.dart';
 import 'package:rfaye3/features/main/presentation/views/most_selling_view.dart';
 import 'package:rfaye3/features/main/presentation/views/notification_view.dart';
 import 'package:rfaye3/features/main/presentation/views/product_details_view.dart';
+import 'package:rfaye3/features/main/presentation/views/product_reviews_view.dart';
 import 'package:rfaye3/features/main/presentation/views/search_view.dart';
 import 'package:rfaye3/features/profile/presentation/views/orders_veiw.dart';
 import 'package:rfaye3/features/profile/presentation/views/personal_view.dart';
@@ -83,7 +84,8 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
       );
     case Routes.paymentWebView:
       return MaterialPageRoute(
-        builder: (context) => InAppWebViewPage(url: setting.arguments as String),
+        builder:
+            (context) => InAppWebViewPage(url: setting.arguments as String),
       );
     case Routes.newPassword:
       return MaterialPageRoute(
@@ -94,6 +96,12 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
             otp: args['otp'] as String,
           );
         },
+      );
+    case Routes.productReviewsView:
+      return MaterialPageRoute(
+        builder:
+            (context) =>
+                ProductReviewsView(product: setting.arguments as ProductModel),
       );
     default:
       return null;

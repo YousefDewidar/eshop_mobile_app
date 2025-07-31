@@ -24,6 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "addAddress": MessageLookupByLibrary.simpleMessage("اضافة عنوان جديد"),
     "addFirstAddress": MessageLookupByLibrary.simpleMessage("ضيف عنوانك الأول"),
+    "addRate": MessageLookupByLibrary.simpleMessage("ما هو تقييمك للمنتج"),
+    "addRate2": MessageLookupByLibrary.simpleMessage("شكرا لتقييمك"),
+    "addRate3": MessageLookupByLibrary.simpleMessage("ما هي ملاحظاتك"),
+    "addReview": MessageLookupByLibrary.simpleMessage("اضافة تعليق"),
     "addToCart": MessageLookupByLibrary.simpleMessage("أضف الي السلة"),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "address2": MessageLookupByLibrary.simpleMessage("اسم الشارع"),
@@ -135,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile": MessageLookupByLibrary.simpleMessage("حسابي"),
     "required": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
     "review": MessageLookupByLibrary.simpleMessage("المراجعة"),
+    "review2": MessageLookupByLibrary.simpleMessage("مراجعه"),
     "saveAddress": MessageLookupByLibrary.simpleMessage("حفظ العنوان"),
     "search": MessageLookupByLibrary.simpleMessage("البحث"),
     "searchHint": MessageLookupByLibrary.simpleMessage("ابحث عن......."),

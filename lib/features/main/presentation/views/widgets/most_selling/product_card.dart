@@ -13,7 +13,8 @@ import 'package:rfaye3/generated/l10n.dart';
 class ProductCard extends StatelessWidget {
   final ProductModel product;
 
-  const ProductCard({super.key, required this.product});
+
+  const ProductCard({super.key, required this.product,});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,6 @@ class ProductCard extends StatelessWidget {
                       style: TextStyles.medium15.copyWith(color: Colors.white),
                     ),
                   ),
-
                 Expanded(
                   flex: 6,
                   child: Align(
@@ -79,7 +79,7 @@ class ProductCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 10,
-                    vertical: 20,
+                    vertical: 15,
                   ),
                   child: Row(
                     children: [
@@ -87,7 +87,11 @@ class ProductCard extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(product.name, style: TextStyles.semiBold13),
+                            Text(
+                              product.getProductNameByLang(context),
+                              style: TextStyles.semiBold13,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                             const SpaceV(4),
                             Text(
                               "${product.price} ${S.of(context).egp}",
@@ -98,6 +102,7 @@ class ProductCard extends StatelessWidget {
                           ],
                         ),
                       ),
+                      const SpaceH(5),
 
                       product.stock == 0
                           ? const SizedBox()

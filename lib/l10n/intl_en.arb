@@ -111,5 +111,10 @@
   "orderSuccess": "Your order has been successfully placed",
   "orderSuccess2": "You can track your order step by step",
   "orderSuccess3": "Follow Order",
-  "cancle": "Cancle"
+  "cancle": "Cancle",
+  "addReview": "Add Review",
+  "review2": "Reviews",
+  "addRate": "How do you rate this product",
+  "addRate2": "Thanks for rating",
+  "addRate3": "Your comments"
 }

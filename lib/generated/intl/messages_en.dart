@@ -26,6 +26,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "addFirstAddress": MessageLookupByLibrary.simpleMessage(
       "Add your first address",
     ),
+    "addRate": MessageLookupByLibrary.simpleMessage(
+      "How do you rate this product",
+    ),
+    "addRate2": MessageLookupByLibrary.simpleMessage("Thanks for rating"),
+    "addRate3": MessageLookupByLibrary.simpleMessage("Your comments"),
+    "addReview": MessageLookupByLibrary.simpleMessage("Add Review"),
     "addToCart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
     "address2": MessageLookupByLibrary.simpleMessage("Street Name"),
@@ -133,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "required": MessageLookupByLibrary.simpleMessage("This field is required"),
     "review": MessageLookupByLibrary.simpleMessage("Review"),
+    "review2": MessageLookupByLibrary.simpleMessage("Reviews"),
     "saveAddress": MessageLookupByLibrary.simpleMessage("Save Address"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "searchHint": MessageLookupByLibrary.simpleMessage("Search......."),

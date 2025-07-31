@@ -70,11 +70,6 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   NotiType.error,
                 );
               } else if (state is CheckoutSuccess) {
-                // await Navigator.pushNamed(
-                //   context,
-                //   Routes.paymentWebView,
-                //   arguments: state.webViewLink,
-                // );
                 await showModalBottomSheet(
                   context: context,
                   enableDrag: false,
@@ -112,7 +107,6 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.easeIn,
                         );
-                        // getCurPage();
                       },
                     ),
           ),
