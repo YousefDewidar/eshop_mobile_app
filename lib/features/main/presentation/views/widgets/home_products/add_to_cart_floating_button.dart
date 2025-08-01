@@ -28,8 +28,7 @@ class _AddToCartFloatingButtonState extends State<AddToCartFloatingButton> {
   Widget build(BuildContext context) {
     return BlocConsumer<CartCubit, CartState>(
       listener: (context, state) {
-        if (state is AddToCartLoading &&
-            state.productId == widget.product.id) {
+        if (state is AddToCartLoading && state.productId == widget.product.id) {
           isLoading = true;
         } else if (state is CartLoaded) {
           isLoading = false;

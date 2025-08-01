@@ -71,7 +71,10 @@ class ProductDetailsView extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(product.getProductNameByLang(context), style: TextStyles.bold23),
+                      Text(
+                        product.getProductNameByLang(context),
+                        style: TextStyles.bold23,
+                      ),
                       const SpaceV(4),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -96,7 +99,7 @@ class ProductDetailsView extends StatelessWidget {
                     children: [
                       const Icon(Icons.star, color: AppColors.secondaryColor),
                       Text(
-                        product.rating.toString(),
+                        product.rating.toStringAsFixed(2),
                         style: TextStyles.semiBold13,
                       ),
                       const SpaceH(5),

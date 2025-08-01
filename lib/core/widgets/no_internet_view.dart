@@ -16,7 +16,7 @@ class NoInternetView extends StatelessWidget {
     final hasConnection = results.any((e) => e != ConnectivityResult.none);
     if (!context.mounted) return;
     if (hasConnection) {
-      Navigator.of(context).pop(); 
+      Navigator.of(context).pop();
     } else {
       showNotification(context, S.of(context).noInternet, NotiType.warning);
     }

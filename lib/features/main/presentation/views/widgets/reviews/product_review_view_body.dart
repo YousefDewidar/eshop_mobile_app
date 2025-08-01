@@ -5,7 +5,7 @@ import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/core/widgets/space.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
-import 'package:rfaye3/features/main/data/models/review_model.dart';
+import 'package:rfaye3/features/main/data/models/review_model.dart' show ReviewModel;
 import 'package:rfaye3/features/main/presentation/view_model/reviews_cubit/reviews_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/reviews_cubit/reviews_state.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_products/app_bar_with_notification.dart';
@@ -26,7 +26,7 @@ class ProductReviewsViewBody extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           slivers: [
             AppBarWithNotification(title: S.of(context).review, hasNoti: false),
             const SliverToBoxAdapter(child: SpaceV(16)),
@@ -76,7 +76,7 @@ class ProductReviewsViewBody extends StatelessWidget {
                         const Icon(Icons.star, color: AppColors.secondaryColor),
                         const SpaceH(5),
                         Text(
-                          product.rating.toString(),
+                          product.rating.toStringAsFixed(2),
                           style: TextStyles.bold16,
                         ),
                       ],
@@ -118,7 +118,18 @@ class ProductReviewsViewBody extends StatelessWidget {
                     ),
                   );
                 } else if (state is ReviewsSuccess) {
-                  return ReviewsListView(reviewsList: state.reviews);
+                  return NotificationListener<ScrollNotification>(
+                    onNotification: (scrollInfo) {
+                      // if (scrollInfo.metrics.pixels >=
+                      //     scrollInfo.metrics.maxScrollExtent - 100) {
+                      //   context.read<ReviewsCubit>().getProductReviewsById(
+                      //     id: product.id,
+                      //   );
+                      // }
+                      return false;
+                    },
+                    child: ReviewsListView(reviewsList: state.reviews),
+                  );
                 } else {
                   return const SliverToBoxAdapter(child: SizedBox.shrink());
                 }

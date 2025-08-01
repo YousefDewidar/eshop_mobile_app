@@ -3,20 +3,16 @@ import 'package:rfaye3/features/checkout/presentation/views/widgets/address_sect
 import 'package:rfaye3/features/checkout/presentation/views/widgets/review_section.dart';
 import 'package:rfaye3/features/checkout/presentation/views/widgets/shipping_section.dart';
 
-
 class CheckoutPageView extends StatelessWidget {
-  const CheckoutPageView({
-    super.key,
-    required this.pageController,
-  });
+  const CheckoutPageView({super.key, required this.pageController});
 
   final PageController pageController;
 
   List<Widget> checkoutSections() => const [
-        ShippingSection(),
-        AddressSectionView(),
-        ReviewSection(),
-      ];
+    ShippingSection(),
+    AddressSectionView(),
+    ReviewSection(),
+  ];
 
   @override
   Widget build(BuildContext context) {

@@ -51,7 +51,7 @@ class AppThemes {
       navigationBarTheme: const NavigationBarThemeData(
         backgroundColor: AppColors.backgroundDark,
       ),
-      
+
       textTheme: const TextTheme(
         displayLarge: TextStyle(color: Colors.white),
         displayMedium: TextStyle(color: Colors.white),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search_cubit.dart';
@@ -9,9 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../../core/helper/di.dart';
 
 class SearchHistortyList extends StatelessWidget {
-  const SearchHistortyList({
-    super.key,
-  });
+  const SearchHistortyList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +21,7 @@ class SearchHistortyList extends StatelessWidget {
           sliver: SliverList.builder(
             itemCount: searchHistory.length,
             itemBuilder: (context, index) {
-              return SearchHistoryCard(
-                searchHistory: searchHistory[index],
-              );
+              return SearchHistoryCard(searchHistory: searchHistory[index]);
             },
           ),
         );

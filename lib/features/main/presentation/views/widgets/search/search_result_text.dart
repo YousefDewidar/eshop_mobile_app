@@ -9,9 +9,7 @@ import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search
 import 'package:rfaye3/generated/l10n.dart';
 
 class SearchResultText extends StatelessWidget {
-  const SearchResultText({
-    super.key,
-  });
+  const SearchResultText({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +25,9 @@ class SearchResultText extends StatelessWidget {
                 children: [
                   Text(
                     S.of(context).searchRes,
-                    style: TextStyles.regular13
-                        .copyWith(color: AppColors.greyColor),
+                    style: TextStyles.regular13.copyWith(
+                      color: AppColors.greyColor,
+                    ),
                   ),
                   const SpaceV(16),
                 ],

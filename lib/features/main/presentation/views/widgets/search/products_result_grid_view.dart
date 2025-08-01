@@ -5,10 +5,7 @@ import 'package:rfaye3/features/main/data/models/product_model.dart';
 
 class ProductsResultGridView extends StatelessWidget {
   final List<ProductModel> products;
-  const ProductsResultGridView({
-    super.key,
-    required this.products,
-  });
+  const ProductsResultGridView({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +15,7 @@ class ProductsResultGridView extends StatelessWidget {
         itemCount: products.length,
         gridDelegate: customDelegate(),
         itemBuilder: (context, index) {
-          return ProductCard(
-            product: products[index],
-          );
+          return ProductCard(product: products[index]);
         },
       ),
     );

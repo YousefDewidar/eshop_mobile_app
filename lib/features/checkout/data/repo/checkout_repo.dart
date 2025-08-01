@@ -9,7 +9,6 @@ abstract class CheckoutRepo {
   Future<Either<Failuer, Address>> addNewAddress(Address newAddress);
   Future<Either<Failuer, void>> removeAddress(String addressId);
 
-
   Future<Either<Failuer, String>> createOrder({
     required String addressId,
     required ShippingType shippingType,

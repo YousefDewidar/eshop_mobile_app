@@ -27,9 +27,7 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
                 child: Row(
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.close,
-                      color: Colors.black26,
-                      ),
+                      icon: const Icon(Icons.close, color: Colors.black26),
                       onPressed: () => Navigator.pop(context),
                     ),
                     const Text(

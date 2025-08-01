@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
@@ -17,7 +18,7 @@ class ReviewItem extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 30,
-              backgroundImage: NetworkImage(review.userPicture),
+              backgroundImage: CachedNetworkImageProvider(review.userPicture),
             ),
             const SpaceH(10),
             Column(

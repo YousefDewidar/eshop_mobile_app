@@ -38,11 +38,7 @@ class StepsRow extends StatelessWidget {
 }
 
 List<String> getStepsTitle() {
-  return [
-    S.current.shipping,
-    S.current.address,
-    S.current.review,
-  ];
+  return [S.current.shipping, S.current.address, S.current.review];
 }
 
 class ActiveStep extends StatelessWidget {

@@ -86,7 +86,7 @@ class _CustomButtomNavBarState extends State<CustomButtomNavBar> {
     return SalomonBottomBarItem(
       icon: SizedBox(
         height: 50,
-        width: MediaQuery.of(context).size.width *.1,
+        width: MediaQuery.of(context).size.width * .1,
         child: Stack(
           clipBehavior: Clip.none,
           children: [

@@ -14,32 +14,21 @@ class PaymentSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SpaceV(10),
-        const Text(
-          "أختار طريقه الدفع المناسبه :",
-          style: TextStyles.bold13,
-        ),
+        const Text("أختار طريقه الدفع المناسبه :", style: TextStyles.bold13),
         const SpaceV(13),
         Text(
           "من فضلك اختر طريقه الدفع المناسبه لك.",
-          style: TextStyles.regular13.copyWith(
-            color: AppColors.greyColor,
-          ),
+          style: TextStyles.regular13.copyWith(color: AppColors.greyColor),
         ),
         const SpaceV(13),
         const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            PaymentTypeCard(
-              img: Assets.imagesPaypal,
-            ),
+            PaymentTypeCard(img: Assets.imagesPaypal),
             SpaceH(10),
-            PaymentTypeCard(
-              img: Assets.imagesPaypal,
-            ),
+            PaymentTypeCard(img: Assets.imagesPaypal),
             SpaceH(10),
-            PaymentTypeCard(
-              img: Assets.imagesPaypal,
-            ),
+            PaymentTypeCard(img: Assets.imagesPaypal),
           ],
         ),
       ],
@@ -49,10 +38,7 @@ class PaymentSection extends StatelessWidget {
 
 class PaymentTypeCard extends StatelessWidget {
   final String img;
-  const PaymentTypeCard({
-    super.key,
-    required this.img,
-  });
+  const PaymentTypeCard({super.key, required this.img});
 
   @override
   Widget build(BuildContext context) {

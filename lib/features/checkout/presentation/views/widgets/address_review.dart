@@ -29,7 +29,9 @@ class AddressReview extends StatelessWidget {
             Expanded(
               child: Text(
                 order.address!.fullAddress,
-                style: TextStyles.regular16.copyWith(color: AppColors.greyColor),
+                style: TextStyles.regular16.copyWith(
+                  color: AppColors.greyColor,
+                ),
               ),
             ),
           ],

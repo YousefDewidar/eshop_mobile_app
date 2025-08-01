@@ -7,18 +7,17 @@ import 'package:rfaye3/features/main/presentation/view_model/search_cubit/search
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({
-    super.key,
-  });
+  const SearchField({super.key});
 
   @override
   Widget build(BuildContext context) {
     final prefs = getIt.get<SharedPreferences>();
     return SliverToBoxAdapter(
-
       child: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: kHoripadding, vertical: 16),
+        padding: const EdgeInsets.symmetric(
+          horizontal: kHoripadding,
+          vertical: 16,
+        ),
         child: SearchTextField(
           onChanged: (value) {
             if (value.isEmpty || value.trim().isEmpty) {

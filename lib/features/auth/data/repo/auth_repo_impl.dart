@@ -45,7 +45,6 @@ class AuthRepoImpl implements AuthRepo {
         data: {"email": email, "password": password},
       );
 
-
       await SecureStorage.saveUserData(
         res.data['accessToken'],
         res.data['refreshToken'],

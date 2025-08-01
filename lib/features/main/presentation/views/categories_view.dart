@@ -11,8 +11,9 @@ class CategoriesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          CategoriesCubit(getIt.get<HomeRepo>())..getAllCategories(),
+      create:
+          (context) =>
+              CategoriesCubit(getIt.get<HomeRepo>())..getAllCategories(),
       child: const CategoriesViewBody(),
     );
   }

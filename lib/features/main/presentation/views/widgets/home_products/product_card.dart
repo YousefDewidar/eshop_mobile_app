@@ -13,8 +13,7 @@ import 'package:rfaye3/generated/l10n.dart';
 class ProductCard extends StatelessWidget {
   final ProductModel product;
 
-
-  const ProductCard({super.key, required this.product,});
+  const ProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +58,7 @@ class ProductCard extends StatelessWidget {
                       imageUrl: product.coverPictureUrl,
                       width: double.infinity,
 
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                       placeholder:
                           (context, url) => const Center(
                             child: CircularProgressIndicator(

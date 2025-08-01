@@ -61,10 +61,7 @@ class OtpWidget extends StatelessWidget {
   OutlineInputBorder customBorder() {
     return const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(5)),
-      borderSide: BorderSide(
-        width: 1.3,
-        color: Color(0xffE6E9EA),
-      ),
+      borderSide: BorderSide(width: 1.3, color: Color(0xffE6E9EA)),
     );
   }
 }

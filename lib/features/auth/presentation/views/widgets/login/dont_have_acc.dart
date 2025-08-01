@@ -5,9 +5,7 @@ import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class DontHaveAcc extends StatelessWidget {
-  const DontHaveAcc({
-    super.key,
-  });
+  const DontHaveAcc({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +21,10 @@ class DontHaveAcc extends StatelessWidget {
             Navigator.pushNamed(context, Routes.signUp);
           },
           style: const ButtonStyle(
-              padding:
-                  WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 5))),
+            padding: WidgetStatePropertyAll(
+              EdgeInsets.symmetric(horizontal: 5),
+            ),
+          ),
           child: Text(
             S.of(context).dontHaveAccount2,
             style: TextStyles.semiBold16.copyWith(

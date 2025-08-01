@@ -65,7 +65,7 @@ class _ForgetPassViewBodyState extends State<ForgetPassViewBody> {
                       arguments: _emailCon.text,
                     );
                   } else if (state is ForgetPassFailure) {
-                    showNotification(context, state.message, NotiType.error );
+                    showNotification(context, state.message, NotiType.error);
                   }
                 },
                 builder: (context, state) {

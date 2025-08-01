@@ -10,5 +10,3 @@ class SignupFailure extends SignupState {
 }
 
 class SignupSuccess extends SignupState {}
-
-

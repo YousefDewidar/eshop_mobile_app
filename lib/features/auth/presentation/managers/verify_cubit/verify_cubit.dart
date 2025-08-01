@@ -13,7 +13,7 @@ class VerifyCubit extends Cubit<VerifyState> {
     required String email,
   }) async {
     emit(VerifyEmailLoading());
-  
+
     Either<Failuer, void> response = await authRepo.verifyEmail(
       code: code,
       email: email,

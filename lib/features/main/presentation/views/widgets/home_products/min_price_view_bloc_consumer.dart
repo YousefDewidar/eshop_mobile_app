@@ -31,7 +31,8 @@ class MinPriceListViewBlocConsumer extends StatelessWidget {
         } else if (state is MinPriceSuccess) {
           return ProductsListView(
             title: "أفضل الأسعار",
-            products: state.products);
+            products: state.products,
+          );
         } else {
           return const SliverToBoxAdapter(child: SizedBox());
         }
