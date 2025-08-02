@@ -24,6 +24,7 @@ class AddToCartFloatingButton extends StatefulWidget {
 
 class _AddToCartFloatingButtonState extends State<AddToCartFloatingButton> {
   bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CartCubit, CartState>(

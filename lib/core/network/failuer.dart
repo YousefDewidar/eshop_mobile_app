@@ -66,7 +66,6 @@ class ServerFailure extends Failuer {
           return ServerFailure(message: firstErrorList.first.toString());
         }
       }
-
       return ServerFailure(message: 'Unknown error occurred');
     } else if (response.statusCode == 429) {
       return ServerFailure(

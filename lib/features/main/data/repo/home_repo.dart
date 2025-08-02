@@ -23,12 +23,13 @@ abstract class HomeRepo {
     required num minPrice,
     required num maxPrice,
     required String sortOrder,
-
   });
 
   Future<Either<Failuer, List<ReviewModel>>> getProductReviewsById({
     required String id,
+    required int pageNum,
   });
+  
   Future<Either<Failuer, void>> addReviewForProduct({
     required String id,
     required String comment,

@@ -69,6 +69,7 @@ class HomeRepoImpl implements HomeRepo {
         "/api/products/?searchTerm=$query&category=$catName&MinPrice=$minPrice&MaxPrice=$maxPrice&SortBy=price&SortOrder=$sortOrder",
       );
 
+
       final products =
           (data.data['items'] as List).map((e) {
             return ProductModel.fromJson(e);
@@ -83,9 +84,12 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failuer, List<ReviewModel>>> getProductReviewsById({
     required String id,
+    required int pageNum,
   }) async {
     try {
-      Response data = await apiService.get("/api/reviews/$id?pageSize=10");
+      Response data = await apiService.get(
+        "/api/reviews/$id?pageSize=10&page=$pageNum",
+      );
 
       final reviews =
           (data.data['reviews']['items'] as List).map((e) {

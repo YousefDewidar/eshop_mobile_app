@@ -12,6 +12,7 @@ class ProductsListView extends StatelessWidget {
     required this.products,
     required this.title,
   });
+
   final List<ProductModel> products;
   final String title;
 

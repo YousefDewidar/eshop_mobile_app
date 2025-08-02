@@ -6,10 +6,15 @@ class ReviewsCubit extends Cubit<ReviewsState> {
   final HomeRepo _homeRepo;
   ReviewsCubit(this._homeRepo) : super(ReviewsInitial());
 
-  void getProductReviewsById({required String id}) async {
-    emit(ReviewsLoading());
+  Future<void> getProductReviewsById({
+    required String id,
+    required int pageNum,
+  }) async {
+    if (pageNum == 1) {
+      emit(ReviewsLoading());
+    }
 
-    final res = await _homeRepo.getProductReviewsById(id: id);
+    final res = await _homeRepo.getProductReviewsById(id: id, pageNum: pageNum);
     res.fold(
       (fail) {
         emit(ReviewsFailuer(fail.message));
@@ -19,5 +24,4 @@ class ReviewsCubit extends Cubit<ReviewsState> {
       },
     );
   }
-
 }

@@ -4,6 +4,7 @@ import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/core/widgets/custom_button.dart';
 import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/core/widgets/space.dart';
+import 'package:rfaye3/features/checkout/data/models/shipping_type.dart';
 import 'package:rfaye3/features/checkout/presentation/view_model/checkout_cubit/checkout_cubit.dart';
 import 'package:rfaye3/features/checkout/presentation/view_model/checkout_cubit/checkout_state.dart';
 import 'package:rfaye3/features/checkout/presentation/views/web_view_payment.dart';
@@ -70,18 +71,21 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   NotiType.error,
                 );
               } else if (state is CheckoutSuccess) {
-                await showModalBottomSheet(
-                  context: context,
-                  enableDrag: false,
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  builder:
-                      (context) => FractionallySizedBox(
-                        heightFactor: 0.9,
-                        alignment: Alignment.topCenter,
-                        child: InAppWebViewPage(url: state.webViewLink),
-                      ),
-                );
+                if (context.read<CheckoutCubit>().order.shippingType ==
+                    ShippingType.Paymob) {
+                  await showModalBottomSheet(
+                    context: context,
+                    enableDrag: false,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder:
+                        (context) => FractionallySizedBox(
+                          heightFactor: 0.9,
+                          alignment: Alignment.topCenter,
+                          child: InAppWebViewPage(url: state.webViewLink),
+                        ),
+                  );
+                }
                 if (!context.mounted) return;
                 Navigator.pop(context, true);
               }

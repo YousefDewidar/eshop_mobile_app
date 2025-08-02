@@ -23,12 +23,14 @@ class ViewMoreProductsViewBody extends StatelessWidget {
         const SliverToBoxAdapter(child: SpaceV(16)),
         SliverPadding(
           padding: const EdgeInsets.symmetric(horizontal: kHoripadding),
-          sliver: SliverGrid.builder(
-            itemCount: products.length,
-            gridDelegate: customDelegate(),
-            itemBuilder: (context, index) {
-              return ProductCard(product: products[index]);
-            },
+          sliver: SliverToBoxAdapter(
+            child: GridView.builder(
+              itemCount: products.length,
+              gridDelegate: customDelegate(),
+              itemBuilder: (context, index) {
+                return ProductCard(product: products[index]);
+              },
+            ),
           ),
         ),
       ],

@@ -16,7 +16,7 @@ class ProductReviewsView extends StatelessWidget {
       create:
           (context) =>
               ReviewsCubit(getIt.get<HomeRepo>())
-                ..getProductReviewsById(id: product.id),
+                ..getProductReviewsById(id: product.id, pageNum: 1),
       child: ProductReviewsViewBody(product: product),
     );
   }

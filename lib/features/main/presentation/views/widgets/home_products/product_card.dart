@@ -108,6 +108,7 @@ class ProductCard extends StatelessWidget {
                           : AddToCartFloatingButton(
                             isArabic: isArabic,
                             product: product,
+                            
                           ),
                     ],
                   ),

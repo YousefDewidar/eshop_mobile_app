@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
-import 'package:rfaye3/core/utils/app_images.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/core/widgets/icon_back.dart';
@@ -30,28 +29,29 @@ class ProductDetailsView extends StatelessWidget {
             Stack(
               alignment: Alignment.center,
               children: [
-                Image.asset(
-                  Assets.imagesElieps,
-                  color: Theme.of(context).colorScheme.surface,
-                ),
-
-                CachedNetworkImage(
-                  imageUrl: product.coverPictureUrl,
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  fit: BoxFit.contain,
-                  placeholder:
-                      (context, url) => const Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.primaryColor,
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.elliptical(180, 40),
+                    bottomRight: Radius.elliptical(180, 40),
+                  ),
+                  child: CachedNetworkImage(
+                    imageUrl: product.coverPictureUrl,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.contain,
+                    placeholder:
+                        (context, url) => const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.primaryColor,
+                          ),
                         ),
-                      ),
-                  errorWidget:
-                      (context, url, error) => const Center(
-                        child: Icon(
-                          Icons.image_not_supported_outlined,
-                          size: 50,
+                    errorWidget:
+                        (context, url, error) => const Center(
+                          child: Icon(
+                            Icons.image_not_supported_outlined,
+                            size: 50,
+                          ),
                         ),
-                      ),
+                  ),
                 ),
 
                 Positioned.directional(

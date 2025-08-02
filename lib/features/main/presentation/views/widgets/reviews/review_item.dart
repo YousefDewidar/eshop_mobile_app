@@ -18,7 +18,12 @@ class ReviewItem extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 30,
-              backgroundImage: CachedNetworkImageProvider(review.userPicture),
+              backgroundImage: CachedNetworkImageProvider(
+                review.userPicture,
+                errorListener: (p0) {
+                  return;
+                },
+              ),
             ),
             const SpaceH(10),
             Column(
