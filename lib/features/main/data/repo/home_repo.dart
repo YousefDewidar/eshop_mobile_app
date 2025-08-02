@@ -13,7 +13,6 @@ abstract class HomeRepo {
     String sortBy,
     String sortOrder,
     String category,
-    int pageSize,
     int pageNum,
   });
 

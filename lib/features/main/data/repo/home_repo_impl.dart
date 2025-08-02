@@ -18,12 +18,11 @@ class HomeRepoImpl implements HomeRepo {
     String sortBy = '',
     String sortOrder = '',
     String category = '',
-    int pageSize = 10,
     int pageNum = 1,
   }) async {
     try {
       Response data = await apiService.get(
-        "/api/products/?MinPrice=$minPrice&MaxPrice=$maxPrice&SortBy=$sortBy&SortOrder=$sortOrder&category=$category&page=$pageNum&pageSize=$pageSize",
+        "/api/products/?MinPrice=$minPrice&MaxPrice=$maxPrice&SortBy=$sortBy&SortOrder=$sortOrder&category=$category&page=$pageNum&pageSize=10",
       );
 
       final products =

@@ -4,6 +4,7 @@ import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/main/presentation/view_model/gold_products_cubit/gold_products_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/gold_products_cubit/gold_products_state.dart';
+import 'package:rfaye3/features/main/presentation/views/view_more_products_view.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_products/products_list_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -22,6 +23,7 @@ class GoldProductsListViewBlocConsumer extends StatelessWidget {
         if (state is GoldProductsLoading) {
           return Skeletonizer.sliver(
             child: ProductsListView(
+              type: ViewMoreType.jewelry,
               title: "scva",
               products: [
                 ...List.generate(6, (index) => ProductModel.getDummyProduct()),
@@ -30,6 +32,7 @@ class GoldProductsListViewBlocConsumer extends StatelessWidget {
           );
         } else if (state is GoldProductsSuccess) {
           return ProductsListView(
+            type: ViewMoreType.jewelry,
             title: "منتجات المجوهرات",
             products: state.products,
           );

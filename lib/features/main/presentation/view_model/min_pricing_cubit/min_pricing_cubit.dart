@@ -6,13 +6,16 @@ class MinPriceCubit extends Cubit<MinPriceState> {
   MinPriceCubit(this.homeRepo) : super(MinPriceInitial());
   final HomeRepo homeRepo;
 
-  Future<void> getMinPriceProducts() async {
-    emit(MinPriceLoading());
+  Future<void> getMinPriceProducts({int pageNum = 1}) async {
+    if (pageNum == 1) {
+      emit(MinPriceLoading());
+    }
+
     final data = await homeRepo.getAllProducts(
       sortBy: 'price',
       sortOrder: 'asc',
-      pageSize: 13,
       minPrice: 0,
+      pageNum: pageNum,
     );
     data.fold(
       (failuer) {

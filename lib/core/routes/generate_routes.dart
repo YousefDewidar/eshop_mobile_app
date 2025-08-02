@@ -40,6 +40,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings setting) {
           return ViewMoreProductsView(
             title: args['title'] as String,
             products: args['products'] as List<ProductModel>,
+            type: args['type'] as ViewMoreType,
           );
         },
       );

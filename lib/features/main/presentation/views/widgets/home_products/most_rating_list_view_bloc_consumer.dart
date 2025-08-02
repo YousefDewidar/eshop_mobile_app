@@ -4,6 +4,7 @@ import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/main/presentation/view_model/most_rateing_cubit/most_rate_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/most_rateing_cubit/most_rate_state.dart';
+import 'package:rfaye3/features/main/presentation/views/view_more_products_view.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_products/products_list_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -22,6 +23,8 @@ class MostRateingListViewBlocConsumer extends StatelessWidget {
         if (state is MostRateLoading) {
           return Skeletonizer.sliver(
             child: ProductsListView(
+              type: ViewMoreType.mostRating,
+
               title: 'شسرشيس',
               products: [
                 ...List.generate(6, (index) => ProductModel.getDummyProduct()),
@@ -30,6 +33,8 @@ class MostRateingListViewBlocConsumer extends StatelessWidget {
           );
         } else if (state is MostRateSuccess) {
           return ProductsListView(
+            type: ViewMoreType.mostRating,
+
             title: "الأعلي تقيما",
             products: state.products,
           );

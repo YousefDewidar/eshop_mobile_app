@@ -6,12 +6,15 @@ class MostRateCubit extends Cubit<MostRateState> {
   MostRateCubit(this.homeRepo) : super(MostRateInitial());
   final HomeRepo homeRepo;
 
-  Future<void> getMostRateProducts() async {
-    emit(MostRateLoading());
+  Future<void> getMostRateProducts({int pageNum = 1}) async {
+    if (pageNum == 1) {
+      emit(MostRateLoading());
+    }
+
     final data = await homeRepo.getAllProducts(
       sortBy: 'rating',
-      pageSize: 20,
       sortOrder: 'desc',
+      pageNum: pageNum,
     );
     data.fold(
       (failuer) {

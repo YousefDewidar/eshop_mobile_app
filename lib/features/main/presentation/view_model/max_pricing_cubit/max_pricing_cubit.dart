@@ -6,12 +6,14 @@ class MaxPriceCubit extends Cubit<MaxPriceState> {
   MaxPriceCubit(this.homeRepo) : super(MaxPriceInitial());
   final HomeRepo homeRepo;
 
-  Future<void> getMaxPriceProducts() async {
-    emit(MaxPriceLoading());
+  Future<void> getMaxPriceProducts({int pageNum = 1}) async {
+    if (pageNum == 1) {
+      emit(MaxPriceLoading());
+    }
     final data = await homeRepo.getAllProducts(
       sortBy: 'price',
       sortOrder: 'desc',
-      pageSize: 15,
+      pageNum: pageNum,
     );
     data.fold(
       (failuer) {

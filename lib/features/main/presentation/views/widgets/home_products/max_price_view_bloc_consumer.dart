@@ -4,6 +4,7 @@ import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/main/presentation/view_model/Max_pricing_cubit/Max_pricing_state.dart';
 import 'package:rfaye3/features/main/presentation/view_model/max_pricing_cubit/max_pricing_cubit.dart';
+import 'package:rfaye3/features/main/presentation/views/view_more_products_view.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_products/products_list_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -22,6 +23,8 @@ class MaxPriceListViewBlocConsumer extends StatelessWidget {
         if (state is MaxPriceLoading) {
           return Skeletonizer.sliver(
             child: ProductsListView(
+              type: ViewMoreType.maxPrice,
+
               title: "fsvad",
               products: [
                 ...List.generate(6, (index) => ProductModel.getDummyProduct()),
@@ -30,6 +33,8 @@ class MaxPriceListViewBlocConsumer extends StatelessWidget {
           );
         } else if (state is MaxPriceSuccess) {
           return ProductsListView(
+            type: ViewMoreType.maxPrice,
+
             title: "أفضل المنتجات",
             products: state.products,
           );

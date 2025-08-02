@@ -3,6 +3,7 @@ import 'package:rfaye3/core/routes/routes.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/core/widgets/custom_text_with_view_more.dart';
 import 'package:rfaye3/core/widgets/space.dart';
+import 'package:rfaye3/features/main/presentation/views/view_more_products_view.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_products/product_card.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 
@@ -11,10 +12,12 @@ class ProductsListView extends StatelessWidget {
     super.key,
     required this.products,
     required this.title,
+    required this.type,
   });
 
   final List<ProductModel> products;
   final String title;
+  final ViewMoreType type;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,11 @@ class ProductsListView extends StatelessWidget {
                 Navigator.pushNamed(
                   context,
                   Routes.mostSelling,
-                  arguments: {"products": products, "title": title},
+                  arguments: {
+                    "products": products,
+                    "title": title,
+                    "type": type,
+                  },
                 );
               },
             ),

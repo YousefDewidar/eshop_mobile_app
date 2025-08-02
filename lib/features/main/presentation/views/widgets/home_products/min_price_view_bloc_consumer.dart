@@ -4,6 +4,7 @@ import 'package:rfaye3/core/widgets/in_app_notification.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/main/presentation/view_model/min_pricing_cubit/min_pricing_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/min_pricing_cubit/min_pricing_state.dart';
+import 'package:rfaye3/features/main/presentation/views/view_more_products_view.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_products/products_list_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -22,6 +23,7 @@ class MinPriceListViewBlocConsumer extends StatelessWidget {
         if (state is MinPriceLoading) {
           return Skeletonizer.sliver(
             child: ProductsListView(
+              type: ViewMoreType.minPrice,
               title: "adadv",
               products: [
                 ...List.generate(6, (index) => ProductModel.getDummyProduct()),
@@ -30,6 +32,7 @@ class MinPriceListViewBlocConsumer extends StatelessWidget {
           );
         } else if (state is MinPriceSuccess) {
           return ProductsListView(
+            type: ViewMoreType.minPrice,
             title: "أفضل الأسعار",
             products: state.products,
           );
