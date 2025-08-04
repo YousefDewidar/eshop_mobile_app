@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:rfaye3/core/network/failuer.dart';
 import 'package:rfaye3/features/main/data/models/category_model.dart';
+import 'package:rfaye3/features/main/data/models/offer_model.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/main/data/models/review_model.dart';
 
@@ -28,10 +29,12 @@ abstract class HomeRepo {
     required String id,
     required int pageNum,
   });
-  
+
   Future<Either<Failuer, void>> addReviewForProduct({
     required String id,
     required String comment,
     required int rate,
   });
+
+  Future<Either<Failuer, List<OfferModel>>> getAllOffers();
 }

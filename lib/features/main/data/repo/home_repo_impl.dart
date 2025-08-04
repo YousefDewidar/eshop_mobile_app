@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:rfaye3/core/network/api_service.dart';
 import 'package:rfaye3/core/network/failuer.dart';
 import 'package:rfaye3/features/main/data/models/category_model.dart';
+import 'package:rfaye3/features/main/data/models/offer_model.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/main/data/models/review_model.dart';
 import 'package:rfaye3/features/main/data/repo/home_repo.dart';
@@ -68,7 +69,6 @@ class HomeRepoImpl implements HomeRepo {
         "/api/products/?searchTerm=$query&category=$catName&MinPrice=$minPrice&MaxPrice=$maxPrice&SortBy=price&SortOrder=$sortOrder",
       );
 
-
       final products =
           (data.data['items'] as List).map((e) {
             return ProductModel.fromJson(e);
@@ -113,6 +113,23 @@ class HomeRepoImpl implements HomeRepo {
       );
 
       return right(null);
+    } catch (e) {
+      return left(ServerFailure.fromError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failuer, List<OfferModel>>> getAllOffers() async {
+    try {
+      final res = await apiService.get("/api/offers?pageSize=100");
+
+      final List<OfferModel> offers = [];
+
+      for (var offer in res.data['offers']['items']) {
+        offers.add(OfferModel.fromJson(offer));
+      }
+
+      return right(offers);
     } catch (e) {
       return left(ServerFailure.fromError(e));
     }

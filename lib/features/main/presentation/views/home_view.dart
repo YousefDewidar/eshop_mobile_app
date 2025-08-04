@@ -6,6 +6,7 @@ import 'package:rfaye3/features/main/presentation/view_model/max_pricing_cubit/m
 import 'package:rfaye3/features/main/presentation/view_model/min_pricing_cubit/min_pricing_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/most_rateing_cubit/most_rate_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/gold_products_cubit/gold_products_cubit.dart';
+import 'package:rfaye3/features/main/presentation/view_model/offers_cubit/offers_cubit.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -27,6 +28,7 @@ class HomeView extends StatelessWidget {
         BlocProvider(
           create: (context) => MaxPriceCubit((getIt.get<HomeRepo>())),
         ),
+        BlocProvider(create: (context) => OffersCubit((getIt.get<HomeRepo>()))),
       ],
 
       child: const HomeViewBody(),

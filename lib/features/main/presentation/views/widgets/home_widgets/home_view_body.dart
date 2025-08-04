@@ -5,6 +5,7 @@ import 'package:rfaye3/features/main/presentation/view_model/max_pricing_cubit/m
 import 'package:rfaye3/features/main/presentation/view_model/min_pricing_cubit/min_pricing_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/most_rateing_cubit/most_rate_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/gold_products_cubit/gold_products_cubit.dart';
+import 'package:rfaye3/features/main/presentation/view_model/offers_cubit/offers_cubit.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_products/gold_products_list_view_bloc_consumer.dart';
 import 'package:rfaye3/core/widgets/search_text_field.dart';
 import 'package:rfaye3/core/widgets/space.dart';
@@ -31,6 +32,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       context.read<MostRateCubit>().getMostRateProducts(),
       context.read<MinPriceCubit>().getMinPriceProducts(),
       context.read<MaxPriceCubit>().getMaxPriceProducts(),
+      context.read<OffersCubit>().getAllOffers(),
     ]);
   }
 
@@ -43,6 +45,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           context.read<MostRateCubit>().getMostRateProducts(),
           context.read<MinPriceCubit>().getMinPriceProducts(),
           context.read<MaxPriceCubit>().getMaxPriceProducts(),
+          context.read<OffersCubit>().getAllOffers(),
         ]);
       },
       child: CustomScrollView(

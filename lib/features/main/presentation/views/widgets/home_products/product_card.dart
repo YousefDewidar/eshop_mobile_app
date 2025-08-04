@@ -32,6 +32,7 @@ class ProductCard extends StatelessWidget {
       child: Stack(
         children: [
           Container(
+            height: 220,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
               color: Theme.of(context).colorScheme.surface,
@@ -51,7 +52,7 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 Expanded(
-                  flex: 6,
+                  flex: 4,
                   child: Align(
                     alignment: Alignment.center,
                     child: CachedNetworkImage(
@@ -108,7 +109,6 @@ class ProductCard extends StatelessWidget {
                           : AddToCartFloatingButton(
                             isArabic: isArabic,
                             product: product,
-                            
                           ),
                     ],
                   ),

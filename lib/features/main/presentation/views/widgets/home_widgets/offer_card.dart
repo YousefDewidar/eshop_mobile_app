@@ -1,109 +1,38 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rfaye3/core/utils/app_colors.dart';
-import 'package:rfaye3/core/utils/app_text_styles.dart';
-import 'package:rfaye3/generated/l10n.dart';
+import 'package:rfaye3/features/main/data/models/offer_model.dart';
 
 class OfferCard extends StatelessWidget {
-  final Color bgColor;
-  const OfferCard({super.key, required this.bgColor});
+  final OfferModel offer;
+  const OfferCard({super.key, required this.offer});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 158,
-      margin: const EdgeInsets.only(left: 8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Stack(
-        children: [
-          // Positioned(
-          //   left: 0,
-          //   child:
-          //    Image.asset(
-          //     Assets.,
-          //     width: 180,
-          //     height: 150,
-          //   ),
-          // ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: ClipPath(
-              clipper: CustomCurveClipper(),
-              child: Container(
-                width: 180,
-                decoration: BoxDecoration(
-                  color: bgColor,
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
+    return SizedBox(
+      height: 165,
+
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: CachedNetworkImage(
+            imageUrl: offer.coverUrl,
+            width: MediaQuery.of(context).size.width,
+            fit: BoxFit.cover,
+            placeholder:
+                (context, url) => const Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.primaryColor,
                   ),
                 ),
-                padding: const EdgeInsets.all(16),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'عروض العيد',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-                      const SizedBox(height: 5),
-                      const Text(
-                        'خصم %25',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      SizedBox(
-                        height: 32,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            foregroundColor: AppColors.primaryColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            padding: const EdgeInsets.all(0),
-                            fixedSize: const Size(113, 32),
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            S.of(context).shopNow,
-                            style: TextStyles.bold13,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+            errorWidget:
+                (context, url, error) => const Center(
+                  child: Icon(Icons.image_not_supported_outlined, size: 50),
                 ),
-              ),
-            ),
           ),
-        ],
+        ),
       ),
     );
   }
-}
-
-class CustomCurveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.moveTo(size.width, 0);
-    path.lineTo(20, 0);
-    path.quadraticBezierTo(0, size.height / 2, 20, size.height);
-    path.lineTo(size.width, size.height);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

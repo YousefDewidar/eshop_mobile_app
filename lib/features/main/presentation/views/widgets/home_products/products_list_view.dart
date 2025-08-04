@@ -51,7 +51,7 @@ class ProductsListView extends StatelessWidget {
                     padding: const EdgeInsetsDirectional.only(end: 10),
                     child: SizedBox(
                       height: 224,
-                      width: 200,
+                      width: 180,
                       child: ProductCard(product: products[index]),
                     ),
                   );
