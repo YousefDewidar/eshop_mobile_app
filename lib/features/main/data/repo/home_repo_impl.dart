@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:rfaye3/core/network/api_service.dart';
 import 'package:rfaye3/core/network/failuer.dart';
 import 'package:rfaye3/features/main/data/models/category_model.dart';
+import 'package:rfaye3/features/main/data/models/notification_model.dart';
 import 'package:rfaye3/features/main/data/models/offer_model.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
 import 'package:rfaye3/features/main/data/models/review_model.dart';
@@ -130,6 +131,43 @@ class HomeRepoImpl implements HomeRepo {
       }
 
       return right(offers);
+    } catch (e) {
+      return left(ServerFailure.fromError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failuer, List<NotificationModel>>> getAllNotifications() async {
+    try {
+      final res = await apiService.get(
+        "/api/notifications?includeRead=true&page=1&pageSize=20",
+      );
+
+      final List<NotificationModel> notifications = [];
+
+      for (var noti in res.data['notifications']['items']) {
+        notifications.add(NotificationModel.fromJson(noti));
+      }
+
+      return right(notifications);
+    } catch (e) {
+      return left(ServerFailure.fromError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failuer, void>> markAsReadNotification({
+    required String? notiId,
+    bool markAll = false,
+  }) async {
+    try {
+      if (markAll) {
+        await apiService.post("/api/notifications/readAll", data: {});
+      } else {
+        await apiService.post("/api/notifications/$notiId/read", data: {});
+      }
+
+      return right(null);
     } catch (e) {
       return left(ServerFailure.fromError(e));
     }
