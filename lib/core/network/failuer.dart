@@ -58,12 +58,19 @@ class ServerFailure extends Failuer {
     if (response.statusCode == 401) {
       return ServerFailure(message: 'Unauthorized');
     }
+    
     if ([400, 403].contains(response.statusCode)) {
       final errors = response.data['errors'];
       if (errors is Map && errors.isNotEmpty) {
         final firstErrorList = errors[errors.keys.first];
         if (firstErrorList is List && firstErrorList.isNotEmpty) {
-          return ServerFailure(message: firstErrorList.first.toString());
+          if (errors.keys.first == 'generalErrors') {
+            return ServerFailure(
+              message: firstErrorList.first.toString().split(":")[1],
+            );
+          } else {
+            return ServerFailure(message: firstErrorList.first.toString());
+          }
         }
       }
       return ServerFailure(message: 'Unknown error occurred');

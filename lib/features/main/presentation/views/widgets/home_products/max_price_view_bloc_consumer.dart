@@ -32,9 +32,11 @@ class MaxPriceListViewBlocConsumer extends StatelessWidget {
             ),
           );
         } else if (state is MaxPriceSuccess) {
+          if (state.products.isEmpty) {
+            return const SliverToBoxAdapter(child: SizedBox());
+          }
           return ProductsListView(
             type: ViewMoreType.maxPrice,
-
             title: "أفضل المنتجات",
             products: state.products,
           );

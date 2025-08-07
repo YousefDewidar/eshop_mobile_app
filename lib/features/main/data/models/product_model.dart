@@ -97,6 +97,10 @@ class ProductModel extends Equatable {
     }
   }
 
+  num getFinalPrice() {
+    return price - (price * (discountPercentage / 100));
+  }
+
   static ProductModel getDummyProduct() => const ProductModel(
     id: "0",
     productCode: "dsv",

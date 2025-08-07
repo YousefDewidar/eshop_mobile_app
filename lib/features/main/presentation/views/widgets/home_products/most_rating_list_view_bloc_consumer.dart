@@ -32,9 +32,11 @@ class MostRateingListViewBlocConsumer extends StatelessWidget {
             ),
           );
         } else if (state is MostRateSuccess) {
+          if (state.products.isEmpty) {
+            return const SliverToBoxAdapter(child: SizedBox());
+          }
           return ProductsListView(
             type: ViewMoreType.mostRating,
-
             title: "الأعلي تقيما",
             products: state.products,
           );

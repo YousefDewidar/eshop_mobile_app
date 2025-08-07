@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:rfaye3/core/network/api_service.dart';
 import 'package:rfaye3/core/network/failuer.dart';
 import 'package:rfaye3/features/checkout/data/models/address.dart';
+import 'package:rfaye3/features/checkout/data/models/coupon_model.dart';
 import 'package:rfaye3/features/checkout/data/models/shipping_type.dart';
 import 'package:rfaye3/features/checkout/data/repo/checkout_repo.dart';
 
@@ -69,6 +70,22 @@ class CheckoutRepoImpl implements CheckoutRepo {
       );
 
       return Right(res.data['unifiedCheckoutUrl']);
+    } catch (e) {
+      return Left(ServerFailure.fromError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failuer, CouponModel>> useCoupon({
+    required String couponCode,
+  }) async {
+    try {
+      final res = await apiService.post(
+        "/api/coupons",
+        data: {"couponCode": couponCode},
+      );
+
+      return Right(CouponModel.fromJson(res.data));
     } catch (e) {
       return Left(ServerFailure.fromError(e));
     }

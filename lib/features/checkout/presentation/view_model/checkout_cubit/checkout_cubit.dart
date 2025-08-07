@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rfaye3/features/checkout/data/models/coupon_model.dart';
 import 'package:rfaye3/features/checkout/data/models/order_payload_model.dart';
 import 'package:rfaye3/features/checkout/data/models/shipping_type.dart';
 import 'package:rfaye3/features/checkout/data/repo/checkout_repo.dart';
@@ -31,17 +32,36 @@ class CheckoutCubit extends Cubit<CheckoutState> {
         emit(CheckoutFail(fail.message));
       },
       (webViewLink) {
-        // if (order.shippingType == ShippingType.Paymob) {
-        //   await PaymobService().payWithPaymob(
-        //     csk,
-        //     buttonBackgroundColor: AppColors.primaryColor,
-        //     buttonTextColor: Colors.white,
-        //     saveCardDefault: true,
-        //     showSaveCard: true,
-        //   );
-        // }
         emit(CheckoutSuccess(webViewLink));
       },
     );
+  }
+
+  Future<void> useCoupon({required String couponCode}) async {
+    emit(UsedCouponLoading());
+    // final res = await _checkoutRepo.useCoupon(couponCode: couponCode);
+
+    emit(
+      UsedCouponSuccess(
+        CouponModel(
+          couponCode: "couponCode",
+          couponType: "couponType",
+          expirationDate: DateTime(2000),
+          usageTimes: 5,
+          timesPerUser: 2,
+          discountValue: 2,
+          maxDiscount: 1,
+        ),
+      ),
+    );
+
+    // res.fold(
+    //   (fail) {
+    //     emit(UsedCouponFail(fail.message));
+    //   },
+    //   (coupon) {
+    //     emit(UsedCouponSuccess(coupon));
+    //   },
+    // );
   }
 }

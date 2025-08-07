@@ -58,7 +58,6 @@ class ProductCard extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl: product.coverPictureUrl,
                       width: double.infinity,
-
                       fit: BoxFit.cover,
                       placeholder:
                           (context, url) => const Center(
@@ -66,13 +65,21 @@ class ProductCard extends StatelessWidget {
                               color: AppColors.primaryColor,
                             ),
                           ),
-                      errorWidget:
-                          (context, url, error) => const Center(
-                            child: Icon(
-                              Icons.image_not_supported_outlined,
-                              size: 50,
-                            ),
-                          ),
+                      errorWidget: (context, url, error) {
+                        return Image.network(
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+
+                          product.coverPictureUrl,
+                          errorBuilder:
+                              (context, error, stackTrace) => const Center(
+                                child: Icon(
+                                  Icons.image_not_supported_outlined,
+                                  size: 50,
+                                ),
+                              ),
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -93,8 +100,17 @@ class ProductCard extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                             const SpaceV(4),
+                            if (product.discountPercentage != 0)
+                              Text(
+                                "${product.price} ${S.of(context).egp}",
+                                style: TextStyles.semiBold13.copyWith(
+                                  color: AppColors.greyColor,
+                                  decoration: TextDecoration.lineThrough,
+                                  decorationColor: AppColors.greyColor,
+                                ),
+                              ),
                             Text(
-                              "${product.price} ${S.of(context).egp}",
+                              "${product.getFinalPrice()} ${S.of(context).egp}",
                               style: TextStyles.bold13.copyWith(
                                 color: AppColors.secondaryColor,
                               ),

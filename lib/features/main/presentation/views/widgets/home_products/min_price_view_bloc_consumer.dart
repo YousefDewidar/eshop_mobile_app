@@ -31,6 +31,9 @@ class MinPriceListViewBlocConsumer extends StatelessWidget {
             ),
           );
         } else if (state is MinPriceSuccess) {
+          if (state.products.isEmpty) {
+            return const SliverToBoxAdapter(child: SizedBox());
+          }
           return ProductsListView(
             type: ViewMoreType.minPrice,
             title: "أفضل الأسعار",

@@ -60,7 +60,7 @@ class _ShippingSectionState extends State<ShippingSection> {
             setState(() {});
           },
           child: ShipTypeCard(
-            price: "30 ${S.current.egp}",
+            price: "50 ${S.current.egp}",
             title: S.current.payCash,
             title2: S.current.payCash2,
             sel: selected == 1,

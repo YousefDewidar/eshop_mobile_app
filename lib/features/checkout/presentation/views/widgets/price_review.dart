@@ -49,6 +49,24 @@ class PriceReview extends StatelessWidget {
             ),
           ],
         ),
+        const SpaceV(10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "الخصم :",
+              style: TextStyles.regular13.copyWith(
+                color: const Color(0xff4E5556),
+              ),
+            ),
+            Text(
+              "لا يوجد خصم",
+              style: TextStyles.semiBold13.copyWith(
+                color: const Color(0xff4E5556),
+              ),
+            ),
+          ],
+        ),
         const Divider(indent: 30, endIndent: 30, color: Color(0xffCACECE)),
         const SpaceV(5),
         Row(

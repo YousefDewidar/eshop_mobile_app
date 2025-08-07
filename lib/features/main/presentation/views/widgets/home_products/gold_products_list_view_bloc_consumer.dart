@@ -31,6 +31,9 @@ class GoldProductsListViewBlocConsumer extends StatelessWidget {
             ),
           );
         } else if (state is GoldProductsSuccess) {
+          if (state.products.isEmpty) {
+            return const SliverToBoxAdapter(child: SizedBox());
+          }
           return ProductsListView(
             type: ViewMoreType.jewelry,
             title: "منتجات المجوهرات",

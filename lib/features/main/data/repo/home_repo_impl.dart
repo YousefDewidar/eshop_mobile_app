@@ -172,4 +172,23 @@ class HomeRepoImpl implements HomeRepo {
       return left(ServerFailure.fromError(e));
     }
   }
+
+  @override
+  Future<Either<Failuer, List<String>>> getAllProductImages({
+    required String pId,
+  }) async {
+    try {
+      final res = await apiService.get("/api/products/$pId");
+
+      final List<String> productImages = [];
+
+      for (var image in res.data['productPictures']) {
+        productImages.add(image);
+      }
+
+      return right(productImages);
+    } catch (e) {
+      return left(ServerFailure.fromError(e));
+    }
+  }
 }

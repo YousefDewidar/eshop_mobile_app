@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,44 +32,38 @@ class Rfaye3App extends StatefulWidget {
 
 class _Rfaye3AppState extends State<Rfaye3App> {
   bool isScreenShown = false;
-
   late final StreamSubscription<List<ConnectivityResult>> _subscription;
 
   @override
   void initState() {
     super.initState();
+    _subscription = Connectivity().onConnectivityChanged.listen(_handleConnectionChange);
+    _checkInitialConnection();
+  }
 
-    _subscription = Connectivity().onConnectivityChanged.listen((
-      List<ConnectivityResult> results,
-    ) {
-      final hasConnection = results.any((e) => e != ConnectivityResult.none);
+  void _handleConnectionChange(List<ConnectivityResult> results) {
+    final hasConnection = results.any((e) => e != ConnectivityResult.none);
+    _updateConnectionUI(hasConnection);
+  }
 
-      if (!hasConnection && !isScreenShown) {
-        isScreenShown = true;
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          Navigator.of(
-            navigatorKey.currentContext!,
-          ).push(MaterialPageRoute(builder: (_) => const NoInternetView()));
-        });
-      } else if (hasConnection && isScreenShown) {
-        isScreenShown = false;
-        Navigator.of(
-          navigatorKey.currentContext!,
-        ).popUntil((route) => route.isFirst);
-      }
-    });
+  Future<void> _checkInitialConnection() async {
+    final results = await Connectivity().checkConnectivity();
+    final hasConnection = results.any((e) => e != ConnectivityResult.none);
+    _updateConnectionUI(hasConnection);
+  }
 
-    Connectivity().checkConnectivity().then((List<ConnectivityResult> results) {
-      final hasConnection = results.any((e) => e != ConnectivityResult.none);
-      if (!hasConnection && !isScreenShown) {
-        isScreenShown = true;
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          Navigator.of(
-            navigatorKey.currentContext!,
-          ).push(MaterialPageRoute(builder: (_) => const NoInternetView()));
-        });
-      }
-    });
+  void _updateConnectionUI(bool hasConnection) {
+    if (!hasConnection && !isScreenShown) {
+      isScreenShown = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        navigatorKey.currentState?.push(
+          MaterialPageRoute(builder: (_) => const NoInternetView()),
+        );
+      });
+    } else if (hasConnection && isScreenShown) {
+      isScreenShown = false;
+      navigatorKey.currentState?.popUntil((route) => route.isFirst);
+    }
   }
 
   @override
@@ -83,20 +76,15 @@ class _Rfaye3AppState extends State<Rfaye3App> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => SettingsCubit()..init()),
-        BlocProvider(
-          create:
-              (context) => CartCubit(getIt.get<CartRepo>())..getAllCartList(),
-        ),
+        BlocProvider(create: (_) => SettingsCubit()..init()),
+        BlocProvider(create: (_) => CartCubit(getIt<CartRepo>())..getAllCartList()),
       ],
       child: Builder(
         builder: (context) {
+          final settings = context.watch<SettingsCubit>();
           return MaterialApp(
             navigatorKey: navigatorKey,
-            themeMode:
-                context.watch<SettingsCubit>().isDark
-                    ? ThemeMode.dark
-                    : ThemeMode.light,
+            themeMode: settings.isDark ? ThemeMode.dark : ThemeMode.light,
             theme: AppThemes.getLightData(),
             darkTheme: AppThemes.getDarkData(),
             localizationsDelegates: const [
@@ -106,7 +94,7 @@ class _Rfaye3AppState extends State<Rfaye3App> {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: S.delegate.supportedLocales,
-            locale: Locale(context.watch<SettingsCubit>().langCode),
+            locale: Locale(settings.langCode),
             debugShowCheckedModeBanner: false,
             onGenerateRoute: onGenerateRoute,
             initialRoute: Routes.splash,
