@@ -16,32 +16,35 @@ class _SwipleButtonState extends State<SwipleButton> {
 
   @override
   Widget build(BuildContext context) {
-    return SwipeButton(
-      thumbPadding: const EdgeInsets.all(3),
-      thumb: const Icon(Icons.chevron_right, color: Colors.grey),
-      elevationThumb: 2,
-      elevationTrack: 2,
-      activeThumbColor: Colors.white,
-      activeTrackColor: AppColors.primaryColor,
-      height: 60,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: SwipeButton(
+        thumbPadding: const EdgeInsets.all(3),
+        thumb: const Icon(Icons.chevron_right, color: Colors.grey),
+        elevationThumb: 2,
+        elevationTrack: 2,
+        activeThumbColor: Colors.white,
+        activeTrackColor: AppColors.primaryColor,
+        height: 60,
 
-      enabled: enabled,
+        enabled: enabled,
 
-      child: const Text(
-        'تأكيد الطلب',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
+        child: const Text(
+          'تأكيد الطلب',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
         ),
+        onSwipe: () async {
+          enabled = false;
+          setState(() {});
+          await context.read<CheckoutCubit>().createOrder();
+          enabled = true;
+          setState(() {});
+        },
       ),
-      onSwipe: () async {
-        enabled = false;
-        setState(() {});
-        await context.read<CheckoutCubit>().createOrder();
-        enabled = true;
-        setState(() {});
-      },
     );
   }
 }

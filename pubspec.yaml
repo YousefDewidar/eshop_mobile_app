@@ -30,7 +30,6 @@ dependencies:
   flutter_lazy_indexed_stack: ^0.0.6
   equatable: ^2.0.7
   cached_network_image:
-  device_preview:
   flutter_swipe_button: ^2.1.3
   lottie:
   connectivity_plus: ^6.1.4
@@ -39,11 +38,9 @@ dependencies:
   jwt_decoder:
   languagetool_textfield: ^0.1.1
   flutter_inappwebview:
-  url_launcher:
   flutter_rating_bar:
 
 dev_dependencies:
-  icons_launcher: ^3.0.1
   intl_utils:
   flutter_test:
     sdk: flutter
@@ -78,11 +75,3 @@ flutter_assets:
   output_path: lib/core/utils/
   filename: app_images.dart
   field_prefix: null
-
-icons_launcher:
-  image_path: "assets/images/land1.png"
-  platforms:
-    android:
-      enable: true
-    ios:
-      enable: true

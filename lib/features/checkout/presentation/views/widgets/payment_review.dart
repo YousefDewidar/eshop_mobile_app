@@ -18,17 +18,25 @@ class PaymentReview extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("وسيلة الدفع", style: TextStyles.bold13),
-        const SpaceV(5),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              order.shippingType == ShippingType.Paymob
-                  ? "دفع من خلال التطبيق"
-                  : "دفع عند الاستلام",
-              style: TextStyles.regular13.copyWith(color: AppColors.greyColor),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("وسيلة الدفع", style: TextStyles.bold13),
+                const SpaceV(5),
+                Text(
+                  order.shippingType == ShippingType.Paymob
+                      ? "دفع من خلال التطبيق"
+                      : "دفع عند الاستلام",
+                  style: TextStyles.regular13.copyWith(
+                    color: AppColors.greyColor,
+                  ),
+                ),
+              ],
             ),
+
             if (order.shippingType == ShippingType.Paymob)
               Transform.scale(
                 scale: .9,

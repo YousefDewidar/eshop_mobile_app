@@ -22,6 +22,7 @@ class ReviewSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CouponCard(),
+          SpaceV(12),
 
           Text("ملخص الطلب :", style: TextStyles.bold13),
           SpaceV(12),
