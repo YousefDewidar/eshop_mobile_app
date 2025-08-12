@@ -157,15 +157,10 @@ class HomeRepoImpl implements HomeRepo {
 
   @override
   Future<Either<Failuer, void>> markAsReadNotification({
-    required String? notiId,
-    bool markAll = false,
+    required String notiId,
   }) async {
     try {
-      if (markAll) {
-        await apiService.post("/api/notifications/readAll", data: {});
-      } else {
-        await apiService.post("/api/notifications/$notiId/read", data: {});
-      }
+      await apiService.post("/api/notifications/$notiId/read", data: {});
 
       return right(null);
     } catch (e) {
@@ -187,6 +182,22 @@ class HomeRepoImpl implements HomeRepo {
       }
 
       return right(productImages);
+    } catch (e) {
+      return left(ServerFailure.fromError(e));
+    }
+  }
+
+  @override
+  Future<Either<Failuer, void>> markAllAsReadNotification({
+    required List<String> notiIds,
+  }) async {
+    try {
+      await apiService.post(
+        "/api/notifications/bulk-read",
+        data: {"notificationIds": notiIds},
+      );
+
+      return right(null);
     } catch (e) {
       return left(ServerFailure.fromError(e));
     }

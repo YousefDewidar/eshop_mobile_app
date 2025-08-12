@@ -1,4 +1,3 @@
-import 'package:rfaye3/features/checkout/data/models/coupon_model.dart';
 
 abstract class CheckoutState {}
 
@@ -27,7 +26,7 @@ final class UsedCouponFail extends CheckoutState {
 final class UsedCouponLoading extends CheckoutState {}
 
 final class UsedCouponSuccess extends CheckoutState {
-  final CouponModel coupon;
+  final double discountAmount;
 
-  UsedCouponSuccess(this.coupon);
+  UsedCouponSuccess(this.discountAmount);
 }

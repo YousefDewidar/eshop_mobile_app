@@ -51,7 +51,7 @@ class _ProductImagesViewerState extends State<ProductImagesViewer> {
             child: CachedNetworkImage(
               imageUrl: allImages[currentIndex],
               width: MediaQuery.of(context).size.width,
-              fit: BoxFit.contain,
+              fit: BoxFit.cover,
               errorListener: (value) {
                 return;
               },
@@ -66,7 +66,8 @@ class _ProductImagesViewerState extends State<ProductImagesViewer> {
               errorWidget: (context, url, error) {
                 return Image.network(
                   widget.coverImage,
-                  fit: BoxFit.contain,
+                  fit: BoxFit.cover,
+
                   errorBuilder:
                       (context, error, stackTrace) => const Center(
                         child: Icon(

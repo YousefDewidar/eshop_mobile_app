@@ -23,14 +23,11 @@ class NotificationCubit extends Cubit<NotificationState> {
     );
   }
 
-  Future<void> markAsRead({String? notiId, bool markAll = false}) async {
-    final res = await _homeRepo.markAsReadNotification(
-      notiId: notiId,
-      markAll: markAll,
-    );
+  Future<void> markAsRead({required String notiId}) async {
+    await _homeRepo.markAsReadNotification(notiId: notiId);
+  }
 
-    if (markAll && res.isRight()) {
-      getAllNotification();
-    }
+  Future<void> markAllAsRead({required List<String> notiIds}) async {
+    await _homeRepo.markAllAsReadNotification(notiIds: notiIds);
   }
 }

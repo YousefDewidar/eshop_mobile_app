@@ -4,12 +4,13 @@ import 'package:rfaye3/core/utils/app_colors.dart';
 import 'package:rfaye3/core/utils/app_text_styles.dart';
 import 'package:rfaye3/core/utils/constant.dart';
 import 'package:rfaye3/core/widgets/space.dart';
+import 'package:rfaye3/features/main/data/models/notification_model.dart';
 import 'package:rfaye3/features/main/presentation/view_model/notifications_cubit/notification_cubit.dart';
 import 'package:rfaye3/generated/l10n.dart';
 
 class NotificationCountRow extends StatelessWidget {
-  const NotificationCountRow({super.key, this.count = 0});
-  final int count;
+  const NotificationCountRow({super.key, required this.notifications});
+  final List<NotificationModel> notifications;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class NotificationCountRow extends StatelessWidget {
                 alpha: 0.1,
               ),
               child: Text(
-                count.toString(),
+                notifications.length.toString(),
                 style: TextStyles.bold13.copyWith(
                   color: AppColors.primaryColor,
                 ),
@@ -36,7 +37,9 @@ class NotificationCountRow extends StatelessWidget {
             const Spacer(),
             TextButton(
               onPressed: () {
-                context.read<NotificationCubit>().markAsRead(markAll: true);
+                context.read<NotificationCubit>().markAllAsRead(
+                  notiIds: notifications.map((item) => item.id).toList(),
+                );
               },
               child: Text(
                 S.of(context).selectAllRead,

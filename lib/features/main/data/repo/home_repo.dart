@@ -17,7 +17,9 @@ abstract class HomeRepo {
     String category,
     int pageNum,
   });
-  Future<Either<Failuer, List<String>>> getAllProductImages({required String pId});
+  Future<Either<Failuer, List<String>>> getAllProductImages({
+    required String pId,
+  });
 
   Future<Either<Failuer, List<ProductModel>>> searchProducts({
     required String query,
@@ -43,7 +45,9 @@ abstract class HomeRepo {
   Future<Either<Failuer, List<NotificationModel>>> getAllNotifications();
 
   Future<Either<Failuer, void>> markAsReadNotification({
-    required String? notiId,
-    bool markAll = false,
+    required String notiId,
+  });
+  Future<Either<Failuer, void>> markAllAsReadNotification({
+    required List<String> notiIds,
   });
 }

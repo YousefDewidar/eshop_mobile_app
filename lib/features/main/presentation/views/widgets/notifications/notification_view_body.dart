@@ -25,14 +25,14 @@ class NotificationViewBody extends StatelessWidget {
             ),
             if (state is NotificationSuccess &&
                 state.notifications.isNotEmpty) ...[
-              NotificationCountRow(count: state.notifications.length),
+              NotificationCountRow(notifications: state.notifications),
               const SliverToBoxAdapter(child: SpaceV(8)),
 
               NotificationListView(notifications: state.notifications),
             ] else if (state is NotificationLoading) ...[
               const Skeletonizer.sliver(
                 enabled: true,
-                child: NotificationCountRow(),
+                child: NotificationCountRow(notifications: [],),
               ),
               const SliverToBoxAdapter(child: SpaceV(8)),
 

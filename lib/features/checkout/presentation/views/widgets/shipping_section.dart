@@ -37,12 +37,12 @@ class _ShippingSectionState extends State<ShippingSection> {
             selected = 0;
             checkoutCubit.order = checkoutCubit.order.copyWith(
               shippingType: ShippingType.Paymob,
-              shipPrice: 0,
+              shipPrice: 50,
             );
             setState(() {});
           },
           child: ShipTypeCard(
-            price: S.current.free,
+            price: "",
             title: S.current.payOnline,
             title2: S.current.payOnline2,
             sel: selected == 0,
@@ -55,12 +55,12 @@ class _ShippingSectionState extends State<ShippingSection> {
             selected = 1;
             checkoutCubit.order = checkoutCubit.order.copyWith(
               shippingType: ShippingType.CashOnDelivery,
-              shipPrice: 30,
+              shipPrice: 50,
             );
             setState(() {});
           },
           child: ShipTypeCard(
-            price: "50 ${S.current.egp}",
+            price: "",
             title: S.current.payCash,
             title2: S.current.payCash2,
             sel: selected == 1,

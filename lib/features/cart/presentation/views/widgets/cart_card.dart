@@ -38,10 +38,19 @@ class CartCard extends StatelessWidget {
                       color: AppColors.primaryColor,
                     ),
                   ),
-              errorWidget:
-                  (context, url, error) => const Center(
-                    child: Icon(Icons.image_not_supported_outlined, size: 50),
-                  ),
+              errorWidget: (context, url, error) {
+                return Image.network(
+                  product.productCoverUrl,
+                  fit: BoxFit.cover,
+                  errorBuilder:
+                      (context, error, stackTrace) => const Center(
+                        child: Icon(
+                          Icons.image_not_supported_outlined,
+                          size: 50,
+                        ),
+                      ),
+                );
+              },
             ),
           ),
         ),
@@ -76,7 +85,7 @@ class CartCard extends StatelessWidget {
           height: 100,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               BlocListener<CartCubit, CartState>(
                 listener: (context, state) {
@@ -95,6 +104,15 @@ class CartCard extends StatelessWidget {
                     await context.read<CartCubit>().removeItem(product.itemId);
                   },
                   child: SvgPicture.asset(Assets.imagesTrash),
+                ),
+              ),
+              const Spacer(),
+              Text(
+                '${product.quantity * product.basePricePerUnit} ${S.of(context).egp}',
+                style: TextStyles.semiBold13.copyWith(
+                  color: AppColors.greyColor,
+                  decoration: TextDecoration.lineThrough,
+                  decorationColor: AppColors.greyColor,
                 ),
               ),
               Text(

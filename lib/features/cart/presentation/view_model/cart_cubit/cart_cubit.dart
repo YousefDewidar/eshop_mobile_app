@@ -32,6 +32,7 @@ class CartCubit extends Cubit<CartState> {
     final result = await cartRepo.addToCart(productId);
     result.fold(
       (fail) {
+    
         emit(CartFail(fail.message));
       },
       (success) {

@@ -1,3 +1,4 @@
+
 class CartProductModel {
   final String itemId;
   final String productId;
@@ -5,7 +6,9 @@ class CartProductModel {
   final String productCoverUrl;
   final num productStock;
   final num weightInGrams;
-  final num pricePerUnit;
+  final num basePricePerUnit;
+  final num discountPercentage;
+  final num finalPricePerUnit;
   final int quantity;
   final num totalPriceForItem;
 
@@ -16,7 +19,9 @@ class CartProductModel {
     required this.productCoverUrl,
     required this.productStock,
     required this.weightInGrams,
-    required this.pricePerUnit,
+    required this.basePricePerUnit,
+    required this.discountPercentage,
+    required this.finalPricePerUnit,
     required this.quantity,
     required this.totalPriceForItem,
   });
@@ -29,7 +34,9 @@ class CartProductModel {
       productCoverUrl: json['productCoverUrl'],
       productStock: json['productStock'],
       weightInGrams: (json['weightInGrams']),
-      pricePerUnit: (json['pricePerUnit']),
+      basePricePerUnit: (json['basePricePerUnit']),
+      discountPercentage: (json['discountPercentage']),
+      finalPricePerUnit: (json['finalPricePerUnit']),
       quantity: json['quantity'],
       totalPriceForItem: (json['totalPrice']),
     );

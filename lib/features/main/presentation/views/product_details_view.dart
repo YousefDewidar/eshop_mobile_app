@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/core/helper/di.dart';
@@ -27,6 +29,7 @@ class ProductDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(product.stock.toString());
     return BlocProvider(
       create:
           (context) =>
@@ -150,6 +153,7 @@ class ProductDetailsView extends StatelessWidget {
                   ],
                 ),
               ),
+
               const Spacer(),
 
               AddToCartButtonWithAnimation(

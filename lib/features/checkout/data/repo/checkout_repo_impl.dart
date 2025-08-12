@@ -1,10 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:rfaye3/core/network/api_service.dart';
 import 'package:rfaye3/core/network/failuer.dart';
 import 'package:rfaye3/features/checkout/data/models/address.dart';
-import 'package:rfaye3/features/checkout/data/models/coupon_model.dart';
 import 'package:rfaye3/features/checkout/data/models/shipping_type.dart';
 import 'package:rfaye3/features/checkout/data/repo/checkout_repo.dart';
 
@@ -59,6 +60,7 @@ class CheckoutRepoImpl implements CheckoutRepo {
   Future<Either<Failuer, String>> createOrder({
     required String addressId,
     required ShippingType shippingType,
+    String? couponCode,
   }) async {
     try {
       final res = await apiService.post(
@@ -66,6 +68,7 @@ class CheckoutRepoImpl implements CheckoutRepo {
         data: {
           "shippingAddressId": addressId,
           "paymentMethod": shippingType.name,
+          "couponCode": couponCode,
         },
       );
 
@@ -76,17 +79,18 @@ class CheckoutRepoImpl implements CheckoutRepo {
   }
 
   @override
-  Future<Either<Failuer, CouponModel>> useCoupon({
+  Future<Either<Failuer, double>> useCoupon({
     required String couponCode,
   }) async {
     try {
       final res = await apiService.post(
-        "/api/coupons",
+        "/api/cart/apply-coupon",
         data: {"couponCode": couponCode},
       );
 
-      return Right(CouponModel.fromJson(res.data));
+      return Right(res.data['discountAmount']);
     } catch (e) {
+      log(e.toString());
       return Left(ServerFailure.fromError(e));
     }
   }

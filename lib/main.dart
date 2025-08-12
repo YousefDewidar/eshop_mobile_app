@@ -37,7 +37,9 @@ class _Rfaye3AppState extends State<Rfaye3App> {
   @override
   void initState() {
     super.initState();
-    _subscription = Connectivity().onConnectivityChanged.listen(_handleConnectionChange);
+    _subscription = Connectivity().onConnectivityChanged.listen(
+      _handleConnectionChange,
+    );
     _checkInitialConnection();
   }
 
@@ -77,7 +79,9 @@ class _Rfaye3AppState extends State<Rfaye3App> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => SettingsCubit()..init()),
-        BlocProvider(create: (_) => CartCubit(getIt<CartRepo>())..getAllCartList()),
+        BlocProvider(
+          create: (_) => CartCubit(getIt<CartRepo>())..getAllCartList(),
+        ),
       ],
       child: Builder(
         builder: (context) {

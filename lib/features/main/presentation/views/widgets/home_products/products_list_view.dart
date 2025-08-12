@@ -42,7 +42,7 @@ class ProductsListView extends StatelessWidget {
             ),
             const SpaceV(16),
             SizedBox(
-              height: 240,
+              height: 280,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: products.length > 10 ? 10 : products.length,

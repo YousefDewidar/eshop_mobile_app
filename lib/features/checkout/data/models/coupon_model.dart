@@ -1,39 +1,47 @@
-class CouponModel {
-  final String couponCode;
-  final String couponType;
-  final DateTime expirationDate;
-  final int usageTimes;
-  final int timesPerUser;
-  final int discountValue;
-  final int maxDiscount;
+// class CouponModel {
+//   final String id;
+//   final String couponCode;
+//   final String couponType;
+//   final DateTime expiresAt;
+//   final int usagesLeft;
+//   final int timesUsed;
+//   final int timesPerUser;
+//   final double discountValue;
+//   final double maxDiscount;
 
-  const CouponModel({
-    required this.couponCode,
-    required this.couponType,
-    required this.expirationDate,
-    required this.usageTimes,
-    required this.timesPerUser,
-    required this.discountValue,
-    required this.maxDiscount,
-  });
+//   const CouponModel({
+//     required this.id,
+//     required this.couponCode,
+//     required this.couponType,
+//     required this.expiresAt,
+//     required this.usagesLeft,
+//     required this.timesUsed,
+//     required this.timesPerUser,
+//     required this.discountValue,
+//     required this.maxDiscount,
+//   });
 
-  factory CouponModel.fromJson(Map<String, dynamic> json) => CouponModel(
-        couponCode: json["couponCode"],
-        couponType: json["couponType"],
-        expirationDate: DateTime.parse(json["expirationDate"]),
-        usageTimes: json["usageTimes"],
-        timesPerUser: json["timesPerUser"],
-        discountValue: json["discountValue"],
-        maxDiscount: json["maxDiscount"],
-      );
+//   factory CouponModel.fromJson(Map<String, dynamic> json) => CouponModel(
+//     id: json["id"],
+//     couponCode: json["couponCode"],
+//     couponType: json["couponType"],
+//     expiresAt: DateTime.parse(json["expiresAt"]),
+//     usagesLeft: json["usagesLeft"],
+//     timesUsed: json["timesUsed"],
+//     timesPerUser: json["timesPerUser"],
+//     discountValue: json["discountValue"].toDouble(),
+//     maxDiscount: json["maxDiscount"].toDouble(),
+//   );
 
-  Map<String, dynamic> toJson() => {
-        "couponCode": couponCode,
-        "couponType": couponType,
-        "expirationDate": expirationDate.toIso8601String(),
-        "usageTimes": usageTimes,
-        "timesPerUser": timesPerUser,
-        "discountValue": discountValue,
-        "maxDiscount": maxDiscount,
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//     "id": id,
+//     "couponCode": couponCode,
+//     "couponType": couponType,
+//     "expiresAt": expiresAt.toIso8601String(),
+//     "usagesLeft": usagesLeft,
+//     "timesUsed": timesUsed,
+//     "timesPerUser": timesPerUser,
+//     "discountValue": discountValue,
+//     "maxDiscount": maxDiscount,
+//   };
+// }

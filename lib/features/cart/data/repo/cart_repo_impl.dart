@@ -22,6 +22,7 @@ class CartRepoImpl implements CartRepo {
 
       return Right(cartList);
     } catch (e) {
+
       return Left(ServerFailure.fromError(e));
     }
   }

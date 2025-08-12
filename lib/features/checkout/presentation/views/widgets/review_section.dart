@@ -19,14 +19,21 @@ class ReviewSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
       child: Column(
-        spacing: 20,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("ملخص الطلب :", style: TextStyles.bold13),
-          ReviewCard(body: PriceReview()),
-          ReviewCard(body: PaymentReview()),
-          ReviewCard(body: AddressReview()),
           CouponCard(),
+
+          Text("ملخص الطلب :", style: TextStyles.bold13),
+          SpaceV(12),
+
+          ReviewCard(body: PriceReview()),
+          SpaceV(12),
+          ReviewCard(body: PaymentReview()),
+          SpaceV(12),
+
+          ReviewCard(body: AddressReview()),
+
+          // SpaceV(5),
         ],
       ),
     );
@@ -43,7 +50,6 @@ class CouponCard extends StatefulWidget {
 class _CouponCardState extends State<CouponCard> {
   late final TextEditingController couponCon;
 
-  bool isVisible = false;
   bool isUsedSuccess = false;
 
   @override
@@ -70,56 +76,32 @@ class _CouponCardState extends State<CouponCard> {
         }
       },
       builder: (context, state) {
-        return Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text("هل لديك كوبون خصم؟"),
-                Switch(
-                  value: isVisible,
-                  onChanged: (value) {
-                    isVisible = value;
-                    setState(() {});
-                  },
-                  activeColor: AppColors.primaryColor,
-                  inactiveThumbColor: Colors.grey,
-                  inactiveTrackColor: Colors.grey[200],
-                ),
-              ],
-            ),
-            const SpaceV(5),
-            Visibility(
-              visible: isVisible,
-              child: CustomTextField(
-                hint: 'ادخل كود الخصم',
-                enabled: state is! UsedCouponSuccess,
-                controller: couponCon,
-                suffIcon:
-                    state is UsedCouponSuccess
-                        ? const Icon(
-                          Icons.done_outline_rounded,
-                          color: AppColors.secondaryColor,
-                        )
-                        : TextButton(
-                          onPressed: () {
-                            if (couponCon.text.isNotEmpty) {
-                              context.read<CheckoutCubit>().useCoupon(
-                                couponCode: couponCon.text,
-                              );
-                            } else {
-                              showNotification(
-                                context,
-                                "يرجي إدخال الكوبون",
-                                NotiType.warning,
-                              );
-                            }
-                          },
-                          child: const Text("تفعيل"),
-                        ),
-              ),
-            ),
-          ],
+        return CustomTextField(
+          hint: 'ادخل كود الخصم',
+          enabled: state is! UsedCouponSuccess,
+          controller: couponCon,
+          suffIcon:
+              state is UsedCouponSuccess
+                  ? const Icon(
+                    Icons.done_outline_rounded,
+                    color: AppColors.secondaryColor,
+                  )
+                  : TextButton(
+                    onPressed: () {
+                      if (couponCon.text.isNotEmpty) {
+                        context.read<CheckoutCubit>().useCoupon(
+                          couponCode: couponCon.text,
+                        );
+                      } else {
+                        showNotification(
+                          context,
+                          "يرجي إدخال الكوبون",
+                          NotiType.warning,
+                        );
+                      }
+                    },
+                    child: const Text("تفعيل"),
+                  ),
         );
       },
     );
