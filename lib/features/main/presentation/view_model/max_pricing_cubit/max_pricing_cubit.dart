@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rfaye3/features/main/data/repo/home_repo.dart';
-import 'package:rfaye3/features/main/presentation/view_model/Max_pricing_cubit/Max_pricing_state.dart';
+import 'package:rfaye3/features/main/presentation/view_model/max_pricing_cubit/max_pricing_state.dart';
 
 class MaxPriceCubit extends Cubit<MaxPriceState> {
   MaxPriceCubit(this.homeRepo) : super(MaxPriceInitial());

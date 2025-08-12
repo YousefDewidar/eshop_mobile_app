@@ -7,14 +7,13 @@ import 'package:rfaye3/features/main/presentation/view_model/gold_products_cubit
 import 'package:rfaye3/features/main/presentation/view_model/gold_products_cubit/gold_products_state.dart';
 import 'package:rfaye3/features/main/presentation/view_model/max_pricing_cubit/max_pricing_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/min_pricing_cubit/min_pricing_cubit.dart';
+import 'package:rfaye3/features/main/presentation/view_model/max_pricing_cubit/max_pricing_state.dart';
 import 'package:rfaye3/features/main/presentation/view_model/min_pricing_cubit/min_pricing_state.dart';
 import 'package:rfaye3/features/main/presentation/view_model/most_rateing_cubit/most_rate_cubit.dart';
 import 'package:rfaye3/features/main/presentation/view_model/most_rateing_cubit/most_rate_state.dart';
 import 'package:rfaye3/features/main/presentation/views/view_more_products_view.dart';
 import 'package:rfaye3/features/main/presentation/views/widgets/home_products/product_card.dart';
 import 'package:rfaye3/features/main/data/models/product_model.dart';
-
-import '../../../view_model/Max_pricing_cubit/Max_pricing_state.dart';
 
 class ViewMoreProductsViewBody extends StatefulWidget {
   final List<ProductModel> products;
