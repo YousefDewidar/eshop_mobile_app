@@ -34,6 +34,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          token: ${{ secrets.GH_TOKEN }}
           tag_name: v${{ github.run_number }}
           name: "Release v${{ github.run_number }}"
           body: |
@@ -42,4 +43,4 @@ jobs:
             🕒 Date: $(date +'%Y-%m-%d %H:%M')
           files: release-apks/*.apk
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
