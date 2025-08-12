@@ -43,6 +43,7 @@ dependencies:
   flutter_rating_bar:
 
 dev_dependencies:
+  icons_launcher: ^3.0.1
   intl_utils:
   flutter_test:
     sdk: flutter
@@ -77,3 +78,11 @@ flutter_assets:
   output_path: lib/core/utils/
   filename: app_images.dart
   field_prefix: null
+
+icons_launcher:
+  image_path: "assets/images/land1.png"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
