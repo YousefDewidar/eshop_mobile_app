@@ -21,8 +21,17 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build APK (split per ABI)
-        run: flutter build apk --release --split-per-abi
+      - name: Restore keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/release-key.jks
+
+      - name: Build signed APK (split per ABI)
+        run: |
+          flutter build apk --release --split-per-abi \
+          --dart-define=KEYSTORE_PATH=release-key.jks \
+          --dart-define=KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }} \
+          --dart-define=KEY_ALIAS=${{ secrets.KEY_ALIAS }} \
+          --dart-define=KEY_PASSWORD=${{ secrets.KEY_PASSWORD}}
 
       - name: Archive APKs
         run: |
