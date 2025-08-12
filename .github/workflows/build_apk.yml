@@ -1,41 +1,45 @@
-# name: Build Flutter APK and Send to Telegram
+# name: Build Flutter APK and Create GitHub Release
 
-# on:
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout source code
-#         uses: actions/checkout@v3
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
 
-#       - name: Set up Flutter
-#         uses: subosito/flutter-action@v2
-#         with:
-#           flutter-version: "3.29.2"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.29.2"
 
-#       - name: Generate keys.dart
-#         run: echo "const publicKey = \"${{ secrets.PUBLIC_KEY }}\";" > lib/core/helper/keys.dart
+      - name: Install dependencies
+        run: flutter pub get
 
-#       - name: Install dependencies
-#         run: flutter pub get
+      - name: Build APK (split per ABI)
+        run: flutter build apk --release --split-per-abi
 
-#       - name: Build APK (split per ABI)
-#         run: flutter build apk --release --split-per-abi
+      - name: Archive APKs
+        run: |
+          mkdir release-apks
+          cp build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk release-apks/
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk release-apks/
+          cp build/app/outputs/flutter-apk/app-x86_64-release.apk release-apks/
 
-#       - name: Upload APK to Telegram
-#         env:
-#           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-#           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-#         run: |
-#           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
-#           curl -F document=@build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk \
-#               -F chat_id=$TELEGRAM_CHAT_ID \
-#               -F caption="📦 APK جديد
-#               📝 الرسالة: $COMMIT_MESSAGE
-#               🕒 التاريخ: $(date +'%Y-%m-%d %H:%M')" \
-#               https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendDocument
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: "Release v${{ github.run_number }}"
+          body: |
+            📦 New Flutter APK release
+            📝 Commit: ${{ github.event.head_commit.message }}
+            🕒 Date: $(date +'%Y-%m-%d %H:%M')
+          files: release-apks/*.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
