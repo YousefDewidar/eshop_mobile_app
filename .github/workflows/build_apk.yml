@@ -21,10 +21,16 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Restore keystore
+      - name: Restore keystore and create key.properties
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/release-key.jks
-
+          cat <<EOF > android/key.properties
+          storeFile=android/app/release-key.jks
+          storePassword=${{ secrets.KEYSTORE_PASSWORD }}
+          keyAlias=${{ secrets.KEY_ALIAS }}
+          keyPassword=${{ secrets.KEY_PASSWORD }}
+          EOF
+          
       - name: Build signed APK (split per ABI)
         run: |
           flutter build apk --release --split-per-abi \
