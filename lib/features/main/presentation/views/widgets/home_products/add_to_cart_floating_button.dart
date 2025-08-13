@@ -16,6 +16,7 @@ class AddToCartFloatingButton extends StatefulWidget {
   final bool isArabic;
   final ProductModel product;
 
+
   @override
   State<AddToCartFloatingButton> createState() =>
       _AddToCartFloatingButtonState();
