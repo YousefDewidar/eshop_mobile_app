@@ -89,14 +89,14 @@ This project is built with a modern and scalable tech stack to ensure robustness
 
 | Component             | Technology                                                                                                  |
 | --------------------- | ----------------------------------------------------------------------------------------------------------- |
-| **Mobile App (Frontend)** | **Flutter (Dart)** - For beautiful, natively compiled applications from a single codebase.              |
+| **Mobile App** | **Flutter (Dart)** - For beautiful, natively compiled applications from a single codebase.              |
 | **Backend API** | **.NET (C#)** - A powerful, cross-platform framework for building robust and secure backend services.        |
 | **Admin Dashboard** | **Next.js (React)** - For a fast, server-rendered admin panel with a great developer experience.            |
-| **Database** | `SQL Server` - *You can confirm or change this.* |
+| **Database** | `SQL SERVER` |
 | **State Management** | `BLoC / Cubit` |
 | **Architecture** | `MVVM` |
 | **Authentication** | **Google Sign-In, .NET Identity** - For secure and easy user authentication.                                |
-| **Notifications** | **Firebase Cloud Messaging (FCM)** - For reliable real-time push notifications.                             |
+| **Notifications** | **Custom Notifications**.                             |
 
 ---
 
